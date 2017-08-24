@@ -64,25 +64,25 @@ var event0_3_3 = function() {
 
 var event0_4_1 = function() {
     state.magic += 10
-    Engine.show("TODO: Beschreiben was passiert",
+    Engine.show("Du verbrachtest unzählige Stunden damit, dir Spielkarten zu merken, um deine Konzentration zu schärfen. Jeden Tag meditiertest du, um das zu finden, was die Bücher als Ruhepol bezeichneten. Und jeder dir bekannte Zauber wurde in den unterschiedlichsten Varianten probiert, bis du dessen Wirkung besser einschätzen konntest. Stück für Stück bautest du dein Vertrauen in die Magie weiter aus, bis sie für dich weniger ein Werkzeug als eine dritte Hand darstellte.",
     [new Choice("Weiter", "event0_4_5")])
 }
 
 var event0_4_2 = function() {
     state.lore += 10
-    Engine.show("TODO: Beschreiben was passiert",
+    Engine.show("Du hattest zwar zuvor schon viele Bücher gelesen, aber die magischen Schriften eröffneten dir eine völlig neue Weltanschauung. Physik, Chemie und Biologie verloren ihren unnachgiebigen Halt und wurden zu alternativen Erklärungsmodellen, während Legenden zu Optionen wurden. Inzwischen hast du mehr Fragen als jemals zuvor, doch zugleich hast du das Gefühl, eine Orientierung im Chaos gefunden zu haben.",
     [new Choice("Weiter", "event0_4_5")])
 }
 
 var event0_4_3 = function() {
     state.awareness += 10
-    Engine.show("TODO: Beschreiben was passiert",
+    Engine.show("Die Tatsache, dass etwas so Bedeutsames wie Magie jemals ignoriert werden konnte, obwohl sie doch in den Geschichten jeder Kultur auftauchte, machte dir klar, wie leicht selbst Offensichtliches übersehen werden kann. Mit dem festen Vorsatz, nie wieder mit verschlossenen Augen durch die Welt zu laufen, machtest du es dir zur Gewohnheit, auf die Details deiner Umgebung zu achten, diese in einem Gedächtnisprotokoll festzuhalten und sie schließlich miteinander zu vergleichen.",
     [new Choice("Weiter", "event0_4_5")])
 }
 
 var event0_4_4 = function() {
     state.mundane += 10
-    Engine.show("TODO: Beschreiben was passiert",
+    Engine.show("Schwimmen und Radfahren halfen dir, den Kopf frei zu bekommen, und zugleich gaben sie dir das Gefühl, auch ohne Magie etwas erreichen zu können. Der Kontakt mit Freundesfreunden führte zu interessanten Begegnungen und unterhaltsamen Gesprächen bis in den späten Abend, welche nicht nur deinen Alltag bereicherten, sondern es dir auch ermöglichten, die Magie zu vergessen und zu entspannen. Obwohl die Magie dein Leben noch immer prägte, war es gut, eine Alternative zu haben.",
     [new Choice("Weiter", "event0_4_5")])
 }
 
@@ -98,25 +98,25 @@ var event0_4_5 = function() {
 
 var event0_5_1 = function() {
     state.magic -= 10
-    Engine.show("TODO: Beschreiben was passiert", 
+    Engine.show("Eine Zeit lang war es schwierig, sich auf die Magie einzulassen, wo sie doch dein Leben zugleich so durcheinander gebracht hatte und deine Zukunft bedrohte, doch schließlich konntest du dich wieder fangen, auch wenn deine anfängliche Begeisterung einen Dämpfer erhalten hat.", 
     [new Choice("Weiter", "event0_5_5")])
 }
 
 var event0_5_2 = function() {
     state.lore -= 10
-    Engine.show("TODO: Beschreiben was passiert",
+    Engine.show("Das plötzliche Verbot magischer Schriften dämpfte deine Begeisterung für diese ebenso sehr wie die umständlichen Formulierungen, die offensichtlich keinerlei Wert auf Verständlichkeit legten. Aus diesem Grund hast du die Passagen über seltene Phänomene nur überflogen und dich auf die wesentlichen Dinge beschränkt.",
     [new Choice("Weiter", "event0_5_5")])
 }
 
 var event0_5_3 = function() {
     state.awareness -= 10
-    Engine.show("TODO: Beschreiben was passiert", 
+    Engine.show("Ab einem gewissen Punkt sind zu viele Informationen einfach nur noch hinderlich, und so erschien es dir unumgänglich, deinem schmerzenden Kopf eine Auszeit zu gönnen und nicht jedes Detail zu hinterfragen.", 
     [new Choice("Weiter", "event0_5_5")])
 }
 
 var event0_5_4 = function() {
     state.mundane -= 10
-    Engine.show("TODO: Beschreiben was passiert",
+    Engine.show("Die Welt schien sich gegen dich verschworen zu haben, weshalb du dir eine Auszeit von ihr gönntest. In der Abgeschiedenheit deines Zimmers hattest du alle Zeit der Welt, dir deine eigenen Gedanken zu machen, ohne dass dich jemand störte.",
     [new Choice("Weiter", "event0_5_5")])
 }
 
