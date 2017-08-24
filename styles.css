@@ -4,7 +4,6 @@
 }
 
 .btn {
-  min-width: 80%;
   background: #3498db;
   background-image: linear-gradient(to bottom, #3498db, #2980b9);
   border-radius: 28px;
@@ -22,6 +21,12 @@
 }
 
 .continue {
+  min-width: 80%;
+  text-align: center;
+}
+
+.continue {
+  min-width: 20%;
   text-align: center;
 }
 
