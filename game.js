@@ -1,5 +1,6 @@
 var e
 var state
+"use strict"
 
 function State() {
     GameState.apply(this, arguments)

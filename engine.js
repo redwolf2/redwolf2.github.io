@@ -1,5 +1,7 @@
 var gamestate
 
+"use strict"
+
 var put = function(name, value) {
     if (typeof(Storage) !== "undefined") {
         var valueS = JSON.stringify(value)
@@ -137,7 +139,7 @@ function Engine(customState)
         var statusText = ""
         for(var propertyName in gamestate) {
             var propertyValue = gamestate[propertyName]
-            if(propertyValue instanceof PlayerAttribute) {
+            if(propertyValue != undefined && propertyValue["type"] === "PlayerAttribute") {
                 if(propertyValue.visible)
                     statusText += propertyValue.name + ": " + propertyValue.value + "<br/>"
             }
@@ -199,6 +201,7 @@ function GameState() {
 }
 
 function PlayerAttribute(name, value) {
+    this.type = "PlayerAttribute"
     this.name = name
     this.value = value
     this.visible = true
