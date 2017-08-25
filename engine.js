@@ -114,26 +114,34 @@ function Engine(customState)
         e.appendChild(buttonContinue)
         buttonContinue.addEventListener("click", onButtonContinue, false)
 
-        // add status button
+        //  status button
         var buttonStatus = Gui.createButton("status", "Status", onButtonStatus, "btn status")
-        var divPopup = document.createElement("div")
-        divPopup.className = "popup"
+        var popup = document.createElement("div")
+        popup.className = "popup"
 
-        // add popup to status button
+        //  popup to status button
         var status = document.getElementById("status")
-        var popup = document.createElement("span")
-        popup.id = "popupbox"
-        popup.className = "popuptext"
-        popup.textContent = "hallo welt"
 
-        divPopup.appendChild(popup)
+        // popup fullscreen container
+        var popupcontainer = document.createElement("span")
+        popupcontainer.id = "popupcontainer"
+        popupcontainer.className = "popupcontainer"
 
-        document.getElementById("popup").appendChild(divPopup)
+        // popupbox centered within the screen
+        var popupbox = document.createElement("div")
+        popupbox.id = "popupbox"
+        popupbox.className = "popupbox"
+
+        popupcontainer.appendChild(popupbox)
+
+        popup.appendChild(popupcontainer)
+
+        document.getElementById("popup").appendChild(popup)
 
         e.appendChild(buttonStatus)
 
         buttonStatus.addEventListener("click", onButtonStatus, false)
-        popup.addEventListener("click", onButtonStatus, false)
+        popupcontainer.addEventListener("click", onButtonStatus, false)
     }
 
     getStatusText = function() {
@@ -187,14 +195,14 @@ function Engine(customState)
     }
 
     toggleStatus = function() {
-        var popup = document.getElementById("popupbox")
-        popup.innerHTML = getStatusText()
+        var popup = document.getElementById("popupcontainer")
+        var popupbox = document.getElementById("popupbox")
+        popupbox.innerHTML = getStatusText()
         popup.classList.toggle("show")
     }
 
     closeStatus = function() {
-        var popup = document.getElementById("popupbox")
-        popup.innerHTML = getStatusText()
+        var popup = document.getElementById("popupcontainer")
         popup.classList.remove("show")
     }
 
