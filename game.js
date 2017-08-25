@@ -15,8 +15,8 @@ var eventFirst = function() {
     state = new State()
     e = new Engine(state)
     e.show("Aiur",
-        [new Choice("Neu", "eventNew"),
-        new Choice("Continue", "eventContinue")], false)
+        [new Choice("Neues Spiel", "eventNew"),
+        new Choice("Weitermachen", "eventContinue")], false)
 }
 
 var eventNew = function() {
