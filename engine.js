@@ -119,20 +119,21 @@ function Engine(customState)
         var divPopup = document.createElement("div")
         divPopup.className = "popup"
 
-
         // add popup to status button
         var status = document.getElementById("status")
         var popup = document.createElement("span")
-        popup.id = "myPopup"
+        popup.id = "popupbox"
         popup.className = "popuptext"
         popup.textContent = "hallo welt"
 
-        divPopup.appendChild(buttonStatus)
         divPopup.appendChild(popup)
 
-        e.appendChild(divPopup)
+        document.getElementById("popup").appendChild(divPopup)
+
+        e.appendChild(buttonStatus)
 
         buttonStatus.addEventListener("click", onButtonStatus, false)
+        popup.addEventListener("click", onButtonStatus, false)
     }
 
     getStatusText = function() {
@@ -182,29 +183,40 @@ function Engine(customState)
     }
 
     onButtonStatus = function() {
-        var popup = document.getElementById("myPopup")
+        toggleStatus()
+    }
+
+    toggleStatus = function() {
+        var popup = document.getElementById("popupbox")
         popup.innerHTML = getStatusText()
         popup.classList.toggle("show")
+    }
+
+    closeStatus = function() {
+        var popup = document.getElementById("popupbox")
+        popup.innerHTML = getStatusText()
+        popup.classList.remove("show")
     }
 
     this.show = function(text, choices, save = true) {
         addText(text)
         addBottom(choices)
         gamestate.event = new GameEvent(text, choices)
+        closeStatus()
         if(save)
             GameState.save()
     }
 }
 
 function GameState() {
-    this.event = new GameEvent("", [new Choice("Weiter", "event404")])
+    this.event = new GameEvent("")
 }
 
-function PlayerAttribute(name, value) {
+function PlayerAttribute(name, value, visible = true) {
     this.type = "PlayerAttribute"
     this.name = name
     this.value = value
-    this.visible = true
+    this.visible = visible
 }
 
 GameState.save = function() {
@@ -212,7 +224,11 @@ GameState.save = function() {
 }
 
 GameState.load = function(engine) {
-    gamestate = get("gamestate")
+    // we merge the objects to be more compatible to old save states
+    var saveData = get("gamestate")
+    console.log("savedata contains: " + JSON.stringify(saveData))
+    gamestate = mergeRecursive(new State(), saveData)
+    console.log("merged savedata contains: " + JSON.stringify(gamestate))
     engine.show(gamestate.event.text, gamestate.event.choices)
 }
 
@@ -225,4 +241,25 @@ function Choice(text, func) {
     this.id = "choice0"
     this.text = text
     this.func = func
+}
+
+/**
+ * Recursively merge properties of two objects 
+ */
+function mergeRecursive(obj1, obj2) {
+    for (var p in obj2) {
+        try {
+            // Property in destination object set; update its value.
+            if (obj2[p].constructor == Object) {
+                obj1[p] = mergeRecursive(obj1[p], obj2[p])
+            } else {
+                obj1[p] = obj2[p]
+            }
+        } catch(e) {
+            // Property in destination object not set; create it and set its value.
+            obj1[p] = obj2[p]
+
+        }
+    }
+  return obj1
 }

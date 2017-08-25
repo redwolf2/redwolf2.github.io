@@ -4,7 +4,7 @@ var state
 
 function State() {
     GameState.apply(this, arguments)
-    this.gender = 1
+    this.magic = new PlayerAttribute("Magie", 20, false)
     this.magic = new PlayerAttribute("Magie", 20)
     this.lore = new PlayerAttribute("Wissen", 20)
     this.awareness = new PlayerAttribute("Aufmerksamkeit", 20)
