@@ -23,6 +23,45 @@ function getRnd(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min
 }
 
+function Gui() {
+
+}
+
+Gui.createButton = function(id, text, onclick, clazz = "btn", append = true) {
+    var element = document.createElement("input")
+    element.type = "button"
+    element.id = id
+    element.className = clazz
+    element.value = text
+    return element
+}
+
+Gui.createRadioButton = function(id, name, text) {
+    var element = document.createElement("label")
+    element.id = id + "label"
+
+    var forAtt = document.createAttribute("for")
+    forAtt.value = id;
+    element.setAttributeNode(forAtt)
+
+    var elementInput = document.createElement("input")
+
+    elementInput.id = id
+    elementInput.type = "radio"
+    elementInput.name = name
+
+    var elementText = document.createTextNode(text)
+
+    element.appendChild(elementInput)
+    element.appendChild(elementText)
+    return element
+ }
+
+Gui.insertLineBreak = function(e) {
+    var element = document.createElement("br")
+    e.appendChild(element)
+}
+
 function Engine(customState)
 {
     gamestate = customState
@@ -36,19 +75,23 @@ function Engine(customState)
         addText("")
     }
 
-    createChoices = function(choices) {
-        var ret = ""
+    createChoices = function(e, choices) {
         choices.forEach(function(choice) {
-            ret += (Choice.create(choice) + "<br/><br/>")
+            e.appendChild(createRadioButtonChoice(choice))
+            Gui.insertLineBreak(e)
+            Gui.insertLineBreak(e)
         })
-        return ret
+    }
+
+    createRadioButtonChoice = function(choice) {
+         return Gui.createRadioButton(choice.id, "choice", choice.text)
     }
 
     addBottom = function(choices) {
         globalChoices = choices
         var e = document.getElementById("center")
+        e.innerHTML = ""
         if(choices === undefined) {
-            e.innerHTML = ""
             return;
         } else if(choices.length > 1) {
             var counter = 0
@@ -56,24 +99,50 @@ function Engine(customState)
                 counter++
                 choice.id = "choice" + counter
             })
-            e.innerHTML = createChoices(choices) 
+            createChoices(e, choices) 
             choices.forEach(function(choice) {
                 Choice.bind(choice)
             })
         }
-        var id = choices.length === 1 ? "confirm" : choices[0].id
-        var text = choices.length === 1 ? choices[0].text : "Weiter"
-        var append = choices.length !== 1
-        insertButton(e, "confirm", text, function() { onButton("" + id) }, "btn continue", append)
+        // add confirm button
+        var continueId = choices.length === 1 ? "confirm" : choices[0].id
+        var continueText = choices.length === 1 ? choices[0].text : "Weiter"
+        var continueAppend = choices.length !== 1
+        var buttonContinue = Gui.createButton("confirm", continueText, function() { onButtonContinue(continueId) }, "btn continue", continueAppend)
+        e.appendChild(buttonContinue)
+        buttonContinue.addEventListener("click", onButtonContinue, false)
+
+        // add status button
+        var buttonStatus = Gui.createButton("status", "Status", onButtonStatus, "btn status")
+        var divPopup = document.createElement("div")
+        divPopup.className = "popup"
+
+
+        // add popup to status button
+        var status = document.getElementById("status")
+        var popup = document.createElement("span")
+        popup.id = "myPopup"
+        popup.className = "popuptext"
+        popup.textContent = "hallo welt"
+
+        divPopup.appendChild(buttonStatus)
+        divPopup.appendChild(popup)
+
+        e.appendChild(divPopup)
+
+        buttonStatus.addEventListener("click", onButtonStatus, false)
     }
 
-    insertButton = function(e, id, text, onclick, clazz = "btn", append = true) {
-        var buttonHtml = "<input type=\"button\" id=\"" + id + "\", name=\"button\" class=\"" + clazz + "\", value=\"" + text +  "\" />"
-        if(append)
-            e.innerHTML += buttonHtml
-        else
-            e.innerHTML = buttonHtml
-        document.getElementById(id).onclick = function(id) { onclick(id) }
+    getStatusText = function() {
+        var statusText = ""
+        for(var propertyName in gamestate) {
+            var propertyValue = gamestate[propertyName]
+            if(propertyValue instanceof PlayerAttribute) {
+                if(propertyValue.visible)
+                    statusText += propertyValue.name + ": " + propertyValue.value + "<br/>"
+            }
+        }
+        return statusText
     }
 
     addText = function(text) {
@@ -95,7 +164,7 @@ function Engine(customState)
         return selectedId
     }
 
-    onButton = function(button) {
+    onButtonContinue = function() {
         var selectedId = getSelectedChoice()
         var selectedChoice
         globalChoices.forEach(function(choice) {
@@ -109,6 +178,13 @@ function Engine(customState)
             window.scrollTo(0, 0)
         }
     }
+
+    onButtonStatus = function() {
+        var popup = document.getElementById("myPopup")
+        popup.innerHTML = getStatusText()
+        popup.classList.toggle("show")
+    }
+
     this.show = function(text, choices, save = true) {
         addText(text)
         addBottom(choices)
@@ -131,6 +207,7 @@ function PlayerAttribute(name, value) {
 GameState.save = function() {
     put("gamestate", gamestate)
 }
+
 GameState.load = function(engine) {
     gamestate = get("gamestate")
     engine.show(gamestate.event.text, gamestate.event.choices)
@@ -145,12 +222,4 @@ function Choice(text, func) {
     this.id = "choice0"
     this.text = text
     this.func = func
-}
-
-Choice.create = function(choice) {
-    return "<label id=\"" + choice.id + "label\" for=\"" + choice.id + "\"><input type=\"radio\" id=\"" + choice.id + "\", name=\"choice\" />" + choice.text + "</label>"
-}
-
-Choice.bind = function(choice) {
-    //document.getElementById(choice.id).onclick = function(e) { /* alert("hallo" + event.target.id) */ }
 }
