@@ -49,11 +49,6 @@ var event0_3_2 = function() {
 }
 
 var event0_3_3 = function() {
-    e.show("Ich widmete meine gesamte Kraft dem Bündeln magischer Energien, um möglichst mächtige Zauber zu formen.", 
-    [new Choice("Weiter", "event0_4")])
-}
-
-var event0_3_3 = function() {
     e.show("Allerdings verbrachtest du auch viel Zeit bei deiner besten Freundin Alex. Neben unzähligen Filmen habt ihr euch vor allem viele Videos im Internet angesehen. Eines Tages grinste sie dich an, während sie zwei bedruckte Seiten Papier vor deine Nase hielt: \"Hier, das hab ich aus 'nem Forum. Der Initiationsritus.\"Der was?\", hattest du sie verwirrt gefragt, nicht ganz sicher, welcher Film das sein sollte.<br/>\"Initiationsritus. Das machen angeblich alle, die Magie erlernen wollen. Damit findet man heraus, ob man magisch begabt ist.\"<br/>Zwanzig Minuten später saßest du ihr gegenüber im Schneidersitz, in der Hand eine brennende Kerze, der Geruch von Weihrauch in der Luft, und lächelteste sie spöttisch an: \"Und, ist die Macht schon mit dir?\"<br/>Alex streckte dir die Zunge raus: \"Magie ist total selten. Dass heißt nicht, dass mein Ritual...\" cooler Effekt: Kerze schmilzt nicht und sondert keine Hitze ab, lässt sich nicht auspusten.<br/>Diese Erkenntnis gab dir neuen Schwung und veränderte dein Leben. Alex sammelte alles, was sie im Internet fand und half dir, dein Talent zu entwickeln. Eine Sache war dir dabei besonders wichtig:",
     [
         new Choice("Ich widmete meine gesamte Kraft dem Bündeln magischer Energien, um möglichst mächtige Zauber zu formen.", "event0_4_1"),
