@@ -236,6 +236,7 @@ GameState.load = function(engine) {
     var saveData = get("gamestate")
     console.log("savedata contains: " + JSON.stringify(saveData))
     gamestate = mergeRecursive(new State(), saveData)
+    state = gamestate
     console.log("merged savedata contains: " + JSON.stringify(gamestate))
     engine.show(gamestate.event.text, gamestate.event.choices)
 }
