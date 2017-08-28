@@ -95,31 +95,51 @@ var event0_4_5 = function() {
 var event0_5_1 = function() {
     state.magic.value -= 10
     e.show("Eine Zeit lang war es schwierig, sich auf die Magie einzulassen, wo sie doch dein Leben zugleich so durcheinander gebracht hatte und deine Zukunft bedrohte, doch schließlich konntest du dich wieder fangen, auch wenn deine anfängliche Begeisterung einen Dämpfer erhalten hat.", 
-    [new Choice("Weiter", "event0_5_5")])
+    [new Choice("Weiter", "event0_6")])
 }
 
 var event0_5_2 = function() {
     state.lore.value -= 10
     e.show("Das plötzliche Verbot magischer Schriften dämpfte deine Begeisterung für diese ebenso sehr wie die umständlichen Formulierungen, die offensichtlich keinerlei Wert auf Verständlichkeit legten. Aus diesem Grund hast du die Passagen über seltene Phänomene nur überflogen und dich auf die wesentlichen Dinge beschränkt.",
-    [new Choice("Weiter", "event0_5_5")])
+    [new Choice("Weiter", "event0_6")])
 }
 
 var event0_5_3 = function() {
     state.awareness.value -= 10
     e.show("Ab einem gewissen Punkt sind zu viele Informationen einfach nur noch hinderlich, und so erschien es dir unumgänglich, deinem schmerzenden Kopf eine Auszeit zu gönnen und nicht jedes Detail zu hinterfragen.", 
-    [new Choice("Weiter", "event0_5_5")])
+    [new Choice("Weiter", "event0_6")])
 }
 
 var event0_5_4 = function() {
     state.mundane.value -= 10
     e.show("Die Welt schien sich gegen dich verschworen zu haben, weshalb du dir eine Auszeit von ihr gönntest. In der Abgeschiedenheit deines Zimmers hattest du alle Zeit der Welt, dir deine eigenen Gedanken zu machen, ohne dass dich jemand störte.",
-    [new Choice("Weiter", "event0_5_5")])
+    [new Choice("Weiter", "event0_6")])
 }
 
-var event0_5_5 = function() {
-    e.show("TODO: Beschreiben was passiert",
+var event0_6 = function() {
+    e.show("Die ständigen Nörgeleien deiner Mutter hatten dir natürlich ebenso wenig gut getan – „Nichtsnutz“ und „Faulpelz“ waren nur einige der ausgesuchten Bezeichnungen, mit denen sie dich beschrieb. Du konntest nicht ganz nachvollziehen, warum es erstrebenswerter sein sollte, den gesamten Tag mit dem Fernseher und einer Flasche billigen Whiskeys zu verbringen, aber mit Argumenten hatte sie sich eh nie auseinander gesetzt – vermutlich einer der wenigen Vorteile des Alkoholismus.<br/><br/>Als sie dann schließlich auf Blutkrebs diagnostiziert wurde, änderte sich nicht viel, außer dass ihr Pensum gelegentlich auf zwei Flaschen am Tag stieg. Unglücklicherweise bedeutete dies auch, dass sie am Monatsende unausstehlich wurde, wenn die Sozialhilfe nicht ausreichte, um ihren Rausch zu finanzieren. Als ihr Mitbewohner – du hattest noch keinen Vermieter gefunden, der dich ohne festen Job akzeptierte – bedeutete dies für dich natürlich zusätzlichen Ärger.<br/><br/>Glücklicherweise ist gerade Monatsanfang, und nach eineinhalb Flaschen liegt sie besinnungslos neben dir auf dem Sofa, so dass du den Kanal wählen kannst.",
+    [new Choice("Weiter", "event0_6_1")])
+}
+
+var event0_6_1 = function() {
+    e.show("Nicht dass die anderen Kanäle besser wären. Frustriert schaltest wieder den grauenhaften Film an. Der Hauptdarsteller schleudert gerade mit Hilfe seines Stabs Feuerbälle und Blitze auf seine Feinde, während er durch den Nachthimmel schwebt und die Frau – Lilly hieß sie? – in seinem Arm hält.<br/><br/>An dieser Stelle atmest du tief durch.<br/><br/>Dir ist natürlich klar, dass die meisten Menschen so gut wie kein Verständnis von Magie haben, aber dieser Film verstößt gegen so viele grundlegende Prinzipien, dass es dir die Sprache verschlägt. Ein Zauber erfordert eine Beschwörungsformel, was selbst im günstigsten Fall mindestens fünf Sekunden erfordert, meist jedoch länger. Zudem erfordert es enorme Konzentration, mehr als einen Zauber zur selben Zeit zu wirken...<br/><br/>Als der Held gegen Ende seine Kräfte einsetzt, um seine Geliebte wieder zum Leben zu erwecken, schaltest du angewidert erneut um. Magie hat ihre Grenzen. Andernfalls hättest du deine Mutter sicherlich geheilt.",
+    [new Choice("Weiter", "event0_6_2")])
+}
+
+var event0_6_2 = function() {
+    e.show("Nachrichten. Immerhin.<br/><br/>„Nachdem Doktor Sikora wegen Verdachts auf illegale magische Behandlung in Gewahrsam genommen wurde, warten die Beamten nun auf das Eintreffen der Sachverständigen. Doktor Sikora war ins Visier der Ermittler geraten, als seine Praxis nicht die üblichen Utensilien und Medikamente zur Behandlung von Blutkrebs bestellt hatte, obwohl die Praxis angeblich auf Leukämie spezialisiert ist...“ Dein Herz rast und du springst auf, als sich deine Gedanken überschlagen. Du erkennst das Gebäude, es befindet sich im Stadtzentrum. Könnte sich dort tatsächlich ein Heilmittel befinden? Oder handelt es sich bei diesem Doktor nur um einen Betrüger? Außerdem hält sich die Polizei dort auf, wäre es nicht sicherer, sich wieder auf's Sofa zu setzten? Doch noch während du dich dies fragst, bist du auf dem Weg zur Haustür. Sitzen bleiben? Lächerlich!",
+    [new Choice("Ich bin ein Magier, und es wird Zeit, dass ich meine Begabung nutze!", "event1_0"),
+    new Choice("Es könnte die Heilung für meine Mutter bedeuten. Sie mag nicht die tollste Mutter der Welt sein, aber sie ist meine!", "event1_0"),
+    new Choice("Falls es ein Heilmittel ist, könnte ich damit die Welt verändern.", "event1_0"),
+    new Choice("Wenn es tatsächlich ein Heilmittel gibt kann ich damit reich werden.", "event1_0"),
+    ])
+}
+
+var event1_0 = function() {
+    e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }
+
 
 var eventEnd = function() {
     e.show("The End")
