@@ -206,6 +206,18 @@ function Engine(customState)
         popup.classList.remove("show")
     }
 
+    this.setBackground = function(color, filename) {
+
+        if(filename === undefined || filename === null) {
+            document.body.style.background = "";
+        } else {
+            if(color === undefined || color === null) 
+                color = "#fff"
+            document.body.style.background = color + " url('" + filename + "') no-repeat center top";
+            document.body.style.backgroundSize = "cover"
+        }
+    }
+
     this.show = function(text, choices, save = true) {
         addText(text)
         addBottom(choices)
