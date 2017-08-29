@@ -214,7 +214,8 @@ function Engine(customState)
             if(color === undefined || color === null) 
                 color = "#fff"
             document.body.style.background = color + " url('" + filename + "') no-repeat center top";
-            document.body.style.backgroundSize = "cover"
+            document.body.style.backgroundSize = "auto 100%"
+            document.body.style.backgroundAttachment = "fixed"; 
         }
     }
 
