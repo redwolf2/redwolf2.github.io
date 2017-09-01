@@ -9,6 +9,9 @@ function State() {
     this.lore = new PlayerAttribute("Wissen", 20)
     this.awareness = new PlayerAttribute("Aufmerksamkeit", 20)
     this.mundane = new PlayerAttribute("Weltliches", 20)
+    this.profile = 0
+    this.delay = 0
+    this.disguise = 0
 }
 
 var eventFirst = function() {
@@ -130,19 +133,53 @@ var event0_6_1 = function() {
 }
 
 var event0_6_2 = function() {
-    e.show("Nachrichten. Immerhin.<br/><br/>„Nachdem Doktor Sikora wegen Verdachts auf illegale magische Behandlung in Gewahrsam genommen wurde, warten die Beamten nun auf das Eintreffen der Sachverständigen. Doktor Sikora war ins Visier der Ermittler geraten, als seine Praxis nicht die üblichen Utensilien und Medikamente zur Behandlung von Blutkrebs bestellt hatte, obwohl die Praxis angeblich auf Leukämie spezialisiert ist…“ Dein Herz rast und du springst auf, als sich deine Gedanken überschlagen. Du erkennst das Gebäude, es befindet sich im Stadtzentrum. Könnte sich dort tatsächlich ein Heilmittel befinden? Oder handelt es sich bei diesem Doktor nur um einen Betrüger? Außerdem hält sich die Polizei dort auf, wäre es nicht sicherer, sich wieder auf's Sofa zu setzten? Doch noch während du dich dies fragst, bist du auf dem Weg zur Haustür. Sitzen bleiben? Lächerlich!",
-    [new Choice("Ich bin ein Magier, und es wird Zeit, dass ich meine Begabung nutze!", "event1_0"),
-    new Choice("Es könnte die Heilung für meine Mutter bedeuten. Sie mag nicht die tollste Mutter der Welt sein, aber sie ist meine!", "event1_0"),
-    new Choice("Falls es ein Heilmittel ist, könnte ich damit die Welt verändern.", "event1_0"),
-    new Choice("Wenn es tatsächlich ein Heilmittel gibt kann ich damit reich werden.", "event1_0"),
-    ])
+    e.show("Nachrichten. Immerhin.<br/><br/>„Nachdem Doktor Sikora wegen Verdachts auf illegale magische Behandlung in Gewahrsam genommen wurde, warten die Beamten nun auf das Eintreffen der Sachverständigen…“ Innerlich seufzt du auf. Die Öffentlichkeit hat sich noch nicht von dem Schock erholt, dass Magie tatsächlich existiert. Dementsprechend ist jede Art von Vorfall, bei dem Magie eine Rolle spielen könnte, eine wahre Goldmine für die Medien, wie diese Liveübertragung belegt. Du überlegst wegzuschalten, aber dann bemerkst du, dass du das gezeigte Gebäude kennst. Es befindet sich Nahe des Stadtzentrums.<br/><br/>„…Doktor Sikora war ins Visier der Ermittler geraten, als seine Praxis nicht die üblichen Utensilien und Medikamente zur Behandlung von Blutkrebs bestellt hatte, obwohl die Praxis angeblich auf Leukämie spezialisiert ist.”<br/><br/>Natürlich. Die Anzahl der Betrüger hat drastisch zugenommen, seitdem die Existenz von Magie bekannt geworden ist. Offiziell benötigt man natürlich etliche Genehmigungen, aber verzweifelte Menschen stellen eine leichte Beute für jeden Schwindler dar. Obwohl Heilung eine der einfachsten Formen von Magie ist, werden neumodische Konzepte wie Karzinome von der uralten Fachliteratur natürlich nicht abgedeckt. Du selbst hast versucht, dich nach der Diagnose deiner Mutter schlau zu machen. Vergeblich.<br/>„Bei einer stichprobenartigen Untersuchung fand man heraus, dass sich die Patienten bei überraschend guter Gesundheit befinden…”, – an dieser Stelle stockt die Reporterin und blickt kurz neben die Kamera – „aber… aber wir weisen darauf hin, dass ohne eine ausführliche Untersuchung jedwede Behauptung kritisch zu betrachten ist. Die Beamten vom MEK befinden sich bereits auf dem Weg und werden sich in den nächsten Wochen ausführlich damit beschäftigen.“<br/><br/>Du springst auf. Wütend. Schockiert. Elektrisiert.<br/>Könnte es sein? Könnte es tatsächlich ein Heilmittel geben? Und würden die Beamten es tatsächlich zur Sicherheit der Allgemeinheit wochenlang unter Verschluss halten?<br/><br/>Vermutlich.<br/>Es könnte auch alles ein Irrtum sein. Möglicherweise wäre es besser, sich wieder auf das Sofa zu setzen, diese Sache nur in den Nachrichten zu verfolgen, dem System seinen Lauf zu lassen und auf die Vernunft der Masse zu hoffen.<br/>Einfach so zu tun, als ginge dich das nichts an.<br/>Von wegen!<br/><br/>Dir bleibt also nur eine Möglichkeit. Du musst dort hin, bevor das MEK eintrifft.",
+    [new Choice("Ich beherrsche die Magie, und ich will verdammt sein, wenn ich sie den Rest meines Lebens nur in meinem Zimmer einsetze!", "event1_0"),
+    new Choice("Es wird Zeit die Welt zu retten. Eine Person nach der anderen!", "event1_0"),
+    new Choice("Es könnte die Heilung für meine Mutter bedeuten. Sie mag nicht die tollste Mutter der Welt sein, aber ich werde auf keinen Fall einfach zusehen, wie sie stirbt!", "event1_0"),
+    new Choice("Wenn uns sonst niemand hilft, muss ich eben selbst etwas tun!", "event1_0")])
 }
 
 var event1_0 = function() {
+    e.show("Dir ist klar, dass die Zeit gegen dich Arbeit. Die MEK-Beamten sind zwar chronisch überarbeitet, aber bei einer Liveübertragung ist das Interesse der Öffentlichkeit vermutlich groß genug, um jemanden aus dem Bett zu klingeln. Andererseits könnte ein blindes Voranstürmen dir ebenfalls schaden.<br/><br/>Du überlegst kurz. Leider besitzt du kein Fahrzeug, aber immerhin dürfte gleich ein Bus ins Stadtzentrum fahren. Nicht ideal, aber es dürfte funktionieren. Alternativ könntest du natürlich fliegen, aber du bist dir nicht sicher, ob deine Kräfte dafür ausreichen. Zudem besteht die Möglichkeit, dass jemand etwas sehen könnte. Andererseits ist es natürlich Nacht.<br/>Letztlich hättest du noch die Möglichkeit, in deinem Zimmer nach Handschuhen, Schal und Mütze zu suchen, damit du nicht so schnell erkannt wirst. Zwar bist du in der Lage, dich magisch zu tarnen, aber mehrere Zauber aufrecht zu erhalten ist immer schwierig, und vielleicht brauchst du deine Kräfte anderweitig.",
+    [new Choice("Zeit zum Umziehen.", "event1_0_1"),
+    new Choice("Zeit zum Fliegen.", "event1_0_2"),
+    new Choice("Zeit für den Bus.", "event1_0_3")])
+}
+
+var event1_0_1 = function() {
+    state.delay += 5
+    state.disguise = 1
+    e.show("Du hastest in dein Zimmer, reißt den Schrank auf und wühlst wie besessen in deinen Klamotten. Kurz darauf hast du Schal, Mütze und Handschuhe gefunden. Sogar eine Sonnenbrille ist dabei.<br/>Und nun?",
+    [new Choice("Zeit zum Fliegen.", "event1_0_2"),
+    new Choice("Zeit für den Bus.", "event1_0_3")])
+}
+
+var event1_0_2 = function() {
+    var text = "Du trittst nach draußen in die kühle Herbstluft. Du siehst dich kurz um, und als du niemanden siehst, murmelst du die Beschwörungsformel. Langsam erhebst du dich. "
+    if(state.magic.value >= 30) {
+        state.delay -= 30
+        state.profile += 5
+        text += "Bedächtig legst du mehr Kraft in den Zauber, und kurz darauf fliegst du Richtung Stadtzentrum davon. Obwohl du kaum schneller bist als mit dem Fahrrad, da du weder bremsen noch ausweichen musst. Dir wird ein wenig schwindelig angesichts der kleinen Lichtpunkte, die unter dir entlang rasen, und auch der schneidend kalte Nachtwind ist nicht besonders angenehm, doch du konzentrierst dich, und kannst kurze Zeit später in einer dunklen Seitenstraße landen. Die letzten Meter legst du zu Fuß zurück."
+        var choices = [new Choice("Wo wir hingehen, brauchen wir keine Straßen", "event1_1")]
+    } else {
+        text += "Unglücklicherweise schaffst du es nicht, gleichzeitig genügend Kraft in den Zauber zu legen und die vollständige Kontrolle zu behalten. Du könntest zwar schweben, aber damit wärst du auch nicht schneller als zu Fuß."
+        var choices = [new Choice("Du beschließt den Bus zu nehmen", "event1_0_3")]
+    }
+    e.show(text, choices)
+}
+
+var event1_0_3 = function() {
+    state.delay += 5
+    state.disguise = 1
+    e.show("Du gehst zur Bushaltestelle. Angesichts deines Vorhabens, der Polizei und ihren magischen Spezialisten zuvor zu kommen, erscheint dir das Warten auf den Bus wie ein schlechter Scherz.<br/>Als der Bus endlich kommt, hat er zwei Minuten Verspätung, und obwohl du weisst, dass zwei Minuten nur in schlechten Filmen entscheidend sind, hast du ein mulmiges Gefühl.<br/><br/>Als du zwanzig Minuten später aussteigst, begibst du dich möglichst schnell Richtung Praxis.",
+    [new Choice("Weiter", "event1_1")])
+}
+
+var event1_1 = function() {
     e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }
-
 
 var eventEnd = function() {
     e.show("The End")
