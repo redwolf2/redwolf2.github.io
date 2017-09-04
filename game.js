@@ -177,6 +177,92 @@ var event1_0_3 = function() {
 }
 
 var event1_1 = function() {
+    e.show("Die Praxis befindet sich in einem mehrstöckigen Reihenhaus an einer wenig befahrenen Straße. Vor dem Eingang stehen zwei Polizisten und halten jeden vom Betreten ab, der kein Mieter ist. Die Menge der neugierigen Zuschauer ist bereits auf ein paar Dutzend gestiegen und breitet sich bis auf die Straße aus. Ein Journalist spricht gerade in eine Kamera, während ein weiteres Übertragungsteam gerade seinen Wagen entlädt. Auf das Dach zu Schweben fällt also aus.",
+    [new Choice("Weiter", "event1_1_0")])
+}
+
+var event1_1_0 = function() {
+    e.show("Du musst du dir irgendwie Zutritt zum Gebäude verschaffen. Zwar könntest du dich auf magische Art Tarnen, doch wenn sich einfach die Tür öffnet, wirkt dies mit Sicherheit verdächtig. Vielleicht kann man mit den Beamten am Eingang reden? Eine Seitengasse scheint hinter das Gebäude zu führen, vielleicht hast du Glück und findest eine Feuerleiter. Natürlich könntest du das Gebäude auch auf einer magischen Ebene betrachten, um Spuren magischer Energie zu finden, aber dies dauert eine Weile.",
+    [new Choice("Ich rede mit den Polizisten.", "event1_1_1"),
+	new Choice("Zuerst höre ich mich unter den Passanten um.", "event1_1_2"),
+	new Choice("Die Rückseite des Gebäudes klingt vielversprechend.", "event1_1_3"),
+	new Choice("Ich verschiebe meine Wahrnehmung auf das magische Spektrum.", "event1_1_4")])
+}
+
+var event1_1_1 = function() {
+    e.show("Die beiden Beamten wirken wie Türsteher. Gelangweilt und unnachgiebig.",
+    [new Choice("„Einen schönen guten Abend. Was ist denn hier passiert?”", "event1_1_1_1"),
+	new Choice("„Entschuldigen Sie, aber ich wohne hier.”", "event1_1_1_2"),
+	new Choice("„Guten Abend Kollegen.” Es wird schließlich ein magischer Experte erwartet.", "event1_1_1_3"),
+	new Choice("Ich überlege mir doch lieber etwas anderes.", "event1_1_0")])
+}
+
+var event1_1_1_1 = function() {
+    state.delay += 5
+    e.show("Bemüht höflich erwidert der größere von beiden: „Wir dürfen uns dazu leider nicht äußern. Entnehmen Sie weiteres bitte den Medien.” Der andere verdreht nur die Augen.",
+    [new Choice("„Entschuldigen Sie, aber ich wohne hier.”", "event1_1_1_2"),
+	new Choice("„Nur ein Scherz. Guten Abend Kollegen.” Es wird schließlich ein magischer Experte erwartet.", "event1_1_1_3"),
+	new Choice("„Ich überlege mir doch lieber etwas anderes.", "event1_1_0")])
+}
+
+var event1_1_1_2 = function() {
+    state.delay += 5
+    e.show("Die beiden Beamten ringen sich ein Lächeln ab: „Können Sie sich ausweisen?” Verdammt.",
+    [new Choice("„Hätte ich gewusst, dass ich sonst nicht in meine Wohnung komme, hätte ich meine Brieftasche samt Ausweis sicherlich mitgenommen. Bitte, es ist kalt!”", "event1_1_1_2_1"),
+	new Choice("„Um in meine Wohnung zu kommen? Wollen Sie mich auf den Arm nehmen???”", "event1_1_1_2_2"),
+	new Choice("„Bitte, ich muss echt dringend pinkeln.”", "event1_1_1_2_2")])
+}
+
+var event1_1_1_2_1 = function() {
+	if (state.mundane.value >= 30) {
+		e.show("Der Beamte zögert, als sein Kollege ihm etwas ins Ohr flüstert. Dann zuckt er mit den Schultern: „Halten Sie sich bitte von der Praxis fern.”", 
+		[new Choice("„Hätte ich gewusst, dass ich sonst nicht in meine Wohnung komme, hätte ich meine Brieftasche samt Ausweis sicherlich mitgenommen. Bitte, es ist kalt!”", "event1_2")])
+	} else {
+		e.show("„Tut mir sehr leid, aber so können wir sie nicht einfach durchlassen.”", 
+		[new Choice("Mist!", "event1_1_1")])
+	}
+}
+
+var event1_1_1_2_2 = function() {
+	e.show("„Tut mir sehr leid, aber so können wir sie nicht einfach durchlassen.”", 
+	[new Choice("Mist!", "event1_1_1")])
+}
+
+var event1_1_1_3 = function() {
+    state.delay += 5
+    e.show("Die beiden sehen dich überrascht an... misstrauisch. Ängstlich? Sie mustern dich, offensichtlich nicht überzeugt.",
+    [new Choice("„Schon gut, ich habe mir lediglich einen Scherz erlaubt.”", "event1_1_1_3_1"),
+	new Choice("Ich demonstriere ihnen einen einfachen Zauber, um sie zu überrumpeln.", "event1_1_1_3_2")])
+}
+
+var event1_1_1_3_1 = function() {
+	e.show("Die beiden mustern dich finster: „Sie sind Reporter, oder? Möchten unbedingt rein, hm? Klar, die Polizei steht nur im Weg.”", 
+	[new Choice("Mist!", "event1_1_1")])
+}
+
+var event1_1_1_3_2 = function() {
+    state.delay += 5
+    state.profile += 30
+	e.show("Langsam – du möchtest keinen Zwischenfall provozieren – hebst du die linke Hand und murmelst eine Beschwörung. Einige Sekunden später erhebt sich eine kleine Lichtkugel über deinem Handteller. Überaus simpel, aber die Beamten zucken erschrocken zusammen. Du lächelst sie beruhigend an. Der kleinere von beiden schluckt und öffnet dir die Tür.", 
+	[new Choice("Weiter", "event1_2")])
+}
+
+var event1_1_2 = function() {
+    e.show("TODO: Text einfügen!",
+    [new Choice("Weiter", "eventEnd")])
+}
+
+var event1_1_3 = function() {
+    e.show("TODO: Text einfügen!",
+    [new Choice("Weiter", "eventEnd")])
+}
+
+var event1_1_4 = function() {
+    e.show("TODO: Text einfügen!",
+    [new Choice("Weiter", "eventEnd")])
+}
+
+var event1_2 = function() {
     e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }
