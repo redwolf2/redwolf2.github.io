@@ -67,6 +67,7 @@ Gui.insertLineBreak = function(e) {
 function Engine(customState)
 {
     gamestate = customState
+    var _root = this
     this.globalChoices
 
     var appendText = function(text) {
@@ -176,6 +177,7 @@ function Engine(customState)
     }
 
     onButtonContinue = function() {
+        this.root = _root
         var selectedId = getSelectedChoice()
         var selectedChoice
         globalChoices.forEach(function(choice) {
@@ -183,8 +185,11 @@ function Engine(customState)
                 selectedChoice = choice
             }
         })
-        if(selectedChoice != undefined) {
-            console.log(selectedChoice.text + " was selected.")
+        if(window[selectedChoice.func] === undefined) {
+            console.log(selectedChoice.text + " (" + selectedChoice.func + ") function does not exist.")
+            this.root.show("ERROR: The function '" + selectedChoice.func + "' does not exist!", [new Choice("Retry", selectedChoice.func)], true)
+        } else if(selectedChoice != undefined) {
+            console.log(selectedChoice.text + " (" + selectedChoice.func + ") was selected.")
             window[selectedChoice.func](arguments)
             window.scrollTo(0, 0)
         }
@@ -238,6 +243,11 @@ function PlayerAttribute(name, value, visible = true) {
     this.name = name
     this.value = value
     this.visible = visible
+}
+
+GameState.hasSave = function() {
+    var saveData = get("gamestate")
+    return saveData !== undefined && saveData !== null
 }
 
 GameState.save = function() {

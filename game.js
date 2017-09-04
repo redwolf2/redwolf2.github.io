@@ -18,20 +18,34 @@ var eventFirst = function() {
     state = new State()
     e = new Engine(state)
     e.setBackground(null, "logo.svg")
-    e.show("Aiur",
-        [new Choice("Neues Spiel", "eventNew"),
+    if(GameState.hasSave()) {
+        e.show("Aiur", [new Choice("Neues Spiel", "eventNew"),
         new Choice("Weitermachen", "eventContinue")], false)
+    } else {
+        e.show("Aiur", [new Choice("Neues Spiel", "eventNew")], false)
+    }
 }
 
 var eventNew = function() {
     e.setBackground(null, null)
-    e.show("Mit geweiteten Augen starrt sie ihn an: „Was… was… soll das heißen? Dämonen?“. Sie lacht, etwas zu schrill. Er erwidert ihren Blick ruhig: „Lilly… ich bin ein Magier.“ Wieder lacht sie und fährt sich mit der Hand durch die blonden Locken: „Oh, ach so. Mach dir keine Sorgen, ich bin eine Fee…“ Der Mann verzieht noch immer keine Miene: „Ich gehöre einem uralten Geheimbund an, der die Menschen vor den Mächten der Finsternis bewahrt!“<br/>An dieser Stelle verdrehst du die Augen und wechselst den Kanal. Um diese Uhrzeit kommt einfach kein brauchbarer Film mehr im Fernsehen. Wie konnte so ein Mist jemals gedreht werden? Ein uralter Geheimbund von Magiern… lächerlich. Zugegeben, der Film scheint aus den Achtzigern zu stammen. Damals ahnte man noch nicht, dass bald Internet und Smartphone erfunden und die Welt für immer verändern würde. Mit dem Aufkommen der neuen Kommunikationstechnologie war es völlig unmöglich geworden, die Existenz der Magie noch länger geheim zu halten. Plötzlich tauchten immer mehr Videos von fliegenden Menschen, kreischenden Kugelblitzen und spontan auftretender Dunkelheit auf. Die Öffentlichkeit war ebenso überfordert wie die Medien und Politiker, und in der daraus resultierenden Unruhe wurden Magier gesetzlich verpflichtet, sich zu registrieren und ihre Geheimnisse offen zu legen. Zugleich wurde den meisten eine gutbezahlte Dienststelle angeboten. Die Welt schien sich nur noch um Magie zu drehen.<br />Dir war das egal. Dein Vater war gerade gestorben.",
-        [new Choice("Weiter", "event0_2")])
+    if(GameState.hasSave()) {
+        e.show("Ein Spielstand existiert bereits. Ein neues Spiel überschreibt diesen. Jetzt ein neues Spiel starten?",
+            [new Choice("Ja", "event0_1"),
+            new Choice("Nein", "eventFirst")], false)
+    } else {
+        event0_1()
+    }
 }
 
 var eventContinue = function() {
     e.setBackground(null, null)
     GameState.load(e)
+}
+
+var event0_1= function() {
+    e.setBackground(null, null)
+    e.show("Mit geweiteten Augen starrt sie ihn an: „Was… was… soll das heißen? Dämonen?“. Sie lacht, etwas zu schrill. Er erwidert ihren Blick ruhig: „Lilly… ich bin ein Magier.“ Wieder lacht sie und fährt sich mit der Hand durch die blonden Locken: „Oh, ach so. Mach dir keine Sorgen, ich bin eine Fee…“ Der Mann verzieht noch immer keine Miene: „Ich gehöre einem uralten Geheimbund an, der die Menschen vor den Mächten der Finsternis bewahrt!“<br/>An dieser Stelle verdrehst du die Augen und wechselst den Kanal. Um diese Uhrzeit kommt einfach kein brauchbarer Film mehr im Fernsehen. Wie konnte so ein Mist jemals gedreht werden? Ein uralter Geheimbund von Magiern… lächerlich. Zugegeben, der Film scheint aus den Achtzigern zu stammen. Damals ahnte man noch nicht, dass bald Internet und Smartphone erfunden und die Welt für immer verändern würde. Mit dem Aufkommen der neuen Kommunikationstechnologie war es völlig unmöglich geworden, die Existenz der Magie noch länger geheim zu halten. Plötzlich tauchten immer mehr Videos von fliegenden Menschen, kreischenden Kugelblitzen und spontan auftretender Dunkelheit auf. Die Öffentlichkeit war ebenso überfordert wie die Medien und Politiker, und in der daraus resultierenden Unruhe wurden Magier gesetzlich verpflichtet, sich zu registrieren und ihre Geheimnisse offen zu legen. Zugleich wurde den meisten eine gutbezahlte Dienststelle angeboten. Die Welt schien sich nur noch um Magie zu drehen.<br />Dir war das egal. Dein Vater war gerade gestorben.",
+        [new Choice("Weiter", "event0_2")])
 }
 
 var event0_2 = function() {
