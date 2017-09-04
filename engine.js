@@ -185,10 +185,13 @@ function Engine(customState)
                 selectedChoice = choice
             }
         })
+        if(selectedChoice === undefined) {
+            return
+        }
         if(window[selectedChoice.func] === undefined) {
             console.log(selectedChoice.text + " (" + selectedChoice.func + ") function does not exist.")
             this.root.show("ERROR: The function '" + selectedChoice.func + "' does not exist!", [new Choice("Retry", selectedChoice.func)], true)
-        } else if(selectedChoice != undefined) {
+        } else if(selectedChoice !== undefined) {
             console.log(selectedChoice.text + " (" + selectedChoice.func + ") was selected.")
             window[selectedChoice.func](arguments)
             window.scrollTo(0, 0)
