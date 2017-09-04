@@ -6,7 +6,7 @@
 
 .btn {
   background: #3498db;
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #268bd2);
   border-radius: 28px;
   font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
@@ -49,6 +49,7 @@ label:hover {
 
 /* Popup container - can be anything you want */
 .popup {
+    font-family: Arial, Helvetica, sans-serif;
     position: relative;
     display: inline-block;
     cursor: pointer;
@@ -69,8 +70,8 @@ label:hover {
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
 
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(7, 54, 66); /* Fallback color */
+    background-color: rgba(7, 54, 66, 0.4); /* Black w/ opacity */
     
     visibility: hidden;
 }
@@ -80,7 +81,7 @@ label:hover {
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     width: 160px;
-    background-color: #555;
+    background-color: #002b36;
     color: #fff;
     border-radius: 6px;
 }

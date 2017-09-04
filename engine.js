@@ -151,7 +151,7 @@ function Engine(customState)
             var propertyValue = gamestate[propertyName]
             if(propertyValue != undefined && propertyValue["type"] === "PlayerAttribute") {
                 if(propertyValue.visible)
-                    statusText += propertyValue.name + ": " + propertyValue.value + "<br/>"
+                    statusText += "<b>" + propertyValue.name + ":</b> " + propertyValue.value + "<br/>"
             }
         }
         return statusText
@@ -185,7 +185,7 @@ function Engine(customState)
                 selectedChoice = choice
             }
         })
-        if(selectedChoice === undefined) {
+        if(selectedChoice === undefined) { // nothing selected
             return
         }
         if(window[selectedChoice.func] === undefined) {
