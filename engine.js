@@ -30,7 +30,7 @@ function Gui() {
 }
 
 Gui.createButton = function(id, text, onclick, clazz = "btn", append = true, iconClazz = null) {
-    var elementIcon = document.createElement("img")
+    var elementIcon = document.createElement("svg")
     elementIcon.className = "btnicon"
     if(iconClazz !== null)
         elementIcon.className = "btnicon " + iconClazz
