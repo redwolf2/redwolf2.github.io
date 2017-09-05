@@ -74,10 +74,7 @@ Gui.createRadioButton = function(id, name, text) {
     var element = document.createElement("label")
     element.id = id + "label"
 
-    var forAtt = document.createAttribute("for")
-    forAtt.value = id;
-    element.setAttributeNode(forAtt)
-
+    element.setAttribute("for", id)
     var elementInput = document.createElement("input")
 
     elementInput.id = id
