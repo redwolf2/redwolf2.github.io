@@ -14,7 +14,7 @@ function State() {
     this.disguise = 0
 }
 
-var eventFirst = function() {
+var eventStart = function() {
     state = new State()
     e = new Engine(state)
     e.setBackground(null, "logo.svg")
@@ -31,7 +31,7 @@ var eventNew = function() {
     if(GameState.hasSave()) {
         e.show("Ein Spielstand existiert bereits. Ein neues Spiel überschreibt diesen. Jetzt ein neues Spiel starten?",
             [new Choice("Ja", "event0_1"),
-            new Choice("Nein", "eventFirst")], false)
+            new Choice("Nein", "eventStart")], false)
     } else {
         event0_1()
     }
@@ -285,4 +285,4 @@ var eventEnd = function() {
     e.show("The End")
 }
 
-window.onload = eventFirst;
+window.onload = eventStart;

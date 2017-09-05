@@ -29,14 +29,46 @@ function Gui() {
 
 }
 
-Gui.createButton = function(id, text, onclick, clazz = "btn", append = true) {
-    var element = document.createElement("input")
+Gui.createButton = function(id, text, onclick, clazz = "btn", append = true, iconClazz = null) {
+    var elementIcon = document.createElement("svg")
+    elementIcon.className = "btnicon"
+    if(iconClazz !== null)
+        elementIcon.className = "btnicon " + iconClazz
+    else
+        elementIcon.className = "btnicon"
+
+    var elementBreapCrump = document.createElement("span")
+    elementBreapCrump.className = "btnbreadcrump"
+
+    var elementText = document.createElement("div")
+    elementText.innerText = text
+    elementText.className = "btntext"
+    var element = document.createElement("div")
     element.type = "button"
     element.id = id
     element.className = clazz
-    element.value = text
+    var addIcon = iconClazz !== null;
+    var addText = text !== null && text !== undefined && text !== ""
+    if(addIcon && addText) {
+        element.appendChild(elementIcon)
+        element.appendChild(elementBreapCrump)
+        element.appendChild(elementText)
+    } else if(addIcon) {
+        element.appendChild(elementIcon)
+    } else if(addText) {
+        element.appendChild(elementText)
+    } else {
+        console.warn("this should not happen")
+    }
     return element
 }
+
+Gui.createBreadCrump = function(id) {
+    var element = document.createElement("span")
+    element.id = id
+    element.className = "breadcrump"
+    return element
+}    
 
 Gui.createRadioButton = function(id, name, text) {
     var element = document.createElement("label")
@@ -115,8 +147,12 @@ function Engine(customState)
         e.appendChild(buttonContinue)
         buttonContinue.addEventListener("click", onButtonContinue, false)
 
+        // breadcrump
+        var breadcrump = Gui.createBreadCrump("breadcrump1")
+        e.appendChild(breadcrump)
+
         //  status button
-        var buttonStatus = Gui.createButton("status", "Status", onButtonStatus, "btn status")
+        var buttonStatus = Gui.createButton("status", "", onButtonStatus, "btn", false, "iconstate")
         var popup = document.createElement("div")
         popup.className = "popup"
 
