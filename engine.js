@@ -30,7 +30,7 @@ function Gui() {
 }
 
 Gui.createButton = function(id, text, onclick, clazz = "btn", append = true, iconClazz = null) {
-    var elementIcon = document.createElement("svg")
+    var elementIcon = document.createElement("img")
     elementIcon.className = "btnicon"
     if(iconClazz !== null)
         elementIcon.className = "btnicon " + iconClazz
@@ -58,7 +58,7 @@ Gui.createButton = function(id, text, onclick, clazz = "btn", append = true, ico
     } else if(addText) {
         element.appendChild(elementText)
     } else {
-        console.warn("this should not happen")
+        console.error("this should not happen")
     }
     return element
 }
