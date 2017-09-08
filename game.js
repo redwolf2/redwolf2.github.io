@@ -282,7 +282,7 @@ var event1_1_3a = function() {
     [new Choice("Ich verwandele mich in einen Vogel.", "event1_1_3_1"),
     new Choice("Ich kümmere mich um die Tür.", "event1_1_3_2"),
     new Choice("Ich warte auf eine günstige Gelegenheit.", "event1_1_3_3"),
-    new Choice("Ich habe es mir anders überlegt und gehe wieder vor das Gebäude.", "event1_1_3_4")])
+    new Choice("Ich habe es mir anders überlegt und gehe wieder vor das Gebäude.", "event1_1")])
 }
 
 var event1_1_3_1 = function() {
