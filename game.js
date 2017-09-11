@@ -14,6 +14,7 @@ function State() {
     this.disguise = 0
     this.stash = 0
     this.event1_2_read = 0
+    this.takedown = 0
 }
 
 var eventStart = function() {
@@ -71,7 +72,7 @@ var event0_3_2 = function() {
 }
 
 var event0_3_3 = function() {
-    e.show("Allerdings verbrachtest du auch viel Zeit bei deiner besten Freundin Alex. Neben unzähligen Filmen habt ihr euch vor allem viele Videos im Internet angesehen. Eines Tages grinste sie dich an, während sie zwei bedruckte Seiten Papier vor deine Nase hielt: „Hier, das hab ich aus 'nem Forum. Der Initiationsritus. „Der was?“, hattest du sie verwirrt gefragt, nicht ganz sicher, welcher Film das sein sollte.<br/>„Initiationsritus. Das machen angeblich alle, die Magie erlernen wollen. Damit findet man heraus, ob man magisch begabt ist.“<br/>Zwanzig Minuten später saßest du ihr gegenüber im Schneidersitz, in der Hand eine brennende Kerze, der Geruch von Weihrauch in der Luft und lächelteste sie spöttisch an: „Und, ist die Macht schon mit dir?“<br/><br/>Alex streckte dir die Zunge raus: „Magie ist total selten. Dass heißt nicht, dass mein Ritual…“ Cooler Effekt: Kerze schmilzt nicht und sondert keine Hitze ab, lässt sich nicht auspusten.<br/>Diese Erkenntnis gab dir neuen Schwung und veränderte dein Leben. Alex sammelte alles, was sie im Internet fand und half dir, dein Talent zu entwickeln. Eine Sache war dir dabei besonders wichtig:",
+    e.show("Allerdings verbrachtest du auch viel Zeit bei deiner besten Freundin Alex. Neben unzähligen Filmen habt ihr euch vor allem viele Videos im Internet angesehen. Eines Tages grinste sie dich an, während sie zwei bedruckte Seiten Papier vor deine Nase hielt: „Hier, das hab ich aus 'nem Forum. Der Initiationsritus. „Der was?“, hattest du sie verwirrt gefragt, nicht ganz sicher, welcher Film das sein sollte.<br/>„Initiationsritus. Das machen angeblich alle, die Magie erlernen wollen. Damit findet man heraus, ob man magisch begabt ist.“<br/>Zwanzig Minuten später saßest du ihr gegenüber im Schneidersitz, in der Hand eine brennende Kerze, der Geruch von Weihrauch in der Luft und lächelteste sie spöttisch an: „Und, ist die Macht schon mit dir?“<br/><br/>Alex streckte dir die Zunge raus: „Magie ist total selten. Dass heißt nicht, dass mein Ritual…“ Alex streckte dir die Zunge raus: „Magie ist total selten. Dass heißt nicht, dass mein Ritual...“ Sie stockte und starrte auf deine Hände, die noch immer die Kerze hielten. Die Flamme erstrahlte in einem kristallklarem Blau. Aber noch interessanter war die Tatsache, dass der Wachs nicht schmolz, als würde die Flamme von etwas Anderem genährt.<br/>Damals hieltest du zum ersten Mal Magie in der Hand.<br/>Diese Erkenntnis...<br/><br/>Diese Erkenntnis gab dir neuen Schwung und veränderte dein Leben. Alex sammelte alles, was sie im Internet fand und half dir, dein Talent zu entwickeln. Eine Sache war dir dabei besonders wichtig:",
     [
         new Choice("Ich widmete meine gesamte Kraft dem Bündeln magischer Energien, um möglichst mächtige Zauber zu formen.", "event0_4_1"),
         new Choice("Ich verschlang jedes Buch und jeden Hinweis voller Wissensdurst. Ich wollte jeden Zauber kennen und jedes Geheimnis ergründen.", "event0_4_2"),
@@ -364,6 +365,58 @@ var event1_2_4 = function() {
 }
 
 var event1_3 = function() {
+    e.show("Der Polizist schaut auf sein Handy und scheint ein Gähnen zu unterdrücken. Ansonsten ist es ruhig. Der Rest des Flurs wirkt verlassen. Vermutlich sind die anderen Beamten in der Praxis.",
+    [new Choice("Ich lausche. Vielleicht spricht er gleich noch mit einigen Kollegen.", "event1_3_1"),
+    new Choice("Ich spreche einen Tarnzauber und schleiche mich in die Praxis.", "event1_3_2"),
+    new Choice("Ich spreche vorher einen Schlafzauber auf den Beamten.", "event1_3_3"),
+    new Choice("Ich wirke vorher einen Schockzauber, der ihm das Bewusstsein raubt.", "event1_3_4"),
+    ])
+}
+
+var event1_3_1 = function() {
+    state.delay += 10
+    e.show("Angestrengt spitzt du die Ohren. Du hörst ein Grunzen von dem Beamten. Was auch immer er liest, es scheint ihm nicht zu Gefallen.",
+    [new Choice("Ich warte weiter.", "event1_3_1_1"),
+    new Choice("Ich spreche einen Tarnzauber und schleiche mich in die Praxis.", "event1_3_2"),
+    new Choice("Ich spreche einen Schlafzauber auf den Beamten.", "event1_3_3"),
+    new Choice("Ich wirke vorher einen Schockzauber, der ihm das Bewusstsein raubt.", "event1_3_4")])
+}
+
+var event1_3_1_1 = function() {
+    state.delay += 10
+    e.show("Der Polizist summt ein Lied. Es kommt dir bekannt vor. Lief das nicht neulich im Radio? Egal, du hast genug Zeit verschwendet.",
+    [new Choice("Ich spreche einen Tarnzauber und schleiche mich in die Praxis.", "event1_3_2"),
+    new Choice("Ich spreche einen Schlafzauber auf den Beamten.", "event1_3_3"),
+    new Choice("Ich wirke vorher einen Schockzauber, der ihm das Bewusstsein raubt.", "event1_3_4")])
+}
+
+var event1_3_2 = function() {
+    e.show("Leise murmelst du den Zauberspruch, der deinen Körper lichtdurchlässig werden lässt. Dann schleichst du dich leise – man kann dich schließlich immer noch hören – an dem Beamten vorbei in die Praxis.",
+    [new Choice("Weiter", "event1_4")])
+}
+
+var event1_3_3 = function() {
+    state.delay += 5
+    if(state.lore.value >= 20) {
+        state.takedown += 1
+        e.show("Mit einem leisen Flüstern benebelst du den Geist des Polizisten, der sein Gähnen nicht länger unterdrücken kann, anfängt zu blinzeln, und dann in sich zusammen sackt. Anschließend wirkst du den Tarnzauber und schleichst in die Praxis.",
+        [new Choice("Weiter", "event1_4")])
+    } else {
+        e.show("Du zerbrichst dir den Kopf, aber dir fällt die richtige Formel nicht ein. Es muss wohl eine andere Möglichkeit her.",
+        [new Choice("Ich lausche. Vielleicht spricht er gleich noch mit einigen Kollegen.", "event1_3_1"),
+        new Choice("Ich spreche einen Tarnzauber und schleiche mich in die Praxis.", "event1_3_2"),
+        new Choice("Ich wirke vorher einen Schockzauber, der ihm das Bewusstsein raubt.", "event1_3_4")])
+    }
+}
+
+var event1_3_4 = function() {
+    state.profile += 5
+    state.takedown += 1
+    e.show("Da der Polizist eh schon müde und aufmerksam ist, fällt es dir leicht, seinen Kreislauf direkt anzugreifen. Als du die magischen Worte aussprichst, stockt sein Atem kurz, und er kippt bewusstlos zur Seite. Anschließend sprichst du einen Tarnzauber und trittst ein.",
+    [new Choice("Weiter", "event1_4")])
+}
+
+var event1_4 = function() {
     e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }
