@@ -8,6 +8,6 @@ It's done in pure JavaScript, HTML5 and CSS and has a damn small code base and i
 ## Features
 
 * Of course you can write multiple choice games with it.
-* The game script is written in JavaScript. Why choose a boring interpreter syntax?! ;-)
+* The game content is also written in JavaScript using simple commands. Why choose a boring interpreter syntax?! ;-)
 * Gamestate is persisted using the [HTML 5 local storage](https://www.w3schools.com/html/html5_webstorage.asp) feature.
 * Status popup to track the players stats.
