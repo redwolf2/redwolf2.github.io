@@ -417,6 +417,43 @@ var event1_3_4 = function() {
 }
 
 var event1_4 = function() {
+    e.show("Der Empfangsraum der Praxis ist hell erleuchtet. Vor den steril wirkenden weißen Wänden sind die beiden Polizisten in ihren blauen Uniformen kaum zu übersehen. Nicht dass der Empfangsraum besonders groß wäre. Glücklicherweise sitzt einer von ihnen gelangweilt auf einem Stuhl und ließt eine Zeitschrift, während der andere mürrisch an dem Empfangstresen lehnt. Hinter den beiden erstreckt sich ein Flur, der zu den Untersuchungszimmern und Büros führt. Mit deiner Tarnung gelingt es dir problemlos, an den beiden vorbeizuschleichen. Als du im Dunkel des Flur stehst, zögerst du einen Augenblick. Da die Türen nur angelehnt sind, sollte es kein Problem sein, die Büros unbemerkt zu durchstöbern. Andererseits könntest du die Dunkelheit auch dazu nutzen, einen Zauber vorzubereiten, der die Beamten außer Gefecht setzt.",
+    [new Choice("Ich kümmere mich um die beiden.", "event1_4_1"),
+    new Choice("Ich warte einen Moment. Vielleicht klärt sich die Situation ja von ganz allein.", "event1_4_2"),
+    new Choice("Ich wirke vorher einen Schockzauber, der ihm das Bewusstsein raubt.", "event1_5")])
+}
+
+var event1_4_1 = function() {
+    var text = "Normalerweise ist es sehr schwierig, zwei Ziele gleichzeitig mit einem Zauber zu belegen, insbesondere, wenn man bereits einen Zauber aufrecht erhält, aber in der Dunkelheit kannst du die Tarnung fallen lassen und dir die Zeit nehmen, einen komplexeren Zauber zu weben."
+    if(state.lore.value >= 10) {
+        text += " Dummerweise wollen dir die Worte für den Schlafzauber nicht einfallen, doch du könntest die beiden auch mit einem Schockzauber belegen. Weniger elegant, aber zumindest wären die beiden dann außer Gefecht."
+        e.show(text,
+            [new Choice("Dann doch lieber gleich in das Büro.", "event1_5"),
+            new Choice("Mir ist wohler, wenn mich niemand überraschen kann.", "event1_4_1_2")])
+    } else {
+        text += " Leise flüsternd bündelst du deine Kräfte, und als du sie freigibst, schlägt eine Welle der Müdigkeit über den Polizisten zusammen und sie schlafen binnen Sekunden ein."
+        state.delay += 5
+        state.takedown += 2
+        e.show(text, [new Choice("Weiter", "eventEnd")]) // TODO
+    }
+}
+
+var event1_4_1_2 = function() {
+    state.delay += 5
+    state.takedown += 2
+    state.profile += 5
+    e.show("Leise flüsternd bündelst du deine Kräfte, und als du sie freigibst, kippen die Polizisten wie vom Schlag getroffen zur Seite.", 
+        [new Choice("Weiter", "eventEnd")]) // TODO
+}
+
+var event1_4_2 = function() {
+    state.delay += 5
+    e.show("Konzentriert lauschst du eine Weile. Der stehende Polizist fängt an, eine Melodie zu summen, und sein Partner ignoriert ihn.", 
+        [new Choice("Genug davon. Ich schleiche mich in das Büro.", "event1_5"),
+        new Choice("Erst setzte ich die beiden außer Gefecht.", "event1_4_1_2")])
+}
+
+var event1_5 = function() {
     e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }
