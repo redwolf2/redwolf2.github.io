@@ -323,7 +323,7 @@ var event1_1_3_3 = function() {
 
 var event1_1_4 = function() {
     state.delay += 10
-    state.stash += 1
+    state.stash = 1
     e.show("Du hälst dich abseits der Menge und beginnst die Formel. Stück für Stück rückt die materielle Welt mehr in den Hintergrund, während ihre Farben verblassen und ihre Laute verstummen. Im Gegenzug nimmt ein gleichmäßiges… Geräusch… vielleicht ein Rauschen… zu und neue Muster erscheinen vor deinem Auge. Als deine Sinne zwischen beiden Welten stehen, hörst du auf und siehst dich erneut um. Obwohl es dir schwer fällt, dich zu orientieren, kannst du nach kurzer Zeit das Gebäude ausfinding machen. Inmitten der Wirbel, die in der realen Welt den zweiten Stock ausmachen, siehst du dicht beieinander zwei magische Spuren, die auf verzauberte Gegenstände hinweisen. Gibt es vielleicht zwei Verstecke?<br/><br/>Zu deiner Beruhigung erkennst du jedoch keine weiteren magischen Spuren. Der MEK-Beamte ist also noch nicht eingetroffen und vermutlich gibt es auch keine magischen Überraschungen für dich.",
     [new Choice("Weiter", "event1_1_0")])
 }
@@ -428,8 +428,8 @@ var event1_4_1 = function() {
     if(state.lore.value >= 10) {
         text += " Dummerweise wollen dir die Worte für den Schlafzauber nicht einfallen, doch du könntest die beiden auch mit einem Schockzauber belegen. Weniger elegant, aber zumindest wären die beiden dann außer Gefecht."
         e.show(text,
-            [new Choice("Dann doch lieber gleich in das Büro.", "event1_5"),
-            new Choice("Mir ist wohler, wenn mich niemand überraschen kann.", "event1_4_1_2")])
+        [new Choice("Dann doch lieber gleich in das Büro.", "event1_5"),
+        new Choice("Mir ist wohler, wenn mich niemand überraschen kann.", "event1_4_1_2")])
     } else {
         text += " Leise flüsternd bündelst du deine Kräfte, und als du sie freigibst, schlägt eine Welle der Müdigkeit über den Polizisten zusammen und sie schlafen binnen Sekunden ein."
         state.delay += 5
@@ -443,17 +443,78 @@ var event1_4_1_2 = function() {
     state.takedown += 2
     state.profile += 5
     e.show("Leise flüsternd bündelst du deine Kräfte, und als du sie freigibst, kippen die Polizisten wie vom Schlag getroffen zur Seite.", 
-        [new Choice("Weiter", "eventEnd")]) // TODO
+    [new Choice("Weiter", "eventEnd")]) // TODO
 }
 
 var event1_4_2 = function() {
     state.delay += 5
     e.show("Konzentriert lauschst du eine Weile. Der stehende Polizist fängt an, eine Melodie zu summen, und sein Partner ignoriert ihn.", 
-        [new Choice("Genug davon. Ich schleiche mich in das Büro.", "event1_5"),
-        new Choice("Erst setzte ich die beiden außer Gefecht.", "event1_4_1_2")])
+    [new Choice("Genug davon. Ich schleiche mich in das Büro.", "event1_5"),
+    new Choice("Erst setzte ich die beiden außer Gefecht.", "event1_4_1_2")])
 }
 
 var event1_5 = function() {
+    var text = "Leise betrittst du das Büro und schließt die Tür vorsichtig. Das Licht einer grellen Reklametafel von der gegenüberliegenden Straßenseite ermöglicht dir einen guten Überblick. Neben diversen Figurinen von Waldtieren, welche Dekorativ im Raum stehen, erkennst du einen Schreibtisch samt Computer, zwei Bücherregale sowie an der Wand hinter dem Schreibtisch einen Tresor. Dort dürfte sich die Formel befinden, sofern sie wirklich existiert."
+    if (state.stash === 0)
+        text += " Durch deinen Blick in das magische Spektrum weisst du, dass sich hier an zwei Orten magische Spuren finden lassen. Eine davon hat ihren Ursprung garantiert im Safe, die zweite müsste sich ganz in der Nähe befinden. Du siehst dich kurz um, kannst aber nichts entdecken, was deine Aufmerksamkeit bestätigen würde. Du willst gerade aufgeben, als dein Blick auf das Bücherregal fällt. Es ist gefüllt mit medizinischen Werken, die verblüffend unbenutzt aussehen. Eines sieht sogar aus, als wäre es frisch gedruckt worden. Du blätterst kurz darin, aber da dies jedoch nicht der beste Ort zum Lesen ist, steckst du das Buch kurzentschlossen ein."
+    if (state.stash === 1 && state.awareness.value >= 30)
+        text += " Dein Blick bleibt auf den Büchern haften, die in verblüffend gutem – um nicht zu sagen ungenutztem – Zustand befinden. Es kommt dir unwahrscheinlich vor, dass jemand dort einen Hinweis auf den Tresor versteckt. Aber sie sehen einfach zu neu aus, insbesondere das Buch in der Mitte, welches anscheinend noch nie aufgeschlagen wurde. Aber du hast das Gefühl, dass sich dort etwas anderes finden lässt, sofern du dir die Zeit nimmst. Kurzentschlossen steckst du das Buch ein."
+    e.show(text,
+    [new Choice("Ich werfe einen ausführlichen Blick in das magische Spektrum, auch wenn das Zeit kostet.", "event1_5_1"),
+    new Choice("Kein Tresor diese Welt kann sich meinen Kräften wiedersetzen. Mit etwas kinetischer Energie sollte ich die Tür aushebeln können.", "event1_5_2"),
+    new Choice("Vielleicht findet sich im Schreibtisch oder Computer ein Hinweis, wie der Tresor zu öffnen ist.", "event1_5_3"),
+    new Choice("Diese Holzfigürchen wirken irgendwie verdächtig. Möglicherweise bergen sie einen Hinweis?", "event1_5_4"),
+    new Choice("Ich untersuche das Bücherregal.", "event1_5_5")])
+}
+
+var event1_5_1 = function() {
+    state.delay += 10
+    state.stash = 1
+    e.show("Während du leise die Formel musterst, rückt die materielle Welt mit ihren Farben und Geräuschen in den Hintergrund, während neue Sinneseindrücke aus der magischen Welt sich mit ihnen überschneiden. Ein gleichmäßiges… Rauschen… scheint dich wie eine Brise zu erfassen und fortzuziehen, doch du unterbrichst den Zauber an der Grenze zwischen beiden Welten, so dass du dich einigermaßen orientieren kannst.\nZwei klar erkennbare Wirbel aus magischer Energie breiten sich klar erkennbar vor dir aus. Einer geht von einem aktiven Zauber aus, der anscheinend in einem der Bücher eingebettet ist und dessen Form verzerrt. Interessant. Was auch immer es ist, muss wertvoll sein, weshalb du das „Buch” einsteckst.\nDer zweite Wirbel ist schwächer zu erkennen, da dessen Ursprung durch den Tresor verborgen ist. Zudem scheint von ihm kein aktive Magie auszugehen. Höchstwahrscheinlich handelt es sich um eine Art magisches Werkzeug. Was bedeutet, dass sich das Heilmittel – sofern es existiert – dort befindet.",
+    [new Choice("Kein Tresor diese Welt kann sich meinen Kräften wiedersetzen. Mit etwas kinetischer Energie sollte ich die Tür aushebeln können.", "event1_5_2"),
+    new Choice("Vielleicht findet sich im Schreibtisch oder Computer ein Hinweis, wie der Tresor zu öffnen ist.", "event1_5_3"),
+    new Choice("Diese Holzfigürchen wirken irgendwie verdächtig. Möglicherweise bergen sie einen Hinweis?", "event1_5_4"),
+    new Choice("Ich untersuche das Bücherregal.", "event1_5_5")])
+}
+
+var event1_5_2 = function() {
+    state.profile += 15
+    e.show("Das Beeinflussen einfacher Kräfte wie Wärme und Bewegung gehört zu den simpelsten magischen Anwendungen. Es kostet dich kaum Mühe, mit einigen Worten genügend Kraft zu beschwören, die anderen Menschen nur durch Hydraulik verfügbar ist.\nVorsichtig, damit dir nicht sofort der gesamte Tresor um die Ohren fliegt, erhöhst du den Druck, bis sich die Tresortür mit einem gequältem Knirschen öffnet.\nDu kannst ein Grinsen nicht ganz unterdrücken, als du dir den Tresorinhalt näher anschaust. Neben einigen handschriftlichen Aufzeichnungen findest du einen etwa 10 mal 3 Zentimeter langen, bläulich-durchsichtigen Kristall, bei dessen Berührung du ein schwaches magisches Echo verspürst. Wenn es hier etwas von Interesse gibt, dann ist es mit Sicherheit dieser Kristall.",
+    [new Choice("Es wird Zeit zu gehen.", "event1_6")])
+}
+
+var event1_5_3 = function() {
+    state.delay += 10
+    var text = "Der Schreibtisch enthält vor allem typische Büroartikel sowie eine verblüffend große Auswahl an Kaugummisorten (Pfefferminz, Eukalyptus, Orange, Erdbeer und Grapefruit). Zusätzlich findest du eine Liste mit durchgestrichenen Namen. Möglicherweise von Patienten? Du erschrickst, als dich plötzlich der Monitor anstrahlt, aber glücklicherweise erwacht er nur aus dem Ruhemodus. Du musst gegen die Maus gekommen sein. Dann zögerst du. Könnte es so einfach sein?"
+    if(state.awareness.value >= 30 || state.mundane >= 30) {
+        text += "Deine Gedanken überschlagen sich. Könnte die Liste… nein, niemand der sein Passwort regelmäßig ändert, würde die Liste so herumliegen lassen. Du siehst dich um, guckst in der Schublade, unter dem Mauspad, unter der Tastatur… Bingo! Du loggst dich ein und wühlst dich durch die Dateien. Doch dort sind mehr als dir lieb ist. Fast unmöglich, die – DA! ”Tresor.txt”!\n\nDu kannst ein Grinsen nicht ganz unterdrücken, als du dir den Tresorinhalt näher anschaust. Neben einigen handschriftlichen Aufzeichnungen findest du einen etwa 10 mal 3 Zentimeter langen, bläulich-durchsichtigen Kristall, bei dessen Berührung du ein schwaches magisches Echo verspürst. Wenn es hier etwas von Interesse gibt, dann ist es mit Sicherheit dieser Kristall."
+    } else {
+        state.delay += 10
+        text += "Deine Gedanken überschlagen sich. Könnte die Liste… nun, einen Versuch ist es wert. Schließlich sind es nur ein paar Namen. Du probierst sie durch, doch leider hast du keinen Erfolg.\nDann kommt dir eine andere Idee. Möglicherweise gibt es hier irgendwo einen Hinweis? Du siehst dich um, guckst in der Schublade, unter dem Mauspad, unter der Tastatur… Bingo! Du loggst dich ein und wühlst dich durch die Dateien. Doch dort sind mehr als dir lieb ist. Wirklich viele. Nach ein paar Minuten beschließt du, es doch lieber – DA! ”Tresor.txt”!\n\nDu kannst ein Grinsen nicht ganz unterdrücken, als du dir den Tresorinhalt näher anschaust. Neben einigen handschriftlichen Aufzeichnungen findest du einen etwa 10 mal 3 Zentimeter langen, bläulich-durchsichtigen Kristall, bei dessen Berührung du ein schwaches magisches Echo verspürst. Wenn es hier etwas von Interesse gibt, dann ist es mit Sicherheit dieser Kristall."
+    }
+    e.show(text,
+    [new Choice("Es wird Zeit zu gehen.", "event1_6")])
+}
+
+var event1_5_4 = function() {
+    state.delay += 5
+    e.show("Es handelt sich um kleine, nussbraune Nachbildungen von Tieren, insbesondere Waldtieren. Hasen sind überraschend häufig vertreten, aber auch Wildschweine erfreuen sich gewisser Beliebtheit. Du untersuchst sie von allen Seiten, aber falls sie einen Hinweis verbergen, entgeht er dir.",
+    [new Choice("Ich werfe einen ausführlichen Blick in das magische Spektrum, auch wenn das Zeit kostet.", "event1_5_1"),
+    new Choice("Kein Tresor diese Welt kann sich meinen Kräften wiedersetzen. Mit etwas kinetischer Energie sollte ich die Tür aushebeln können.", "event1_5_2"),
+    new Choice("Vielleicht findet sich im Schreibtisch oder Computer ein Hinweis, wie der Tresor zu öffnen ist.", "event1_5_3"),
+    new Choice("Ich untersuche das Bücherregal.", "event1_5_5")])
+}
+
+var event1_5_5 = function() {
+    state.delay += 5
+    e.show("Medizinische Skizzen, Tabellen und Nachschlagewerke. Du schlägst einige auf Geratewohl auf. Anscheinend steht die Bezeichnung A00.0 für Cholera. Nach einigen ähnlichen Entdeckungen gibst du auf.",
+    [new Choice("Ich werfe einen ausführlichen Blick in das magische Spektrum, auch wenn das Zeit kostet.", "event1_5_1"),
+    new Choice("Kein Tresor diese Welt kann sich meinen Kräften wiedersetzen. Mit etwas kinetischer Energie sollte ich die Tür aushebeln können.", "event1_5_2"),
+    new Choice("Vielleicht findet sich im Schreibtisch oder Computer ein Hinweis, wie der Tresor zu öffnen ist.", "event1_5_3"),
+    new Choice("Diese Holzfigürchen wirken irgendwie verdächtig. Möglicherweise bergen sie einen Hinweis?", "event1_5_4")])
+}
+
+var event1_6 = function() {
     e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }
