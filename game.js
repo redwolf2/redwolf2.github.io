@@ -425,7 +425,7 @@ var event1_4 = function() {
 
 var event1_4_1 = function() {
     var text = "Normalerweise ist es sehr schwierig, zwei Ziele gleichzeitig mit einem Zauber zu belegen, insbesondere, wenn man bereits einen Zauber aufrecht erhält, aber in der Dunkelheit kannst du die Tarnung fallen lassen und dir die Zeit nehmen, einen komplexeren Zauber zu weben."
-    if(state.lore.value >= 10) {
+    if(state.lore.value <= 10) {
         text += " Dummerweise wollen dir die Worte für den Schlafzauber nicht einfallen, doch du könntest die beiden auch mit einem Schockzauber belegen. Weniger elegant, aber zumindest wären die beiden dann außer Gefecht."
         e.show(text,
         [new Choice("Dann doch lieber gleich in das Büro.", "event1_5"),
@@ -434,7 +434,7 @@ var event1_4_1 = function() {
         text += " Leise flüsternd bündelst du deine Kräfte, und als du sie freigibst, schlägt eine Welle der Müdigkeit über den Polizisten zusammen und sie schlafen binnen Sekunden ein."
         state.delay += 5
         state.takedown += 2
-        e.show(text, [new Choice("Weiter", "eventEnd")]) // TODO
+        e.show(text, [new Choice("Weiter", "event1_5")])
     }
 }
 
@@ -443,7 +443,7 @@ var event1_4_1_2 = function() {
     state.takedown += 2
     state.profile += 5
     e.show("Leise flüsternd bündelst du deine Kräfte, und als du sie freigibst, kippen die Polizisten wie vom Schlag getroffen zur Seite.", 
-    [new Choice("Weiter", "eventEnd")]) // TODO
+    [new Choice("Weiter", "event1_5")])
 }
 
 var event1_4_2 = function() {
