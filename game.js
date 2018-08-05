@@ -19,7 +19,7 @@ function State() {
 }
 
 var eventStart = function() {
-    debug = true
+    debug = false
     state = new State()
     e = new Engine(state)
     e.setBackground(null, "logo.svg")
