@@ -81,12 +81,32 @@ Gui.createRadioButton = function(id, name, text) {
 
     element.appendChild(elementInput)
     element.appendChild(elementText)
+    
+    Gui.resetAnimation(element, "fadeInAnim")
     return element
- }
+}
 
 Gui.insertLineBreak = function(e) {
     let element = document.createElement("br")
     e.appendChild(element)
+}
+
+Gui.resetAnimation = function(node, classname) {
+    node.classList.remove(classname);
+  
+    // -> triggering reflow /* The actual magic */
+    // without this it wouldn't work. Try uncommenting the line and the transition won't be retriggered.
+    // Oops! This won't work in strict mode. Thanks Felis Phasma!
+    // element.offsetWidth = element.offsetWidth;
+    // Do this instead:
+    void node.offsetWidth;
+    
+    // -> and re-adding the class
+    node.classList.add(classname);
+
+    //node.style.animation = 'none'
+    //node.offsetHeight /* trigger reflow */
+    //node.style.animation = null
 }
 
 function Engine(customState)
@@ -188,12 +208,9 @@ function Engine(customState)
 
     addText = function(text) {
         // this will reanimate the text, when a new one is inserted
-        let element = document.getElementById("text");
-        element.classList.remove('textanim')
-        var newone = element.cloneNode(true);
-        newone.innerHTML = text,
-        element.parentNode.replaceChild(newone, element);
-        newone.classList.add('textanim')
+        let element = document.getElementById("text")
+        element.innerHTML = text
+        Gui.resetAnimation(element, "fadeInAnim")
     }
 
     getSelectedChoice = function() {
@@ -242,6 +259,7 @@ function Engine(customState)
         var popupbox = document.getElementById("popupbox")
         popupbox.innerHTML = getStatusText()
         popup.classList.toggle("show")
+        Gui.resetAnimation(popup, "fadeInAnim")
     }
 
     closeStatus = function() {
