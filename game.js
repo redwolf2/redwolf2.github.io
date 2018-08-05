@@ -23,13 +23,14 @@ var eventStart = function() {
     e = new Engine(state)
     e.setBackground(null, "logo.svg")
     if(debug) {
-        state.awareness.value = 40;
-        state.lore.value = 40;
-        state.awareness.value = 40;
-        state.mundane.value = 40;
-        state.profile= 20;
-        state.delay= 20;
+        state.awareness.value = 40
+        state.lore.value = 40
+        state.awareness.value = 40
+        state.mundane.value = 40
+        state.profile= 20
+        state.delay= 20
         state.takedown = 1
+        e.setBackground(null, null)
         e.show("Aiur", [new Choice("Debug Spiel", "event1_5_3")], false)
     } else if(GameState.hasSave()) {
         e.show("Aiur", [new Choice("Neues Spiel", "eventNew"),
@@ -537,7 +538,10 @@ var event1_6 = function() {
         tackeled = true;
     }
     if (tackeled) {
-        if((e.getRnd(0, 5) + state.takedown + (state.mundane.value >= 30 ? 1 : 0)) > 3) {
+        let value = e.getRnd(0, 5) 
+            + state.takedown 
+            + (state.mundane.value >= 30 ? 1 : 0)
+        if(value >= 3) {
             text += "so dass du ihm nur mit Mühe und Not ausweichen kannst. Mit pochendem Herzen verlässt du die Praxis."
         } else {
             state.profile += 5;
