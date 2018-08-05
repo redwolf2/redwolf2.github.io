@@ -9,13 +9,14 @@ function State() {
     this.lore = new PlayerAttribute("Wissen", 20)
     this.awareness = new PlayerAttribute("Aufmerksamkeit", 20)
     this.mundane = new PlayerAttribute("Weltliches", 20)
-    this.profile = 0
     this.delay = 0
     this.disguise = 0
-    this.stash = 0
     this.event1_2_read = 0
-    this.takedown = 0
     this.money = 1000
+    this.gender = 0
+    this.profile = 0
+    this.stash = 0
+    this.takedown = 0
 }
 
 var eventStart = function() {
