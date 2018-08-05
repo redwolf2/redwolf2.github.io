@@ -177,7 +177,7 @@ var event1_0_2 = function() {
     if(state.magic.value >= 30) {
         state.delay -= 30
         state.profile += 5
-        text += "Bedächtig legst du mehr Kraft in den Zauber und kurz darauf fliegst du Richtung Stadtzentrum davon. Obwohl du kaum schneller bist als mit dem Fahrrad, da du weder bremsen noch ausweichen musst. Dir wird ein wenig schwindelig angesichts der kleinen Lichtpunkte, die unter dir entlang rasen und auch der schneidend kalte Nachtwind ist nicht besonders angenehm, doch du konzentrierst dich und kannst kurze Zeit später in einer dunklen Seitenstraße landen. Die letzten Meter legst du zu Fuß zurück."
+        text += "Bedächtig legst du mehr Kraft in den Zauber und kurz darauf fliegst du Richtung Stadtzentrum davon. Obwohl du kaum schneller bist als mit dem Fahrrad, kommst du doch ausgezeichnet voran, da du weder bremsen noch ausweichen musst. Dir wird ein wenig schwindelig angesichts der kleinen Lichtpunkte, die unter dir entlang rasen und auch der schneidend kalte Nachtwind ist nicht besonders angenehm, doch du konzentrierst dich und kannst kurze Zeit später in einer dunklen Seitenstraße landen. Die letzten Meter legst du zu Fuß zurück."
         var choices = [new Choice("Wo wir hingehen, brauchen wir keine Straßen", "event1_1")]
     } else {
         text += "Unglücklicherweise schaffst du es nicht, gleichzeitig genügend Kraft in den Zauber zu legen und die vollständige Kontrolle zu behalten. Du könntest zwar schweben, aber damit wärst du auch nicht schneller als zu Fuß."
@@ -348,19 +348,19 @@ var event1_2_1 = function() {
 
 var event1_2_2 = function() {
     state.delay += 10
-    e.show("Im zweiten Stock riecht es leicht chemisch und das pastelblau der Wände scheint etwas kräftiger zu sein. Als du um eine Ecke biegst, siehst du, dass eine der Türen offen ist und ein Polizist davor steht. Bingo.",
-    [new Choice("Weiter", "event1_3")])
+    e.show("Niemand begegnet dir im ersten Stock. Die laute Musik, die hinter einer der Türen hervordringt, gibt dir zumindest das Gefühl, nicht allein zu sein. Trotzdem bist du hier falsch.",
+    [new Choice("Weiter", "event1_2")])
 }
 
 var event1_2_3 = function() {
     state.delay += 10
-    e.show("Im dritten Stock klebt der Boden und ein strenger Zitronengeruch hängt in der Luft. Ziemlich banal und definitiv der falsche Stock.",
-    [new Choice("Weiter", "event1_2")])
+    e.show("Im zweiten Stock riecht es leicht chemisch und das pastelblau der Wände scheint etwas kräftiger zu sein. Als du um eine Ecke biegst, siehst du, dass eine der Türen offen ist und ein Polizist davor steht. Bingo.",
+    [new Choice("Weiter", "event1_3")])
 }
 
 var event1_2_4 = function() {
     state.delay += 10
-    e.show("Niemand begegnet dir im vierten Stock. Die laute Musik, die hinter einer der Türen hervordringt, gibt dir zumindest das Gefühl, nicht allein zu sein. Trotzdem bist du hier falsch.",
+    e.show("Im dritten Stock klebt der Boden und ein strenger Zitronengeruch hängt in der Luft. Ziemlich banal und definitiv der falsche Stock.",
     [new Choice("Weiter", "event1_2")])
 }
 
