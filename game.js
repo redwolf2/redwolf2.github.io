@@ -1,10 +1,10 @@
 var e
 var state
+var debug
 "use strict"
 
 function State() {
     GameState.apply(this, arguments)
-    this.magic = new PlayerAttribute("Magie", 20, false)
     this.magic = new PlayerAttribute("Magie", 20)
     this.lore = new PlayerAttribute("Wissen", 20)
     this.awareness = new PlayerAttribute("Aufmerksamkeit", 20)
@@ -18,10 +18,20 @@ function State() {
 }
 
 var eventStart = function() {
+    debug = false
     state = new State()
     e = new Engine(state)
     e.setBackground(null, "logo.svg")
-    if(GameState.hasSave()) {
+    if(debug) {
+        state.awareness.value = 40;
+        state.lore.value = 40;
+        state.awareness.value = 40;
+        state.mundane.value = 40;
+        state.profile= 20;
+        state.delay= 20;
+        state.takedown = 1
+        e.show("Aiur", [new Choice("Debug Spiel", "event1_5_3")], false)
+    } else if(GameState.hasSave()) {
         e.show("Aiur", [new Choice("Neues Spiel", "eventNew"),
         new Choice("Weitermachen", "eventContinue")], false)
     } else {
@@ -515,6 +525,30 @@ var event1_5_5 = function() {
 }
 
 var event1_6 = function() {
+    let text = "Ein Kribbeln in deiner Hand ist die einzige Warnung, die du kriegst. Plötzlich löst der Kristall einen magischen Impuls aus, der sich wie ein Donnerschlag durch das magische Spektrum zieht. Du fluchst, denn obwohl kein gewöhnlicher Mensch dies bemerken kann, hast du ein für jeden Magieanwender leicht erkennbares Signalfeuer gezündet. Falls der magische Spezialist der Polizei noch nicht eingetroffen sein sollte, wird er nun mit höchster Geschwindigkeit herbei eilen.<br/><br/>"
+    let tackeled = false;
+    if(state.takedown >= 3) {
+        text += "Schnell eilst du aus dem Büro, vorbei an den auf dem Boden liegenden Polizisten, welche dich glücklicherweise nicht bei deiner überstürzten Flucht behindern können."
+    } else if(state.takedown <= 0) {
+        text += "Du beschwörst deine magische Tarnung erneut und schleichst leise durch den Flur, denn schließlich möchtest du keinen der Polizisten alarmieren. Als du bemerkst, dass einer der Polizisten am Türrahmen lehnt, unterdrückst du einen weiteren Fluch, und zwingst dich, tief einzuatmen. Der Polizist wirkt noch immer gelangweilt, anscheinend blockiert er nicht absichtlich deinen Fluchtweg. Als er sein Gewicht verlagert, bietet sich eine günstige Gelegenheit, ohne Schwierigkeiten die Praxis hinter dir zu lassen. Mit angehaltenem Atem schleichst du an ihm vorbei, als ihn plötzlich einer seiner Kollegen anspricht und er sich unerwartet bewegt…"
+        tackeled = true;
+    } else {
+        text += "Du beschwörst deine magische Tarnung erneut und schleichst leise durch den Flur, denn schließlich hast du nicht alle Polizisten außer Gefecht gesetzt. Als du bemerkst, dass einer der Polizisten am Türrahmen lehnt, unterdrückst du einen weiteren Fluch, und zwingst dich, tief einzuatmen. Der Polizist wirkt noch immer gelangweilt, anscheinend blockiert er nicht absichtlich deinen Fluchtweg. Als er sein Gewicht verlagert, bietet sich eine günstige Gelegenheit, ohne Schwierigkeiten die Praxis hinter dir zu lassen. Mit angehaltenem Atem schleichst du an ihm vorbei, als er sich unerwartet bewegt…"
+        tackeled = true;
+    }
+    if (tackeled) {
+        if((e.getRnd(0, 5) + state.takedown + (state.mundane.value >= 30 ? 1 : 0)) > 3) {
+            text += "so dass du ihm nur mit Mühe und Not ausweichen kannst. Mit pochendem Herzen verlässt du die Praxis."
+        } else {
+            state.profile += 5;
+            text += "und er deine Schulter berührt. Erschrocken zuckt er zusammen, und du siehst du Verwirrung auf seinem Gesicht, als er vergeblich versucht, eine sinnvolle Erklärung zu finden."
+        }
+    }
+    e.show(text,
+    [new Choice("Weiter", "event1_7")])
+}
+
+var event1_7 = function() {
     e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }

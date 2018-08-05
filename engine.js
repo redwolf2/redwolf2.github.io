@@ -21,10 +21,6 @@ var get = function(name, defaultValue) {
     return value === undefined ? defaultValue : value
 }
 
-function getRnd(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min
-}
-
 function Gui() {
 
 }
@@ -267,6 +263,14 @@ function Engine(customState)
         closeStatus()
         if(save)
             GameState.save()
+    }
+
+    this.getRnd = function(min, max) {
+        return Math.floor(Math.random() * (max - min) ) + min
+    }
+
+    this.log = function(message) {
+        console.show(message);
     }
 }
 
