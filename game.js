@@ -15,10 +15,11 @@ function State() {
     this.stash = 0
     this.event1_2_read = 0
     this.takedown = 0
+    this.money = 1000
 }
 
 var eventStart = function() {
-    debug = false
+    debug = true
     state = new State()
     e = new Engine(state)
     e.setBackground(null, "logo.svg")
@@ -26,7 +27,7 @@ var eventStart = function() {
         state.awareness.value = 40
         state.lore.value = 40
         state.awareness.value = 40
-        state.mundane.value = 40
+        state.mundane.value = 0
         state.profile= 20
         state.delay= 20
         state.takedown = 1
@@ -553,6 +554,63 @@ var event1_6 = function() {
 }
 
 var event1_7 = function() {
+    let text = "Du gehst den Weg zurück, den du gekommen bist, doch vor dem Haus hat sich die Situation verändert.<br/><br/>Die Schaulustigen haben ihre gesamte Aufmerksamkeit auf einen Ring aus Polizisten gerichtet, in deren Zentrum ein Mann in Uniform scheinbar ins Leere starrt und vor sich hin murmelt. Schlagartig werden dir zwei Dinge klar: "
+    if(state.delay >= 80) {
+        text += "Der Magier des MEK ist eingetroffen und hat bereits begonnen, das magische Spektrum zu erforschen. Wärst du doch bloß schneller gewesen. Sofort lässt du deine Tarnung fallen, denn ein aktiver Zauber ist so ziemlich das Auffälligste, was du im Moment tun könntest. Gleichzeitig siehst du dich hektisch nach einer Fluchtmöglichkeit um, denn es wird nicht lange dauern, bis der Beamte deinen Kristall bemerkt.<br/>Drei Möglichkeiten bieten sich dir an. Nahe der Menschenmenge steht ein Taxi am Straßenrand – vermutlich nicht ganz zufällig, denn der Fahrer am Wagen und verfolgt das Ganze mit Interesse. Zugleich biegt ein Linienbus gerade in die Straße und wird auf der gegenüberliegenden Straßenseite halten. Sofern du rechtzeitig über die stark befahrene Straße kommst, solltest du kein Problem damit haben, schnell von hier zu verschwinden. Alternativ könntest du natürlich auch einfach laufen, falls du genug Ausdauer hast. Und falls der Magier nicht allzu schnell ist."
+    } else {
+        text += "Der Magier des MEK ist eingetroffen, und er wird gleich damit beginnen, das magische Spektrum zu erforschen. Sofort lässt du deine Tarnung fallen, denn ein aktiver Zauber ist so ziemlich das Auffälligste, was du im Moment tun könntest. Gleichzeitig siehst du dich hektisch nach einer Fluchtmöglichkeit um, denn es wird nicht lange dauern, bis der Beamte deinen Kristall bemerkt.<br/>Drei Möglichkeiten bieten sich dir an. Nahe der Menschenmenge steht ein Taxi am Straßenrand – vermutlich nicht ganz zufällig, denn der Fahrer am Wagen und verfolgt das Ganze mit Interesse. Zugleich biegt ein Linienbus gerade in die Straße und wird auf der gegenüberliegenden Straßenseite halten. Sofern du rechtzeitig über die stark befahrene Straße kommst, solltest du kein Problem damit haben, schnell von hier zu verschwinden. Alternativ könntest du natürlich auch einfach laufen, falls du genug Ausdauer hast. Und falls der Magier nicht allzu schnell ist."
+    }
+    e.show(text,
+    [new Choice("Ich versuche den Taxifahrer zu überreden", "event1_7_1"),
+    new Choice("Ich haste über die Straße", "event1_7_2"),
+    new Choice("Ich sprinte den Bürgersteig entlang", "event1_7_3")])
+}
+
+var event1_7_1 = function() {
+    e.show("Du eilst auf den Taxifahrer zu, welcher sich nur widerwillig vom Spektakel löst. Offensichtlich war es nicht beruflicher Eifer, der ihn dazu bewogen hat, gerade hier zu halten. Du wirst dir etwas Gutes einfallen lassen müssen, damit er sich schneller bewegt.",
+    [new Choice("„Ich muss unbedingt zum Flughafen, mein Flug geht in Kürze!”", "event1_7_1_1"),
+    new Choice("„Ich muss unbedingt zum Flughafen, mein Flug geht in Kürze! Bitte schnell, ich lege auch einen Hunderter drauf!”", "event1_7_1_2"),
+    new Choice("„Entschuldigung, sind sie noch frei? Ich habe es eilig.”", "event1_7_1_3")])
+}
+
+var event1_7_1_1 = function() {
+    event1_7_1_1a(30) // Will call event1_8
+}
+
+var event1_7_1_1a = function(successValue) {
+    let text = '';
+    if ((e.getRnd(0, 59) + state.mundane.value) >= successValue) {
+        text += "Du scheinst die magischen Worte gefunden zu haben. Wenige Sekunden später sitzt du auf dem Beifahrersitz und hast dich noch nicht einmal angeschnallt, als der Wagen schon davonschießt. Mit Erleichterung beobachtest du, wie der Ort des Geschehens im Rückspiegel verschwindet, und atmest entspannt aus."
+    } else {
+        state.profile += 15
+        text += "Der Taxifahrer wirft dir einen desinteressierten Blick zu: „Jeder hat es eilig. Und dann plötzlich ist das Leben vorbei, und man hat nichts davon gehabt.” Als er deinen gehetzten Blick bemerkt, zuckt er mit den Schultern und deutet auf die Beifahrertür. Sekunden später sitzt du auf dem Beifahrersitz, doch anscheinend lässt sich dein Fahrer davon nicht aus der Ruhe bringen. Du bist dir nicht sicher, ob er sich so sehr für das Geschehen hier interessiert, oder ob er sein Handeln absichtlich hinauszögert, doch es vergeht eine gefühlte Ewigkeit, bis sich das Taxi in Bewegung setzt. Du wirfst einen Blick durch die Heckscheibe, und du bist dir fast sicher, dass du hektische Bewegungen ausmachen kannst. Du versuchst, dir mögliche Gründe einfallen zu lassen, warum der Magier nicht zumindest einen groben Blick auf deine Aura werfen konnte, aber wirklich überzeugen kannst du dich nicht."
+    }
+    e.show(text,
+    [new Choice("Weiter", "event1_8")])
+}
+
+var event1_7_1_2 = function() {
+    state.money -= 100
+    state.profile += 5
+    e.show("Du scheinst die magischen Worte gefunden zu haben. Wenige Sekunden später sitzt du auf dem Beifahrersitz und hast dich noch nicht einmal angeschnallt, als der Wagen schon davonschießt. Mit Erleichterung beobachtest du, wie der Ort des Geschehens im Rückspiegel verschwindet, und atmest entspannt aus. Billig war es zwar nicht, aber du bezweifelst, dass es eine schnellere Variante gab.",
+    [new Choice("Weiter", "event1_8")])
+}
+
+var event1_7_1_3 = function() {
+    event1_7_1_1a(50) // Will call event1_8
+}
+
+var event1_7_2 = function() {
+    e.show("TODO: Text einfügen!",
+    [new Choice("Weiter", "eventEnd")])
+}
+
+var event1_7_3 = function() {
+    e.show("TODO: Text einfügen!",
+    [new Choice("Weiter", "eventEnd")])
+}
+
+var event1_8 = function() {
     e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }
