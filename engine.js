@@ -187,7 +187,13 @@ function Engine(customState)
     }
 
     addText = function(text) {
-        document.getElementById("text").innerHTML = text
+        // this will reanimate the text, when a new one is inserted
+        let element = document.getElementById("text");
+        element.classList.remove('textanim')
+        var newone = element.cloneNode(true);
+        newone.innerHTML = text,
+        element.parentNode.replaceChild(newone, element);
+        newone.classList.add('textanim')
     }
 
     getSelectedChoice = function() {
