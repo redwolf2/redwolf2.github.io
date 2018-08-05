@@ -4,7 +4,7 @@ var gamestate
 
 var put = function(name, value) {
     if (typeof(Storage) !== "undefined") {
-        var valueS = JSON.stringify(value)
+        let valueS = JSON.stringify(value)
         localStorage.setItem(name, valueS)
         console.log("setting var named " + name + " to " + valueS)
     } else {
@@ -17,7 +17,7 @@ var get = function(name) {
 }
 
 var get = function(name, defaultValue) {
-    var value = JSON.parse(localStorage.getItem(name))
+    let value = JSON.parse(localStorage.getItem(name))
     return value === undefined ? defaultValue : value
 }
 
@@ -30,25 +30,25 @@ function Gui() {
 }
 
 Gui.createButton = function(id, text, onclick, clazz = "btn", append = true, iconClazz = null) {
-    var elementIcon = document.createElement("svg")
+    let elementIcon = document.createElement("svg")
     elementIcon.className = "btnicon"
     if(iconClazz !== null)
         elementIcon.className = "btnicon " + iconClazz
     else
         elementIcon.className = "btnicon"
 
-    var elementBreapCrump = document.createElement("span")
+    let elementBreapCrump = document.createElement("span")
     elementBreapCrump.className = "btnbreadcrump"
 
-    var elementText = document.createElement("div")
+    let elementText = document.createElement("div")
     elementText.innerText = text
     elementText.className = "btntext"
-    var element = document.createElement("div")
+    let element = document.createElement("div")
     element.type = "button"
     element.id = id
     element.className = clazz
-    var addIcon = iconClazz !== null;
-    var addText = text !== null && text !== undefined && text !== ""
+    let addIcon = iconClazz !== null;
+    let addText = text !== null && text !== undefined && text !== ""
     if(addIcon && addText) {
         element.appendChild(elementIcon)
         element.appendChild(elementBreapCrump)
@@ -64,24 +64,24 @@ Gui.createButton = function(id, text, onclick, clazz = "btn", append = true, ico
 }
 
 Gui.createBreadCrump = function(id) {
-    var element = document.createElement("span")
+    let element = document.createElement("span")
     element.id = id
     element.className = "breadcrump"
     return element
 }    
 
 Gui.createRadioButton = function(id, name, text) {
-    var element = document.createElement("label")
+    let element = document.createElement("label")
     element.id = id + "label"
 
     element.setAttribute("for", id)
-    var elementInput = document.createElement("input")
+    let elementInput = document.createElement("input")
 
     elementInput.id = id
     elementInput.type = "radio"
     elementInput.name = name
 
-    var elementText = document.createTextNode(text)
+    let elementText = document.createTextNode(text)
 
     element.appendChild(elementInput)
     element.appendChild(elementText)
@@ -89,7 +89,7 @@ Gui.createRadioButton = function(id, name, text) {
  }
 
 Gui.insertLineBreak = function(e) {
-    var element = document.createElement("br")
+    let element = document.createElement("br")
     e.appendChild(element)
 }
 
@@ -121,12 +121,12 @@ function Engine(customState)
 
     addBottom = function(choices) {
         globalChoices = choices
-        var e = document.getElementById("center")
+        let e = document.getElementById("center")
         e.innerHTML = ""
         if(choices === undefined) {
             return;
         } else if(choices.length > 1) {
-            var counter = 0
+            let counter = 0
             choices.forEach(function(choice) {
                 counter++
                 choice.id = "choice" + counter
@@ -137,32 +137,32 @@ function Engine(customState)
             })
         }
         // add confirm button
-        var continueId = choices.length === 1 ? "confirm" : choices[0].id
-        var continueText = choices.length === 1 ? choices[0].text : "Weiter"
-        var continueAppend = choices.length !== 1
-        var buttonContinue = Gui.createButton("confirm", continueText, function() { onButtonContinue(continueId) }, "btn continue", continueAppend)
+        let continueId = choices.length === 1 ? "confirm" : choices[0].id
+        let continueText = choices.length === 1 ? choices[0].text : "Weiter"
+        let continueAppend = choices.length !== 1
+        let buttonContinue = Gui.createButton("confirm", continueText, function() { onButtonContinue(continueId) }, "btn continue", continueAppend)
         e.appendChild(buttonContinue)
         buttonContinue.addEventListener("click", onButtonContinue, false)
 
         // breadcrump
-        var breadcrump = Gui.createBreadCrump("breadcrump1")
+        let breadcrump = Gui.createBreadCrump("breadcrump1")
         e.appendChild(breadcrump)
 
         //  status button
-        var buttonStatus = Gui.createButton("status", "", onButtonStatus, "btn", false, "iconstate")
-        var popup = document.createElement("div")
+        let buttonStatus = Gui.createButton("status", "", onButtonStatus, "btn", false, "iconstate")
+        let popup = document.createElement("div")
         popup.className = "popup"
 
         //  popup to status button
-        var status = document.getElementById("status")
+        let status = document.getElementById("status")
 
         // popup fullscreen container
-        var popupcontainer = document.createElement("span")
+        let popupcontainer = document.createElement("span")
         popupcontainer.id = "popupcontainer"
         popupcontainer.className = "popupcontainer"
 
         // popupbox centered within the screen
-        var popupbox = document.createElement("div")
+        let popupbox = document.createElement("div")
         popupbox.id = "popupbox"
         popupbox.className = "popupbox"
 
@@ -195,9 +195,9 @@ function Engine(customState)
     }
 
     getSelectedChoice = function() {
-        var selectedId = undefined
+        let selectedId = undefined
         if(globalChoices.length > 1) {
-            var choices = document.getElementsByName("choice")
+            let choices = document.getElementsByName("choice")
             choices.forEach(function(choice) {
                 if(choice.checked) {
                     selectedId = choice.id
@@ -211,8 +211,8 @@ function Engine(customState)
 
     onButtonContinue = function() {
         this.root = _root
-        var selectedId = getSelectedChoice()
-        var selectedChoice
+        let selectedId = getSelectedChoice()
+        let selectedChoice
         globalChoices.forEach(function(choice) {
             if(choice.id === selectedId) {
                 selectedChoice = choice
@@ -282,7 +282,7 @@ function PlayerAttribute(name, value, visible = true) {
 }
 
 GameState.hasSave = function() {
-    var saveData = get("gamestate")
+    let saveData = get("gamestate")
     return saveData !== undefined && saveData !== null
 }
 
@@ -292,7 +292,7 @@ GameState.save = function() {
 
 GameState.load = function(engine) {
     // we merge the objects to be more compatible to old save states
-    var saveData = get("gamestate")
+    let saveData = get("gamestate")
     console.log("savedata contains: " + JSON.stringify(saveData))
     gamestate = mergeRecursive(new State(), saveData)
     state = gamestate

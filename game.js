@@ -173,7 +173,7 @@ var event1_0_1 = function() {
 }
 
 var event1_0_2 = function() {
-    var text = "Du trittst nach draußen in die kühle Herbstluft. Du siehst dich kurz um und als du niemanden siehst, murmelst du die Beschwörungsformel. Langsam erhebst du dich. "
+    let text = "Du trittst nach draußen in die kühle Herbstluft. Du siehst dich kurz um und als du niemanden siehst, murmelst du die Beschwörungsformel. Langsam erhebst du dich. "
     if(state.magic.value >= 30) {
         state.delay -= 30
         state.profile += 5
@@ -265,7 +265,7 @@ var event1_1_1_3_2 = function() {
 }
 
 var event1_1_2 = function() {
-    var text = "Du stellst dich zu den Schaulustigen und hörst dich um. Ein Herr in mittleren Jahren und Jogginghose erzählt dir nur zu gerne jedes Detail: „Ich kam gerade zurück vom Kiosk, als mir einfiel, dass ich ja gar nicht bezahlt hatte… aber das willste gar nicht so genau wissen, hm? Naja, da waren jedenfalls die Bullen hier und dann war da diese gewaltige Explosion… guck nicht so, nur 'n Scherz. Wir sind hier ja nicht bei Columbo, wobei, so viel explodiert da ja auch nich...” Genervt brichst du das Gespräch ab und versuchst dich an den anderen Passanten. Die sind zwar etwas konkreter, aber sinnvolle Informationen kannst du auch ihnen nicht entnehmen."
+    let text = "Du stellst dich zu den Schaulustigen und hörst dich um. Ein Herr in mittleren Jahren und Jogginghose erzählt dir nur zu gerne jedes Detail: „Ich kam gerade zurück vom Kiosk, als mir einfiel, dass ich ja gar nicht bezahlt hatte… aber das willste gar nicht so genau wissen, hm? Naja, da waren jedenfalls die Bullen hier und dann war da diese gewaltige Explosion… guck nicht so, nur 'n Scherz. Wir sind hier ja nicht bei Columbo, wobei, so viel explodiert da ja auch nich...” Genervt brichst du das Gespräch ab und versuchst dich an den anderen Passanten. Die sind zwar etwas konkreter, aber sinnvolle Informationen kannst du auch ihnen nicht entnehmen."
     if(state.awareness.value >= 30)
         text = "Du stellst dich zu den Schaulustigen und hörst dich um. Ein Mann in Jogginghose erzählt eifrig den Umstehenden, was er gesehen hat, aber seine Alkoholfahne lässt ihn nicht besonders verlässlich erscheinen. Eine ältere Dame mit selbstgehäkeltem Schal informiert dich, dass die Polizei noch immer auf den magischen Spezialisten wartet: „Die sitzen immer noch im zweiten Stock in der Praxis. Ich hoffe da tut sich bald etwas neues. Die Herbstluft kriecht mir langsam in die Knochen. Und es ist ja nicht so, als gäbe es jetzt hier noch einen Arzt, der mir im Zweifelsfall helfen könnte.” Du willst ihr gerade danken, als dir die Sehnsucht in ihrer Stimme auffällt und plötzlich geht dir ein Licht auf: „Gute Frau, Sie wissen schon, dass die Polizei sie nicht einfach von ihrer Wohnung fernhalten kann? Sie haben doch bestimmt einen Ausweis? Kommen Sie, ich geleite Sie bis zu Ihrer Wohnung.” Die Dame sieht etwas peinlich berührt aus, doch sie widerspricht dir nicht. Du bietest ihr deinen Arm an und gemeinsam führst du sie zu den Beamten am Eingang, welche euch passieren lassen. Ihre Wohnung ist nicht weit vom Haupteingang entfernt und als ihr vor der Wohnungstür steht, bedankt sie sich vielmals bei dir. Du lächelst höflich und verabschiedest dich."
     else if (state.awareness >= 20)
@@ -287,7 +287,7 @@ var event1_1_3a = function() {
 }
 
 var event1_1_3_1 = function() {
-    var text = "Du suchst die dunkelste Ecke des Hofes auf und stolperst fast über etwas. Was auch immer es ist, du kannst es in der fast vollständigen Finsternis nicht erkennen. Ausgezeichnet, so wird dich zumindest niemand erkennen."
+    let text = "Du suchst die dunkelste Ecke des Hofes auf und stolperst fast über etwas. Was auch immer es ist, du kannst es in der fast vollständigen Finsternis nicht erkennen. Ausgezeichnet, so wird dich zumindest niemand erkennen."
     if(status.lore.value >= 30) {
         e.show(text + " Mit leisem Murmeln entbindest du deinen Körper von seiner Konzeption und nimmst die Gestalt eines Vogels an. Im letzten Augenblick entscheidest du dich nicht für einen Milan, sondern für die Gestalt einer Eule, um dich im Dunkel besser orientieren zu können. Du blinzelst. Die Orientierung fällt dir für einen Augenblick schwer, als du versuchst, dich an deine neue Gestalt zu gewöhnen, aber dann greifen deine neuen Instinkte und du schwingst dich in die Luft. Wenige Sekunden später schlüpfst du durch das Fenster. Dann löst du den Zauber und nimmst deine übliche Gestalt wieder an.",
             [new Choice("Weiter", "event1_2")])
@@ -298,7 +298,7 @@ var event1_1_3_1 = function() {
 }
 
 var event1_1_3_2 = function() {
-    var text = "Du schleichst dich zur Tür."
+    let text = "Du schleichst dich zur Tür."
     if(status.magic.value >= 30) {
         e.show(text + " Beschwörungen flüsternd setzt du den Mechanismus kinetischer Energie aus, bis ein leichtes Klicken dir vermittelt, dass das Schloss offen ist. Du trittst ein.",
             [new Choice("Weiter", "event1_2")])
@@ -329,7 +329,7 @@ var event1_1_4 = function() {
 }
 
 var event1_2 = function() {
-    var text = "Das Treppenhaus ist gut beleuchtet und mit einem Fahrstuhl ausgestattet. Den Hinweisschildern, die an der pastellblauen Wand befestigt sind, kannst du entnehmen, dass es einschließlich des Stockwerks vier Etagen gibt. Unglücklicherweise gibt es keine weiteren Hinweise. Einige dunklere Stellen an der Wand lassen darauf schließen, dass die entsprechenden Schilder abgenommen wurden. Zwar kannst du die Etage schnell wechseln, aber da das Gebäude ziemlich lang ist, wird es wohl länger dauern, das jeweilige Stockwerk zu durchsuchen.<br/><br/>Wo möchtest du anfangen?"
+    let text = "Das Treppenhaus ist gut beleuchtet und mit einem Fahrstuhl ausgestattet. Den Hinweisschildern, die an der pastellblauen Wand befestigt sind, kannst du entnehmen, dass es einschließlich des Stockwerks vier Etagen gibt. Unglücklicherweise gibt es keine weiteren Hinweise. Einige dunklere Stellen an der Wand lassen darauf schließen, dass die entsprechenden Schilder abgenommen wurden. Zwar kannst du die Etage schnell wechseln, aber da das Gebäude ziemlich lang ist, wird es wohl länger dauern, das jeweilige Stockwerk zu durchsuchen.<br/><br/>Wo möchtest du anfangen?"
     if (state.event1_2_read)
         text = "Zurück im Treppenhaus stehst du erneut vor der Wahl eines Stockwerkes. Wo möchtest du suchen?"
     state.event1_2_read = 1
@@ -424,7 +424,7 @@ var event1_4 = function() {
 }
 
 var event1_4_1 = function() {
-    var text = "Normalerweise ist es sehr schwierig, zwei Ziele gleichzeitig mit einem Zauber zu belegen, insbesondere, wenn man bereits einen Zauber aufrecht erhält, aber in der Dunkelheit kannst du die Tarnung fallen lassen und dir die Zeit nehmen, einen komplexeren Zauber zu weben."
+    let text = "Normalerweise ist es sehr schwierig, zwei Ziele gleichzeitig mit einem Zauber zu belegen, insbesondere, wenn man bereits einen Zauber aufrecht erhält, aber in der Dunkelheit kannst du die Tarnung fallen lassen und dir die Zeit nehmen, einen komplexeren Zauber zu weben."
     if(state.lore.value <= 10) {
         text += " Dummerweise wollen dir die Worte für den Schlafzauber nicht einfallen, doch du könntest die beiden auch mit einem Schockzauber belegen. Weniger elegant, aber zumindest wären die beiden dann außer Gefecht."
         e.show(text,
@@ -454,7 +454,7 @@ var event1_4_2 = function() {
 }
 
 var event1_5 = function() {
-    var text = "Leise betrittst du das Büro und schließt die Tür vorsichtig. Das Licht einer grellen Reklametafel von der gegenüberliegenden Straßenseite ermöglicht dir einen guten Überblick. Neben diversen Figurinen von Waldtieren, welche Dekorativ im Raum stehen, erkennst du einen Schreibtisch samt Computer, zwei Bücherregale sowie an der Wand hinter dem Schreibtisch einen Tresor. Dort dürfte sich die Formel befinden, sofern sie wirklich existiert."
+    let text = "Leise betrittst du das Büro und schließt die Tür vorsichtig. Das Licht einer grellen Reklametafel von der gegenüberliegenden Straßenseite ermöglicht dir einen guten Überblick. Neben diversen Figurinen von Waldtieren, welche Dekorativ im Raum stehen, erkennst du einen Schreibtisch samt Computer, zwei Bücherregale sowie an der Wand hinter dem Schreibtisch einen Tresor. Dort dürfte sich die Formel befinden, sofern sie wirklich existiert."
     if (state.stash === 0)
         text += " Durch deinen Blick in das magische Spektrum weisst du, dass sich hier an zwei Orten magische Spuren finden lassen. Eine davon hat ihren Ursprung garantiert im Safe, die zweite müsste sich ganz in der Nähe befinden. Du siehst dich kurz um, kannst aber nichts entdecken, was deine Aufmerksamkeit bestätigen würde. Du willst gerade aufgeben, als dein Blick auf das Bücherregal fällt. Es ist gefüllt mit medizinischen Werken, die verblüffend unbenutzt aussehen. Eines sieht sogar aus, als wäre es frisch gedruckt worden. Du blätterst kurz darin, aber da dies jedoch nicht der beste Ort zum Lesen ist, steckst du das Buch kurzentschlossen ein."
     if (state.stash === 1 && state.awareness.value >= 30)
@@ -485,7 +485,7 @@ var event1_5_2 = function() {
 
 var event1_5_3 = function() {
     state.delay += 10
-    var text = "Der Schreibtisch enthält vor allem typische Büroartikel sowie eine verblüffend große Auswahl an Kaugummisorten (Pfefferminz, Eukalyptus, Orange, Erdbeer und Grapefruit). Zusätzlich findest du eine Liste mit durchgestrichenen Namen. Möglicherweise von Patienten? Du erschrickst, als dich plötzlich der Monitor anstrahlt, aber glücklicherweise erwacht er nur aus dem Ruhemodus. Du musst gegen die Maus gekommen sein. Dann zögerst du. Könnte es so einfach sein?"
+    let text = "Der Schreibtisch enthält vor allem typische Büroartikel sowie eine verblüffend große Auswahl an Kaugummisorten (Pfefferminz, Eukalyptus, Orange, Erdbeer und Grapefruit). Zusätzlich findest du eine Liste mit durchgestrichenen Namen. Möglicherweise von Patienten? Du erschrickst, als dich plötzlich der Monitor anstrahlt, aber glücklicherweise erwacht er nur aus dem Ruhemodus. Du musst gegen die Maus gekommen sein. Dann zögerst du. Könnte es so einfach sein?"
     if(state.awareness.value >= 30 || state.mundane >= 30) {
         text += "Deine Gedanken überschlagen sich. Könnte die Liste… nein, niemand der sein Passwort regelmäßig ändert, würde die Liste so herumliegen lassen. Du siehst dich um, guckst in der Schublade, unter dem Mauspad, unter der Tastatur… Bingo! Du loggst dich ein und wühlst dich durch die Dateien. Doch dort sind mehr als dir lieb ist. Fast unmöglich, die – DA! ”Tresor.txt”!\n\nDu kannst ein Grinsen nicht ganz unterdrücken, als du dir den Tresorinhalt näher anschaust. Neben einigen handschriftlichen Aufzeichnungen findest du einen etwa 10 mal 3 Zentimeter langen, bläulich-durchsichtigen Kristall, bei dessen Berührung du ein schwaches magisches Echo verspürst. Wenn es hier etwas von Interesse gibt, dann ist es mit Sicherheit dieser Kristall."
     } else {
