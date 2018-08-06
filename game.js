@@ -26,7 +26,7 @@ var eventStart = function() {
     state = new State()
     e = new Engine(state)
     //e.setBackground("linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2))", "res/imgs/main.jpg")
-    let text = "<h1>Aiur 0.0.4</h1>Hallo und herzlichen willkommen zur Betaversion unseres Spiels. Hierbei handelt es sich um ein sogenanntes textbasiertes Rollenspiel. Kurz gesagt geht es darum, dass du in einer fiktiven Welt die Handlungen des Hauptcharakters bestimmst und hoffentlich zu einem guten Ende führst. Die Spielwelt gleicht der unseren, mit dem Unterschied, dass Magie real ist, und jeder davon weiß.<br/><br/>Aber eigentlich sollte alles ganz selbsterklärend sein. Wir wünschen dir viel Spaß!"
+    let text = "<h1>Aiur 0.0.5</h1>Hallo und herzlichen willkommen zur Betaversion unseres Spiels. Hierbei handelt es sich um ein sogenanntes textbasiertes Rollenspiel. Kurz gesagt geht es darum, dass du in einer fiktiven Welt die Handlungen des Hauptcharakters bestimmst und hoffentlich zu einem guten Ende führst. Die Spielwelt gleicht der unseren, mit dem Unterschied, dass Magie real ist, und jeder davon weiß.<br/><br/>Aber eigentlich sollte alles ganz selbsterklärend sein. Wir wünschen dir viel Spaß!"
     if(debug) {
         state.awareness.value = 40
         state.lore.value = 40
