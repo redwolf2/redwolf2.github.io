@@ -18,7 +18,7 @@ function State() {
     this.profile = 0
     this.stash = 0
     this.takedown = 0
-    this.wantedlevel = 0 // 
+    this.wantedlevel = 0
 }
 
 var eventStart = function() {
@@ -26,6 +26,7 @@ var eventStart = function() {
     state = new State()
     e = new Engine(state)
     e.setBackground(null, "logo.svg")
+    let text = "<h1>Aiur</h1>Hallo und herzlichen willkommen zur Betaversion unseres Spiels. Hierbei handelt es sich um ein sogenanntes textbasiertes Rollenspiel. Kurz gesagt geht es darum, dass du in einer fiktiven Welt die Handlungen des Hauptcharakters bestimmst und hoffentlich zu einem guten Ende führst. Die Spielwelt gleicht der unseren, mit dem Unterschied, dass Magie real ist, und jeder davon weiß.<br/><br/>Aber eigentlich sollte alles ganz selbsterklärend sein. Wir wünschen dir viel Spaß!"
     if(debug) {
         state.awareness.value = 40
         state.lore.value = 40
@@ -35,12 +36,12 @@ var eventStart = function() {
         state.delay= 20
         state.takedown = 1
         e.setBackground(null, null)
-        e.show("Aiur", [new Choice("Debug Spiel", "event1_2")], false)
+        e.show(text, [new Choice("Debug Spiel", "event1_2")], false)
     } else if(GameState.hasSave()) {
-        e.show("Aiur", [new Choice("Neues Spiel", "eventNew"),
+        e.show(text, [new Choice("Neues Spiel", "eventNew"),
         new Choice("Weitermachen", "eventContinue")], false)
     } else {
-        e.show("Aiur", [new Choice("Neues Spiel", "eventNew")], false)
+        e.show(text, [new Choice("Neues Spiel", "eventNew")], false)
     }
 }
 
@@ -345,7 +346,7 @@ var event1_1_4 = function() {
 }
 
 var event1_2 = function() {
-    let text = 'Das Treppenhaus ist gut beleuchtet und mit einem Fahrstuhl ausgestattet. Den Hinweisschildern, die an der pastellblauen Wand befestigt sind, kannst du entnehmen, dass es einschließlich des Stockwerks vier Etagen gibt. Unglücklicherweise gibt es keine weiteren Hinweise. Einige dunklere Stellen an der Wand lassen darauf schließen, dass die entsprechenden Schilder abgenommen wurden. Zwar kannst du die Etage schnell wechseln, aber da das Gebäude ziemlich lang ist, wird es wohl länger dauern, das jeweilige Stockwerk zu durchsuchen.<div class="pic pic-stairs"></div><br/><br/>Wo möchtest du anfangen?'
+    let text = 'Das Treppenhaus ist gut beleuchtet und mit einem Fahrstuhl ausgestattet. Den Hinweisschildern, die an der pastellblauen Wand befestigt sind, kannst du entnehmen, dass es einschließlich des Stockwerks vier Etagen gibt. Unglücklicherweise gibt es keine weiteren Hinweise. Einige dunklere Stellen an der Wand lassen darauf schließen, dass die entsprechenden Schilder abgenommen wurden. Zwar kannst du die Etage schnell wechseln, aber da das Gebäude ziemlich lang ist, wird es wohl länger dauern, das jeweilige Stockwerk zu durchsuchen.<br/><div class="pic"><div class="pic-stairs"></div></div><br/>Wo möchtest du anfangen?'
     if (state.event1_2_read)
         text = "Zurück im Treppenhaus stehst du erneut vor der Wahl eines Stockwerkes. Wo möchtest du suchen?"
     state.event1_2_read = 1
@@ -679,11 +680,26 @@ var event1_8_2 = function() {
 }
 
 var event1_8_3 = function() {
-    e.show("TODO: Text einfügen!",
+    let text = "Als du aufwachst, ist es bereits Mittag. Ein Teil von dir möchte liegenbleiben, aber die Stimme der Vernunft drängt dich, herauszufinden, was in den Medien berichtet wird.<br/><br/>Und ob die Polizei bereits vor der Haustür wartet.<br/><br/>Wenn du ehrlich zu dir bist, weisst du nicht genau, ob und wie viele Spuren du hinterlassen hast.<br/><br/>Du gehst die Treppe hinunter und ins Wohnzimmer, wo deine Mutter noch immer sitzt. Die Toastbrotkrümel deuten darauf hin, dass sie sich seit gestern bewegt hat, aber ansonsten hat sich wenig geändert. Inklusive ihres Tonfalls.<br/>„Na, haben wir endlich ausgeschlafen? Mir ist schleierhaft, wie man den ganzen Tag im Bett verbringen kann.”<br/><br/>Du ignorierst sie für den Moment, denn die Nachrichten berichten gerade über den gestrigen Vorfall.<br/><br/>"
+    if(state.profile >= 30) {
+        state.wantedlevel += 2
+        text += "„Die Ermittlungen des MEK sind noch nicht abgeschlossen. Ursache dafür ist neben der unklaren Beweislage vor allem eine Intervention durch Dritte. Beamte haben zahlreiche Hinweise auf eine magische Manipulation gefunden und verfolgen gegenwärtig die Spur der verdächtigen Personen.”<br/>Dein Magen verkrampft sich. Offensichtlich musst du dringend an deiner Vorgehensweise arbeiten, sofern du nicht den Rest deines Lebens in einer Zelle zubringen möchtest. Falls du eine Zelle bekommen solltest und du nicht versehentlich erschossen wirst."
+    } else if (state.profile >= 20) {
+        state.wantedlevel += 1
+        text += "„Die Ermittlungen des MEK sind noch nicht abgeschlossen. Ursache dafür ist die unklare Beweislage sowie einige Indizien, die sich nicht eindeutig zuordnen lassen.”<br/>Es scheint fast so, als wäre dein Besuch nicht vollkommen unbemerkt geblieben, aber immerhin scheint die Polizei keine konkrete Spur zu haben. Das ist zwar beruhigend, aber trotzdem solltest du  dich in Zukunft bedeckt halten."
+    } else {
+        text += "„Die Ermittlungen des MEK sind noch nicht abgeschlossen. Ursache dafür ist die unklare Beweislage, doch durch die zügige Sicherung des Tatortes ist die Polizei zuversichtlich, dass sich dies bald ändern wird.”<br/>Du wirst von einem Hochgefühl ergriffen, als dir klar wird, dass du vollkommen unbemerkt geblieben bist, und du beschließt, dies mit einem ordentlichem Frühstück zu feiern."
+    }
+    e.show(text,
+    [new Choice("Weiter", "event1_8_4")])
+}
+
+var event1_8_4 = function() {
+    e.show("Was wird die Zukunft bringen? Wird die Polizei dir auf die Schliche kommen? Wirst du ein Heilmittel gegen Krebs finden? Oder wirst du unter ungeklärten Umständen ein tragisches Ende finden?<br/><br/>Was auch immer die Zukunft bringt, du kannst sie mitgestalten. Nimm dir drei Minuten und gib uns ein kurzes Feedback. <br/>Gab es Problem oder Unklarheiten?<br/>Was hat dir besonders gefallen?<br/>Und bitte sei ehrlich, denn nur so können wir die Spielerfahrung verbessern.",
     [new Choice("Weiter", "eventEnd")])
 }
 
-var event1_9 = function() {
+var event2_0 = function() {
     e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }
