@@ -195,7 +195,7 @@ var event1_0_2 = function() {
         state.delay -= 30
         state.profile += 5
         text += "Bedächtig legst du mehr Kraft in den Zauber und kurz darauf fliegst du Richtung Stadtzentrum davon. Obwohl du kaum schneller bist als mit dem Fahrrad, kommst du doch ausgezeichnet voran, da du weder bremsen noch ausweichen musst. Dir wird ein wenig schwindelig angesichts der kleinen Lichtpunkte, die unter dir entlang rasen und auch der schneidend kalte Nachtwind ist nicht besonders angenehm, doch du konzentrierst dich und kannst kurze Zeit später in einer dunklen Seitenstraße landen. Die letzten Meter legst du zu Fuß zurück."
-        var choices = [new Choice("Wo wir hingehen, brauchen wir keine Straßen", "event1_1")]
+        var choices = [new Choice("Weiter", "event1_1")]
     } else {
         text += "Unglücklicherweise schaffst du es nicht, gleichzeitig genügend Kraft in den Zauber zu legen und die vollständige Kontrolle zu behalten. Du könntest zwar schweben, aber damit wärst du auch nicht schneller als zu Fuß."
         var choices = [new Choice("Du beschließt den Bus zu nehmen", "event1_0_3")]
