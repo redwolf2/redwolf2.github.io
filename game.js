@@ -25,7 +25,7 @@ var eventStart = function() {
     debug = false
     state = new State()
     e = new Engine(state)
-    e.setBackground(null, "logo.svg")
+    //e.setBackground("linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2))", "res/imgs/main.jpg")
     let text = "<h1>Aiur</h1>Hallo und herzlichen willkommen zur Betaversion unseres Spiels. Hierbei handelt es sich um ein sogenanntes textbasiertes Rollenspiel. Kurz gesagt geht es darum, dass du in einer fiktiven Welt die Handlungen des Hauptcharakters bestimmst und hoffentlich zu einem guten Ende führst. Die Spielwelt gleicht der unseren, mit dem Unterschied, dass Magie real ist, und jeder davon weiß.<br/><br/>Aber eigentlich sollte alles ganz selbsterklärend sein. Wir wünschen dir viel Spaß!"
     if(debug) {
         state.awareness.value = 40
@@ -472,10 +472,12 @@ var event1_4_2 = function() {
 
 var event1_5 = function() {
     let text = "Leise betrittst du das Büro und schließt die Tür vorsichtig. Das Licht einer grellen Reklametafel von der gegenüberliegenden Straßenseite ermöglicht dir einen guten Überblick. Neben diversen Figurinen von Waldtieren, welche Dekorativ im Raum stehen, erkennst du einen Schreibtisch samt Computer, zwei Bücherregale sowie an der Wand hinter dem Schreibtisch einen Tresor. Dort dürfte sich die Formel befinden, sofern sie wirklich existiert."
-    if (state.stash === 0)
-        text += " Durch deinen Blick in das magische Spektrum weisst du, dass sich hier an zwei Orten magische Spuren finden lassen. Eine davon hat ihren Ursprung garantiert im Safe, die zweite müsste sich ganz in der Nähe befinden. Du siehst dich kurz um, kannst aber nichts entdecken, was deine Aufmerksamkeit bestätigen würde. Du willst gerade aufgeben, als dein Blick auf das Bücherregal fällt. Es ist gefüllt mit medizinischen Werken, die verblüffend unbenutzt aussehen. Eines sieht sogar aus, als wäre es frisch gedruckt worden. Du blätterst kurz darin, aber da dies jedoch nicht der beste Ort zum Lesen ist, steckst du das Buch kurzentschlossen ein."
-    if (state.stash === 1 && state.awareness.value >= 30)
+    if (state.stash === 0 && state.awareness.value >= 30) {
+        state.stash = 1
         text += " Dein Blick bleibt auf den Büchern haften, die in verblüffend gutem – um nicht zu sagen ungenutztem – Zustand befinden. Es kommt dir unwahrscheinlich vor, dass jemand dort einen Hinweis auf den Tresor versteckt. Aber sie sehen einfach zu neu aus, insbesondere das Buch in der Mitte, welches anscheinend noch nie aufgeschlagen wurde. Aber du hast das Gefühl, dass sich dort etwas anderes finden lässt, sofern du dir die Zeit nimmst. Kurzentschlossen steckst du das Buch ein."
+    } else if (state.stash >= 1) {
+        text += " Durch deinen Blick in das magische Spektrum weisst du, dass sich hier an zwei Orten magische Spuren finden lassen. Eine davon hat ihren Ursprung garantiert im Safe, die zweite müsste sich ganz in der Nähe befinden. Du siehst dich kurz um, kannst aber nichts entdecken, was deine Aufmerksamkeit bestätigen würde. Du willst gerade aufgeben, als dein Blick auf das Bücherregal fällt. Es ist gefüllt mit medizinischen Werken, die verblüffend unbenutzt aussehen. Eines sieht sogar aus, als wäre es frisch gedruckt worden. Du blätterst kurz darin, aber da dies jedoch nicht der beste Ort zum Lesen ist, steckst du das Buch kurzentschlossen ein."
+    }
     e.show(text,
     [new Choice("Ich werfe einen ausführlichen Blick in das magische Spektrum, auch wenn das Zeit kostet.", "event1_5_1"),
     new Choice("Kein Tresor diese Welt kann sich meinen Kräften wiedersetzen. Mit etwas kinetischer Energie sollte ich die Tür aushebeln können.", "event1_5_2"),
