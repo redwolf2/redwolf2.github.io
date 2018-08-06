@@ -437,7 +437,7 @@ var event1_4 = function() {
     e.show("Der Empfangsraum der Praxis ist hell erleuchtet. Vor den steril wirkenden weißen Wänden sind die beiden Polizisten in ihren blauen Uniformen kaum zu übersehen. Nicht dass der Empfangsraum besonders groß wäre. Glücklicherweise sitzt einer von ihnen gelangweilt auf einem Stuhl und ließt eine Zeitschrift, während der andere mürrisch an dem Empfangstresen lehnt. Hinter den beiden erstreckt sich ein Flur, der zu den Untersuchungszimmern und Büros führt. Mit deiner Tarnung gelingt es dir problemlos, an den beiden vorbeizuschleichen. Als du im Dunkel des Flur stehst, zögerst du einen Augenblick. Da die Türen nur angelehnt sind, sollte es kein Problem sein, die Büros unbemerkt zu durchstöbern. Andererseits könntest du die Dunkelheit auch dazu nutzen, einen Zauber vorzubereiten, der die Beamten außer Gefecht setzt.",
     [new Choice("Ich kümmere mich um die beiden.", "event1_4_1"),
     new Choice("Ich warte einen Moment. Vielleicht klärt sich die Situation ja von ganz allein.", "event1_4_2"),
-    new Choice("Ich wirke vorher einen Schockzauber, der ihm das Bewusstsein raubt.", "event1_5")])
+    new Choice("Die Dunkelheit sollte ausreichen.", "event1_5")])
 }
 
 var event1_4_1 = function() {
