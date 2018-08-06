@@ -696,16 +696,15 @@ var event1_8_3 = function() {
 
 var event1_8_4 = function() {
     e.show("Was wird die Zukunft bringen? Wird die Polizei dir auf die Schliche kommen? Wirst du ein Heilmittel gegen Krebs finden? Oder wirst du unter ungeklärten Umständen ein tragisches Ende finden?<br/><br/>Was auch immer die Zukunft bringt, du kannst sie mitgestalten. Nimm dir drei Minuten und gib uns ein kurzes Feedback. <br/>Gab es Problem oder Unklarheiten?<br/>Was hat dir besonders gefallen?<br/>Und bitte sei ehrlich, denn nur so können wir die Spielerfahrung verbessern.",
-    [new Choice("Weiter", "eventEnd")])
+    [new Choice("Weiter", "event2_0")])
 }
 
 var event2_0 = function() {
-    e.show("TODO: Text einfügen!",
-    [new Choice("Weiter", "eventEnd")])
+    e.show("The End", undefined, false)
 }
 
 var eventEnd = function() {
-    e.show("The End")
+    e.show("The End", undefined, false)
 }
 
 window.onload = eventStart;
