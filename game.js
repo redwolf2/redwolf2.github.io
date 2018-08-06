@@ -9,18 +9,20 @@ function State() {
     this.lore = new PlayerAttribute("Wissen", 20)
     this.awareness = new PlayerAttribute("Aufmerksamkeit", 20)
     this.mundane = new PlayerAttribute("Weltliches", 20)
+    this.damage = 0
     this.delay = 0
-    this.disguise = 0
+    this.disguise = 0 // TODO = Check if this is necessary
     this.event1_2_read = 0
     this.money = 1000
     this.gender = 0
     this.profile = 0
     this.stash = 0
     this.takedown = 0
+    this.wantedlevel = 0 // 
 }
 
 var eventStart = function() {
-    debug = false
+    debug = true
     state = new State()
     e = new Engine(state)
     e.setBackground(null, "logo.svg")
@@ -33,7 +35,7 @@ var eventStart = function() {
         state.delay= 20
         state.takedown = 1
         e.setBackground(null, null)
-        e.show("Aiur", [new Choice("Debug Spiel", "event1_5_3")], false)
+        e.show("Aiur", [new Choice("Debug Spiel", "event1_2")], false)
     } else if(GameState.hasSave()) {
         e.show("Aiur", [new Choice("Neues Spiel", "eventNew"),
         new Choice("Weitermachen", "eventContinue")], false)
@@ -180,6 +182,7 @@ var event1_0 = function() {
 var event1_0_1 = function() {
     state.delay += 5
     state.disguise = 1
+    state.profile -= 5
     e.show("Du hastest in dein Zimmer, reißt den Schrank auf und wühlst wie besessen in deinen Klamotten. Kurz darauf hast du Schal, Mütze und Handschuhe gefunden. Sogar eine Sonnenbrille ist dabei.<br/>Und nun?",
     [new Choice("Zeit zum Fliegen.", "event1_0_2"),
     new Choice("Zeit für den Bus.", "event1_0_3")])
@@ -342,7 +345,7 @@ var event1_1_4 = function() {
 }
 
 var event1_2 = function() {
-    let text = "Das Treppenhaus ist gut beleuchtet und mit einem Fahrstuhl ausgestattet. Den Hinweisschildern, die an der pastellblauen Wand befestigt sind, kannst du entnehmen, dass es einschließlich des Stockwerks vier Etagen gibt. Unglücklicherweise gibt es keine weiteren Hinweise. Einige dunklere Stellen an der Wand lassen darauf schließen, dass die entsprechenden Schilder abgenommen wurden. Zwar kannst du die Etage schnell wechseln, aber da das Gebäude ziemlich lang ist, wird es wohl länger dauern, das jeweilige Stockwerk zu durchsuchen.<br/><br/>Wo möchtest du anfangen?"
+    let text = 'Das Treppenhaus ist gut beleuchtet und mit einem Fahrstuhl ausgestattet. Den Hinweisschildern, die an der pastellblauen Wand befestigt sind, kannst du entnehmen, dass es einschließlich des Stockwerks vier Etagen gibt. Unglücklicherweise gibt es keine weiteren Hinweise. Einige dunklere Stellen an der Wand lassen darauf schließen, dass die entsprechenden Schilder abgenommen wurden. Zwar kannst du die Etage schnell wechseln, aber da das Gebäude ziemlich lang ist, wird es wohl länger dauern, das jeweilige Stockwerk zu durchsuchen.<div class="pic pic-stairs"></div><br/><br/>Wo möchtest du anfangen?'
     if (state.event1_2_read)
         text = "Zurück im Treppenhaus stehst du erneut vor der Wahl eines Stockwerkes. Wo möchtest du suchen?"
     state.event1_2_read = 1
@@ -575,7 +578,11 @@ var event1_7_1 = function() {
 }
 
 var event1_7_1_1 = function() {
-    event1_7_1_1a(30) // Will call event1_8
+    if(state.delay >= 80) {
+        event1_7_1_1a(45) // Will call event1_8
+    } else {
+        event1_7_1_1a(30) // Will call event1_8
+    }
 }
 
 var event1_7_1_1a = function(successValue) {
@@ -598,20 +605,75 @@ var event1_7_1_2 = function() {
 }
 
 var event1_7_1_3 = function() {
-    event1_7_1_1a(50) // Will call event1_8
+    if(state.delay >= 80) {
+        event1_7_1_1a(60) // Will call event1_8
+    } else {
+        event1_7_1_1a(50) // Will call event1_8
+    }
 }
 
 var event1_7_2 = function() {
-    e.show("TODO: Text einfügen!",
-    [new Choice("Weiter", "eventEnd")])
+    let text = ''
+    let difficulty = 30
+    if(state.delay >= 80) {
+        difficulty = 55
+        text += "Da der Bus schon fast bei der Haltestelle ist, bleibt dir keine Zeit, um eine günstige Lücke zwischen den vorbeifahrenden Wagen abzupassen. "
+    } else {
+        text += "Da der Bus in Kürze bei der Haltestelle ankommen wird, bleibt dir nur wenig Zeit, um eine günstige Lücke zwischen den vorbeifahrenden Wagen abzupassen. "
+    }
+    text += "Als sich eine halbwegs passable Lücke anzubieten scheint, rennst du quer über die Straße. Wütendes Hupen schallt dir von rechts entgegen, als du versuchst, zwischen den unterschiedlich schnellen Fahrzeugen hindurchzuhuschen.<br/><br/>"
+    if((e.getRnd(0, 59) + state.mundane.value) >= difficulty) { // (random 0-59, each mundane +1 value, success if result >=55)
+        text += "Du bist fast über die Straße, als sich plötzlich ein roter Polo an einem LKW vorbeischiebt, und dann geht alles sehr schnell. Ein erschrockenes Gesicht, quietschende Reifen, Motorhaube, Sprung zur Seite, und plötzlich stolperst du unverletzt auf die andere Straßenseite. Das Hupen der Fahrer nimmt überhand, aber du beschließt, besser nicht zurückzublicken, und rennst Richtung Haltestelle. Als du in den Bus einsteigst, sieht dich der Busfahrer kopfschüttelnd an. Offensichtlich hält der dich für einen absoluten Vollidioten. Mit glühendem Gesicht setzt du dich und ignorierst die übrigen Mitfahrer. Immerhin bist du schnell entkommen."
+    } else {
+        state.damage += 1
+        text += "Du bist fast über die Straße, als sich plötzlich ein roter Polo an einem LKW vorbeischiebt, und dann geht alles sehr schnell. Ein erschrockenes Gesicht, quietschende Reifen, Motorhaube, und ein Zwei-Zentner-Hammer, der dich auf den Asphalt schmettert. Schmerzen. Übelkeit.<br/>Als du wieder klar denken kannst  – anscheinend sind nur wenige Sekunden vergangen – siehst du, dass die Fahrerin mit besorgtem Gesicht aussteigt. Gleichzeitig bemerkst du, dass der Bus ebenfalls gehalten hat, und du humpelst mit zusammengebissenen Zähnen darauf zu. Der Schmerz in deinem linken Knie lässt dich kaum Luft holen, und die Übelkeit, die deine Kopfschmerzen begleitet, ist ebenfalls besorgniserregend. Der Busfahrer starrt dich fassungslos an, als ihm klar wird, dass du gerade dein Leben riskiert hast, um den Bus nicht zu verpassen.<br/>Du zahlst dein Ticket und setzt dich zur längsten Busfahrt deines Lebens."
+    }
+    e.show(text,
+    [new Choice("Weiter", "event1_8")])
 }
 
 var event1_7_3 = function() {
+    let text = "Du verfällst in einen schnellen Dauerlauf und zwingst dich zu einer gleichmäßigen Atmung, doch schon nach kurzer Zeit wird dein Atem schneller. Getrieben von der Angst vor einer möglichen Entdeckung, versuchst du, eine Balance zwischen dem Brennen in deiner Lunge und in deinen Beinen zu finden."
+    let difficulty = 30
+    if(state.delay >= 80) {
+        difficulty = 55
+    }
+    if((e.getRnd(0, 59) + state.mundane.value) >= difficulty) { // (random 0-59, each mundane +1 value, success if result >=55 [if delay>=80] /30 [if else] )
+        text += "Vier Schritte einatmen, vier Schritte ausatmen. Gewicht nach vorne beugen. Weiterlaufen. Weiterlaufen.<br/>Weiterlaufen.<br/><br/>Du bist dir nicht ganz sicher, wie du es schaffst, aber als du mehrere Straßen weiter keuchend zum Stehen kommst, kannst du nirgends die Polizei erkennen. Mit einem Anflug von Stolz stellst du fest, dass du der Polizei im wahrsten Sinne des Wortes davon gerannt bist."
+    } else {
+        e.state.profile += 15
+        text += "Weiterlaufen. Weiterlaufen. Weiter. Weeeiiiiter…<br/>Mit einem frustrierten Keuchen hältst du an, als deine brennende Lunge nach Luft schreit und du mit panischem Blick  feststellen musst, dass du nicht weit genug entfernt hast. Die Furcht gibt dir die Kraft, das Stechen in deiner Seite halbwegs zu ignorieren, und du hastest weiter.<br/>Als du einige Straßen später keine Polizei bemerkst, stellst du erleichtert fest, dass du scheinbar doch irgendwie entkommen bist. Aber wenn du ganz ehrlich zu dir bist, ist es fast unmöglich, dass du dich schnell genug entfernen konntest, ohne zumindest im magischen Spektrum bemerkt zu werden…"
+    }
+    e.show(text,
+    [new Choice("Weiter", "event1_8")])
+}
+
+var event1_8 = function() {
+    let text = ''
+    if(state.damage >= 1) {
+        text += "Kurz vor der Haustür drohen dich die Schmerzen zu überwältigen. Du bist dir nicht sicher, woher du die Willenskraft nimmst, aber du quälst dich an deiner noch immer schlafenden Mutter und ihren Whiskeyflaschen vorbei auf dein Zimmer, ohne laut aufzuschreien. Noch bevor du dich auf das Bett fallen lässt, beginnst du mit dem Heilzauber. Glücklicherweise ist Heilung eine der ursprünglichsten und damit simpelsten Formen der Magie. Nach einigen Minuten nehmen die Schmerzen ab, doch du  benötigst noch zwei weitere Stunden, bevor du dich wieder schmerzfrei bewegen kannst. Erst dann bist du bereit, deine Beute näher zu betrachten."
+    } else {
+        text += "Zu Hause angekommen, öffnest du leise die Haustür und schleichst dich ins Wohnzimmer. Deine Mutter liegt noch immer von Whiskeyflaschen umgeben auf dem Sofa, während im Fernsehen ein muskelbepackter Darsteller eine Rede hält. Du begibst dich in dein Zimmer, um deine Beute zu begutachen."
+    }
+    e.show(text,
+    [new Choice("Weiter", "event1_8_1")])
+}
+
+var event1_8_1 = function() {
+    e.show("Der bläuliche Kristall ist gut zehn Zentimeter lang. Viel interessanter ist jedoch das leichte magische Echo, dass du immer noch verspürst, wenn du ihn berührst. Wenn es sich bei diesem angeblichen Arzt tatsächlich um einen Magier gehandelt hat – und in Anbetracht des Kristalls ist das mehr als wahrscheinlich – und er seine Kräfte dazu genutzt hat, Andere zu heilen, dann wird dieser Kristall höchstwahrscheinlich das Werkzeug dafür gewesen sein. Es bleibt nur zu hoffen, dass du seine Geheimnisse entschlüsseln kannst.<br/>Doch dies ist eine Aufgabe für einen anderen Tag. Du lehnst dich zurück, schließt die Augen, und lässt die Ereignisse noch einmal vor deinen Augen Revue passieren. Du hast vermutlich gegen ettliche Gesetze verstoßen, als du mittels illegaler Magieanwendung der Polizei Beweismittel gestohlen hast.",
+    [new Choice("Und ich würde es wieder tun. Ich konnte doch nicht die einzige Möglichkeit verstreichen lassen, ein Heilmittel gegen Krebs zu finden.", "event1_8_2"),
+    new Choice("Und ich würde es wieder tun. Die allgegenwärtige Furcht vor Magie lähmt die Gesellschaft und das System, aber ich werde meine Magie sinnvoll einsetzen.", "event1_8_2"),
+    new Choice("Und ich würde es wieder tun. Was hat die Gesellschaft jemals für mich getan?", "event1_8_2"),
+    new Choice("Und ich würde es wieder tun. Vermutlich. Ich schätze, ich hätte im Nachhinein vielleicht anders gehandelt.", "event1_8_2"),
+    new Choice("Es war ein Fehler. Ich habe zu viel riskiert, und ich bereue es.", "event1_8_2")])
+}
+
+var event1_8_2 = function() {
     e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }
 
-var event1_8 = function() {
+var event1_9 = function() {
     e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }

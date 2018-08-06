@@ -159,6 +159,15 @@ label:hover {
     visibility: visible;
 }
 
+.pic {
+}
+
+.pic-stairs::before {
+    width: 100%;
+    height: auto;
+    content: url("res/imgs/stairs.jpg");
+}
+
 /* Add animation (fade in the popup) */
 @keyframes fadein {
     from { opacity: 0; }
