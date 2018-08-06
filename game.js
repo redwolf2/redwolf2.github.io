@@ -669,6 +669,16 @@ var event1_8_1 = function() {
 }
 
 var event1_8_2 = function() {
+    let text = ''
+    if(state.stash >= 1) {
+        text += "Dann fällt dir ein, dass du noch das Buch mitgenommen hast. Nun, da du genügend Zeit hast, wirfst du einen genaueren Blick darauf. Im magischen Spektrum erkennst du ein unnatürliches Muster im Kräfteverlauf. Du zögerst kurz, aber letzten Endes ist es unwahrscheinlich, dass sich hier etwas gefährliches verbirgt, und so passt du das Muster wieder an. Plötzlich lösen sich einige Buchseiten und nehmen eine grüne Farbe an. Geld! Anscheinend hat der gute Doktor hier seinen Notgroschen verschanzt. Eigentlich solltest du enttäuscht sein, keine magischen Geheimnisse entdeckt zu haben, aber du musst zugeben, dass du das Geld gut gebrauchen kannst.<br/><br/>"
+    }
+    text += "Als du ein Gähnen nicht mehr unterdrücken kannst, beschließt du, nur noch schnell Zähne zu putzen und dich dann schlafen zu legen. Du sammelst nur noch kurz Kräfte, aber in einer Minute wirst du aufstehen…"
+    e.show(text,
+    [new Choice("Weiter", "event1_8_3")])
+}
+
+var event1_8_3 = function() {
     e.show("TODO: Text einfügen!",
     [new Choice("Weiter", "eventEnd")])
 }
