@@ -305,7 +305,7 @@ var event1_1_3a = function() {
 
 var event1_1_3_1 = function() {
     let text = "Du suchst die dunkelste Ecke des Hofes auf und stolperst fast über etwas. Was auch immer es ist, du kannst es in der fast vollständigen Finsternis nicht erkennen. Ausgezeichnet, so wird dich zumindest niemand erkennen."
-    if(status.lore.value >= 30) {
+    if(state.lore.value >= 30) {
         e.show(text + " Mit leisem Murmeln entbindest du deinen Körper von seiner Konzeption und nimmst die Gestalt eines Vogels an. Im letzten Augenblick entscheidest du dich nicht für einen Milan, sondern für die Gestalt einer Eule, um dich im Dunkel besser orientieren zu können. Du blinzelst. Die Orientierung fällt dir für einen Augenblick schwer, als du versuchst, dich an deine neue Gestalt zu gewöhnen, aber dann greifen deine neuen Instinkte und du schwingst dich in die Luft. Wenige Sekunden später schlüpfst du durch das Fenster. Dann löst du den Zauber und nimmst deine übliche Gestalt wieder an.",
             [new Choice("Weiter", "event1_2")])
     } else {
@@ -316,7 +316,7 @@ var event1_1_3_1 = function() {
 
 var event1_1_3_2 = function() {
     let text = "Du schleichst dich zur Tür."
-    if(status.magic.value >= 30) {
+    if(state.magic.value >= 30) {
         e.show(text + " Beschwörungen flüsternd setzt du den Mechanismus kinetischer Energie aus, bis ein leichtes Klicken dir vermittelt, dass das Schloss offen ist. Du trittst ein.",
             [new Choice("Weiter", "event1_2")])
     } else {
