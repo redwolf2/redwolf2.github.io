@@ -22,11 +22,11 @@ function State() {
 }
 
 var eventStart = function() {
-    debug = false
+    debug = true
     state = new State()
     e = new Engine(state)
     //e.setBackground("linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2))", "res/imgs/main.jpg")
-    let text = "<h1>Aiur 0.0.6</h1>Hallo und herzlichen willkommen zur Betaversion unseres Spiels. Hierbei handelt es sich um ein sogenanntes textbasiertes Rollenspiel. Kurz gesagt geht es darum, dass du in einer fiktiven Welt die Handlungen des Hauptcharakters bestimmst und hoffentlich zu einem guten Ende führst. Die Spielwelt gleicht der unseren, mit dem Unterschied, dass Magie real ist, und jeder davon weiß.<br/><br/>Aber eigentlich sollte alles ganz selbsterklärend sein. Wir wünschen dir viel Spaß!"
+    let text = "<h1>Aiur 0.0.7</h1>Hallo und herzlichen willkommen zur Betaversion unseres Spiels. Hierbei handelt es sich um ein sogenanntes textbasiertes Rollenspiel. Kurz gesagt geht es darum, dass du in einer fiktiven Welt die Handlungen des Hauptcharakters bestimmst und hoffentlich zu einem guten Ende führst. Die Spielwelt gleicht der unseren, mit dem Unterschied, dass Magie real ist, und jeder davon weiß.<br/><br/>Aber eigentlich sollte alles ganz selbsterklärend sein. Wir wünschen dir viel Spaß!"
     if(debug) {
         state.awareness.value = 40
         state.lore.value = 40
@@ -36,7 +36,7 @@ var eventStart = function() {
         state.delay= 20
         state.takedown = 1
         e.setBackground(null, null)
-        e.show(text, [new Choice("Debug Spiel", "event1_2")], false)
+        e.show(text, [new Choice("Debug Spiel", "event1_8_1")], false)
     } else if(GameState.hasSave()) {
         e.show(text, [new Choice("Neues Spiel", "eventNew"),
         new Choice("Weitermachen", "eventContinue")], false)
@@ -702,6 +702,38 @@ var event1_8_4 = function() {
 }
 
 var event2_0 = function() {
+    e.show("Die nächsten Tage verbringst du damit, den Kristall zu untersuchen. Allerdings bist du häufig abgelenkt, denn die Ereignisse um deinen nächtlichen Diebstahl lassen dich nicht los. Immer wieder gehst du in Gedanken deine Handlungen durch, überlegst dir, was alles hätte schief gehen können und was du hättest anders machen können. Doch alle diese Gedankenspiele enden immer mit der selben Schlussfolgerung: Du hast es geschafft! Du bist den Herausforderungen des Lebens gewachsen!<br/>Neben dem daraus erwachsendem Selbstbewusstsein hast du zusätzlich das Gefühl, mehr über dich gelernt zu haben.", 
+    [new Choice("Ich bin mehr als je zuvor in der Lage, die magischen Kräfte gezielt zu bündeln.", "event2_0_1"),
+    new Choice("Der Wert magischen Wissens hat sich mir erschlossen, und ich habe dementsprechend noch einmal alle meine Notizen überarbeitet.", "event2_0_2"),
+    new Choice("Nach meinem nächtlichen Abenteuer achte ich mehr als jemals zuvor auf die Details meiner Umgebung.", "event2_0_3"),
+    new Choice("Meine Erlebnisse haben mir gezeigt, dass nicht nur die Magie zählt, sondern auch die einfachen Dinge im Leben, wie Freunde, Sport und Filme.", "event2_0_4")])
+}
+
+var event2_0_1 = function() {
+    state.magic.value += 5
+    e.show("Vielleicht liegt es daran, dass du dich in einer echten Krisensituation beweisen musstest, aber inzwischen erscheint es dir gar nicht mehr so schwierig, die Magie in die richtige Bahn zu lenken und deine Konzentration aufrecht zu erhalten.", 
+    [new Choice("Weiter", "event2_1")])
+}
+
+var event2_0_2 = function() {
+    state.lore.value += 5
+    e.show("Die Magie erschließt Möglichkeiten, die anderen Menschen für immer verborgen bleiben werden. Wenn man nur weiß, wie sie funktioniert. Mit etwas Glück wirst du immer das passende Werkzeug parat haben.", 
+    [new Choice("Weiter", "event2_1")])
+}
+
+var event2_0_3 = function() {
+    state.awareness.value += 5
+    e.show("Die ständige Furcht, erwischt zu werden, scheint sich ausgezahlt zu haben. Deine Umgebung erscheint dir viel detaillierter als früher, und du hast zudem das Gefühl, nicht mehr so leicht überrascht werden zu können.", 
+    [new Choice("Weiter", "event2_1")])
+}
+
+var event2_0_4 = function() {
+    state.mundane.value += 5
+    e.show("Zuerst hast du nur versucht, deinen Stress abzubauen, aber schon bald hast du festgestellt, dass deine Freizeitaktivitäten nicht nur entspannend sind, sondern auch zu deiner Fitness und Weltoffenheit beitragen.", 
+    [new Choice("Weiter", "event2_1")])
+}
+
+var event2_1 = function() {
     e.show("The End", undefined, false)
 }
 
