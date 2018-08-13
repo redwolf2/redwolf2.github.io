@@ -186,7 +186,9 @@ function Engine(customState)
 
         popup.appendChild(popupcontainer)
 
-        document.getElementById("popup").appendChild(popup)
+        let popupElement = document.getElementById("popup");
+        popupElement.innerHTML = ''
+        popupElement.appendChild(popup)
 
         e.appendChild(buttonStatus)
 
