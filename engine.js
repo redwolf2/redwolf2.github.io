@@ -129,7 +129,7 @@ function Engine(customState)
 
     this.createChoices = function(e, choices) {
         choices.forEach(function(choice) {
-            e.appendChild(this.createRadioButtonChoice(choice))
+            e.appendChild(createRadioButtonChoice(choice))
             Gui.insertLineBreak(e)
             Gui.insertLineBreak(e)
         })
