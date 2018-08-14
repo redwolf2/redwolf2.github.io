@@ -113,7 +113,7 @@ Gui.resetAnimation = function (node, classname) {
 function Engine(customState) {
     gamestate = customState;
     var _root = this;
-    this.globalChoices;
+    var globalChoices;
 
     var appendText = function appendText(text) {
         document.getElementById("text").innerHTML += text;
