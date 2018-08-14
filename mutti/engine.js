@@ -113,7 +113,7 @@ Gui.resetAnimation = function (node, classname) {
 function Engine(customState) {
     gamestate = customState;
     var _root = this;
-    var globalChoices;
+    this.globalChoices;
 
     var appendText = function appendText(text) {
         document.getElementById("text").innerHTML += text;
@@ -143,12 +143,12 @@ function Engine(customState) {
             return;
         } else if (choices.length > 1) {
             var counter = 0;
-            choices.forEach(function (choice) {
+            Array.from(choices).forEach(function (choice) {
                 counter++;
                 choice.id = "choice" + counter;
             });
             createChoices(e, choices);
-            choices.forEach(function (choice) {
+            Array.from(choices).forEach(function (choice) {
                 Choice.bind(choice);
             });
         }
@@ -220,7 +220,7 @@ function Engine(customState) {
         var selectedId = undefined;
         if (globalChoices.length > 1) {
             var choices = document.getElementsByName("choice");
-            choices.forEach(function (choice) {
+            Array.from(choices).forEach(function (choice) {
                 if (choice.checked) {
                     selectedId = choice.id;
                 }
@@ -235,7 +235,7 @@ function Engine(customState) {
         this.root = _root;
         var selectedId = getSelectedChoice();
         var selectedChoice = void 0;
-        globalChoices.forEach(function (choice) {
+        Array.from(globalChoices).forEach(function (choice) {
             if (choice.id === selectedId) {
                 selectedChoice = choice;
             }
