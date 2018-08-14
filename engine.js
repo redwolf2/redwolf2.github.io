@@ -115,19 +115,15 @@ function Engine(customState)
     var _root = this
     this.globalChoices
 
-    this.appendText = function(text) {
+    var appendText = function(text) {
         document.getElementById("text").innerHTML += text
     }
 
-    this.clearText = function() {
-        this.addText("")
-    }
-    
-    this.createRadioButtonChoice = function(choice) {
-         return Gui.createRadioButton(choice.id, "choice", choice.text)
+    var clearText = function() {
+        addText("")
     }
 
-    this.createChoices = function(e, choices) {
+    createChoices = function(e, choices) {
         choices.forEach(function(choice) {
             e.appendChild(createRadioButtonChoice(choice))
             Gui.insertLineBreak(e)
@@ -135,7 +131,11 @@ function Engine(customState)
         })
     }
 
-    this.addBottom = function(choices) {
+    createRadioButtonChoice = function(choice) {
+         return Gui.createRadioButton(choice.id, "choice", choice.text)
+    }
+
+    addBottom = function(choices) {
         globalChoices = choices
         let e = document.getElementById("center")
         e.innerHTML = ""
@@ -147,7 +147,7 @@ function Engine(customState)
                 counter++
                 choice.id = "choice" + counter
             })
-            this.createChoices(e, choices) 
+            createChoices(e, choices) 
             choices.forEach(function(choice) {
                 Choice.bind(choice)
             })
@@ -156,16 +156,16 @@ function Engine(customState)
         let continueId = choices.length === 1 ? "confirm" : choices[0].id
         let continueText = choices.length === 1 ? choices[0].text : "Weiter"
         let continueAppend = choices.length !== 1
-        let buttonContinue = Gui.createButton("confirm", continueText, function() { this.onButtonContinue(continueId) }, "btn continue", continueAppend)
+        let buttonContinue = Gui.createButton("confirm", continueText, function() { onButtonContinue(continueId) }, "btn continue", continueAppend)
         e.appendChild(buttonContinue)
-        buttonContinue.addEventListener("click", this.onButtonContinue, false)
+        buttonContinue.addEventListener("click", onButtonContinue, false)
 
         // breadcrump
         let breadcrump = Gui.createBreadCrump("breadcrump1")
         e.appendChild(breadcrump)
 
         //  status button
-        let buttonStatus = Gui.createButton("status", "", this.onButtonStatus, "btn", false, "iconstate")
+        let buttonStatus = Gui.createButton("status", "", onButtonStatus, "btn", false, "iconstate")
         let popup = document.createElement("div")
         popup.className = "popup"
 
@@ -192,11 +192,11 @@ function Engine(customState)
 
         e.appendChild(buttonStatus)
 
-        buttonStatus.addEventListener("click", this.onButtonStatus, false)
-        popupcontainer.addEventListener("click", this.onButtonStatus, false)
+        buttonStatus.addEventListener("click", onButtonStatus, false)
+        popupcontainer.addEventListener("click", onButtonStatus, false)
     }
 
-    this.getStatusText = function() {
+    getStatusText = function() {
         var statusText = ""
         for(var propertyName in gamestate) {
             var propertyValue = gamestate[propertyName]
@@ -208,14 +208,14 @@ function Engine(customState)
         return statusText
     }
 
-    this.addText = function(text) {
+    addText = function(text) {
         // this will reanimate the text, when a new one is inserted
         let element = document.getElementById("text")
         element.innerHTML = text
         Gui.resetAnimation(element, "fadeInAnim")
     }
 
-    this.getSelectedChoice = function() {
+    getSelectedChoice = function() {
         let selectedId = undefined
         if(globalChoices.length > 1) {
             let choices = document.getElementsByName("choice")
@@ -230,9 +230,9 @@ function Engine(customState)
         return selectedId
     }
 
-    this.onButtonContinue = function() {
+    onButtonContinue = function() {
         this.root = _root
-        let selectedId = this.getSelectedChoice()
+        let selectedId = getSelectedChoice()
         let selectedChoice
         globalChoices.forEach(function(choice) {
             if(choice.id === selectedId) {
@@ -252,19 +252,19 @@ function Engine(customState)
         }
     }
 
-    this.onButtonStatus = function() {
-        this.toggleStatus()
+    onButtonStatus = function() {
+        toggleStatus()
     }
 
-    this.toggleStatus = function() {
+    toggleStatus = function() {
         var popup = document.getElementById("popupcontainer")
         var popupbox = document.getElementById("popupbox")
-        popupbox.innerHTML = this.getStatusText()
+        popupbox.innerHTML = getStatusText()
         popup.classList.toggle("show")
         Gui.resetAnimation(popup, "fadeInAnim")
     }
 
-    this.closeStatus = function() {
+    closeStatus = function() {
         var popup = document.getElementById("popupcontainer")
         popup.classList.remove("show")
     }
@@ -283,10 +283,10 @@ function Engine(customState)
     }
 
     this.show = function(text, choices, save = true) {
-        this.addText(text)
-        this.addBottom(choices)
+        addText(text)
+        addBottom(choices)
         gamestate.event = new GameEvent(text, choices)
-        this.closeStatus()
+        closeStatus()
         if(save)
             GameState.save()
     }
