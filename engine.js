@@ -123,7 +123,7 @@ function Engine(customState)
         addText("")
     }
 
-    createChoices = function(e, choices) {
+    var createChoices = function(e, choices) {
         choices.forEach(function(choice) {
             e.appendChild(createRadioButtonChoice(choice))
             Gui.insertLineBreak(e)
@@ -131,11 +131,11 @@ function Engine(customState)
         })
     }
 
-    createRadioButtonChoice = function(choice) {
+    var createRadioButtonChoice = function(choice) {
          return Gui.createRadioButton(choice.id, "choice", choice.text)
     }
 
-    addBottom = function(choices) {
+    var addBottom = function(choices) {
         globalChoices = choices
         let e = document.getElementById("center")
         e.innerHTML = ""
@@ -196,7 +196,7 @@ function Engine(customState)
         popupcontainer.addEventListener("click", onButtonStatus, false)
     }
 
-    getStatusText = function() {
+    var getStatusText = function() {
         var statusText = ""
         for(var propertyName in gamestate) {
             var propertyValue = gamestate[propertyName]
@@ -208,14 +208,14 @@ function Engine(customState)
         return statusText
     }
 
-    addText = function(text) {
+    var addText = function(text) {
         // this will reanimate the text, when a new one is inserted
         let element = document.getElementById("text")
         element.innerHTML = text
         Gui.resetAnimation(element, "fadeInAnim")
     }
 
-    getSelectedChoice = function() {
+    var getSelectedChoice = function() {
         let selectedId = undefined
         if(globalChoices.length > 1) {
             let choices = document.getElementsByName("choice")
@@ -230,7 +230,7 @@ function Engine(customState)
         return selectedId
     }
 
-    onButtonContinue = function() {
+    var onButtonContinue = function() {
         this.root = _root
         let selectedId = getSelectedChoice()
         let selectedChoice
@@ -252,11 +252,11 @@ function Engine(customState)
         }
     }
 
-    onButtonStatus = function() {
+    var onButtonStatus = function() {
         toggleStatus()
     }
 
-    toggleStatus = function() {
+    var toggleStatus = function() {
         var popup = document.getElementById("popupcontainer")
         var popupbox = document.getElementById("popupbox")
         popupbox.innerHTML = getStatusText()
@@ -264,7 +264,7 @@ function Engine(customState)
         Gui.resetAnimation(popup, "fadeInAnim")
     }
 
-    closeStatus = function() {
+    var closeStatus = function() {
         var popup = document.getElementById("popupcontainer")
         popup.classList.remove("show")
     }
