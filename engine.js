@@ -122,17 +122,17 @@ function Engine(customState)
     this.clearText = function() {
         this.addText("")
     }
+    
+    this.createRadioButtonChoice = function(choice) {
+         return Gui.createRadioButton(choice.id, "choice", choice.text)
+    }
 
     this.createChoices = function(e, choices) {
         choices.forEach(function(choice) {
-            e.appendChild(createRadioButtonChoice(choice))
+            e.appendChild(this.createRadioButtonChoice(choice))
             Gui.insertLineBreak(e)
             Gui.insertLineBreak(e)
         })
-    }
-
-    this.createRadioButtonChoice = function(choice) {
-         return Gui.createRadioButton(choice.id, "choice", choice.text)
     }
 
     this.addBottom = function(choices) {
