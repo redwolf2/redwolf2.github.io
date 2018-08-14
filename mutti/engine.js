@@ -115,15 +115,15 @@ function Engine(customState) {
     var _root = this;
     this.globalChoices;
 
-    this.appendText = function (text) {
+    var appendText = function appendText(text) {
         document.getElementById("text").innerHTML += text;
     };
 
-    this.clearText = function () {
+    var clearText = function clearText() {
         addText("");
     };
 
-    this.createChoices = function (e, choices) {
+    var createChoices = function createChoices(e, choices) {
         choices.forEach(function (choice) {
             e.appendChild(createRadioButtonChoice(choice));
             Gui.insertLineBreak(e);
@@ -131,11 +131,11 @@ function Engine(customState) {
         });
     };
 
-    this.createRadioButtonChoice = function (choice) {
+    var createRadioButtonChoice = function createRadioButtonChoice(choice) {
         return Gui.createRadioButton(choice.id, "choice", choice.text);
     };
 
-    this.addBottom = function (choices) {
+    var addBottom = function addBottom(choices) {
         globalChoices = choices;
         var e = document.getElementById("center");
         e.innerHTML = "";
@@ -198,7 +198,7 @@ function Engine(customState) {
         popupcontainer.addEventListener("click", onButtonStatus, false);
     };
 
-    this.getStatusText = function () {
+    var getStatusText = function getStatusText() {
         var statusText = "";
         for (var propertyName in gamestate) {
             var propertyValue = gamestate[propertyName];
@@ -209,14 +209,14 @@ function Engine(customState) {
         return statusText;
     };
 
-    this.addText = function (text) {
+    var addText = function addText(text) {
         // this will reanimate the text, when a new one is inserted
         var element = document.getElementById("text");
         element.innerHTML = text;
         Gui.resetAnimation(element, "fadeInAnim");
     };
 
-    this.getSelectedChoice = function () {
+    var getSelectedChoice = function getSelectedChoice() {
         var selectedId = undefined;
         if (globalChoices.length > 1) {
             var choices = document.getElementsByName("choice");
@@ -231,7 +231,7 @@ function Engine(customState) {
         return selectedId;
     };
 
-    this.onButtonContinue = function () {
+    var onButtonContinue = function onButtonContinue() {
         this.root = _root;
         var selectedId = getSelectedChoice();
         var selectedChoice = void 0;
@@ -254,11 +254,11 @@ function Engine(customState) {
         }
     };
 
-    this.onButtonStatus = function () {
+    var onButtonStatus = function onButtonStatus() {
         toggleStatus();
     };
 
-    this.toggleStatus = function () {
+    var toggleStatus = function toggleStatus() {
         var popup = document.getElementById("popupcontainer");
         var popupbox = document.getElementById("popupbox");
         popupbox.innerHTML = getStatusText();
@@ -266,7 +266,7 @@ function Engine(customState) {
         Gui.resetAnimation(popup, "fadeInAnim");
     };
 
-    this.closeStatus = function () {
+    var closeStatus = function closeStatus() {
         var popup = document.getElementById("popupcontainer");
         popup.classList.remove("show");
     };
