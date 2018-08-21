@@ -9,13 +9,16 @@ function State() {
     this.lore = new PlayerAttribute("Wissen", 20)
     this.awareness = new PlayerAttribute("Aufmerksamkeit", 20)
     this.mundane = new PlayerAttribute("Weltliches", 20)
+    this.alex = 0
     this.damage = 0
     this.delay = 0
     this.disguise = 0 // TODO = Check if this is necessary
     this.event1_2_read = 0
     this.money = 1000
+    this.mother = 0
     this.gender = 0
     this.profile = 0
+    this.profile2 = 0
     this.stash = 0
     this.takedown = 0
     this.wantedlevel = 0
@@ -746,6 +749,159 @@ var event2_2 = function() {
 var event2_3 = function() {
     e.show("Der Kristall bleibt dir ebenfalls ein Rätsel. So oft du ihn auch im magischen Spektrum betrachtest, bist du doch nicht in der Lage, die Energiestruktur zu verstehen. Wesentlich schlimmer ist jedoch die Tatsache, dass die Struktur wieder an Kraft gewinnt, und du nicht weisst, wie und wann sich diese Kraft entladen wird. Mit anderen Worten, es könnte in einigen Tagen wieder zu einem magischen Impuls kommen, der sämtliche Magier der Umgebung auf dich aufmerksam macht.", 
     [new Choice("Die Zeit rennt dir davon.", "event2_4")])
+}
+
+var event2_4 = function() {
+    e.show("Deine Hoffnung ruht jetzt auf Alex, die das Darknet nach weiteren Quellen durchsucht. Deine Überlegungen werden von einem Magenknurren begleitet. Offensichtlich hast du deine körperlichen Bedürfnisse vernachlässigt.<br/>Als du in die Küche gehst, fällt dir jedoch wieder ein, weshalb. Statt Gemüse, Obst, Fleisch, oder irgendetwas mit echtem Nährwert bzw. Geschmack, findest du nur die übliche Palette von billigstem Essen. Eben all das, was finanziell noch möglich ist, wenn ein wesentlicher Teil des Haushaltbudgets für Alkohol verwendet wird.<br/>Mit gemischten Gefühlen betrachtest du die halbleere Flasche Ketchup. Die Tomaten auf dem Ettikett erinnern dich an eine bessere Zeit, als dein Vater noch lebte, und sich deine Mutter noch nicht dem Suff ergeben hatte, sondern einer geregelten Arbeit nachging und in ihrer Freizeit im Garten Tomaten anpflanzte. Der süßliche Geruch frischer Tomaten und das Gefühl von Geborgenheit – heute sind sie nur noch eine Erinnerung, so wie die zuckerige rote Masse an das Original erinnert. Ein Imitat, das in der Flasche endet – ziemlich genau wie deine Mutter.<br/><br/>Trotzdem wird es Zeit, etwas zu essen. Da die Küche nicht viel hergibt, entscheidest du dich für", 
+    [new Choice("Toastbrot mit Ketchup.", "event2_4_1"),
+    new Choice("Nudeln mit Ketchup.", "event2_4_2"),
+    new Choice("Abgepackte asiatische Instant-Nudelsuppe.", "event2_4_3")])
+}
+
+var event2_4_1 = function() {
+    e.show("Die einfachste Art, eine halbwegs warme Mahlzeit zuzubereiten. Das Aufwändigste ist es, darauf zu warten, dass das Brot getoastet wird. Während du darauf wartest, träumst du von einem besseren Leben mit mehr Geld und anständigem Essen.", 
+    [new Choice("Weiter", "event2_5")])
+}
+
+var event2_4_2 = function() {
+    e.show("Wasser, Salz, Nudeln. Leider ist dies schon die aufwändigste Art des Kochens, welche die Küche kennt. . Während du darauf wartest, dass die Nudeln gekocht sind, träumst du von einem besseren Leben mit mehr Geld und anständigem Essen.", 
+    [new Choice("Weiter", "event2_5")])
+}
+
+var event2_4_3 = function() {
+    e.show("Nur Wasser hinzufügen. Immerhin sorgen die kleinen abgepackten Gewürztütchen für eine andere Geschmackspalette. Während du darauf wartest, dass die Nudeln durchziehen, träumst du von einem besseren Leben mit mehr Geld und anständigem Essen.", 
+    [new Choice("Weiter", "event2_5")])
+}
+
+var event2_5 = function() {
+    let text = "Plötzlich betritt deine Mutter die Küche, schaut auf dein Essen, und sieht dich missmutig an: „Gibt es keinen Job für dich? Kellnern, Müll sortieren, irgendwas?”<br/>Natürlich hast du ihr nicht erzählt, dass du deine gesamte Zeit darauf verwendet hast, heimlich Magie zu erlernen. Einmal abgesehen davon, dass sie es nicht unterstützt hätte, sind Alkoholiker nicht gerade bekannt dafür, etwas für sich behalten zu können.<br/>"
+    if (state.gender === 1) {
+        text += "Sie fährt fort: „Ich hatte so große Hoffnungen in meinen Jungen. Ich weiß noch, wie wir die blauen Tapeten ausgesucht und einen Fußball für dich gekauft haben. Dein Vater hat so oft mit dir gespielt... was er wohl heute denken würde, wenn er dich so sähe?”"
+    } else {
+        text += "Sie fährt fort: „Ich hatte so große Hoffnungen in mein Mädchen. Ich weiß noch, wie wir die rosa Tapeten ausgesucht und eine Puppe für dich gekauft haben. Wie oft hast du deinen Vater genötigt, mit ihm zu spielen... was er wohl heute denken würde, wenn er dich so sähe?”"
+    }
+    e.show(text, 
+    [new Choice("„Es tut mir Leid. Ich werde mich bemühen.”", "event2_5_1"),
+    new Choice("„Wie wäre es, wenn wir beide uns eine Tätigkeit suchen?”", "event2_5_2"),
+    new Choice("„Vermutlich wäre Papa schockiert, dass du ständig trinkst?”", "event2_5_3"),
+    new Choice("„Kannst du nicht woanders ausnüchtern?”", "event2_5_4"),
+    new Choice("Ich ignoriere sie.", "event2_5_5")])
+}
+
+var event2_5_1 = function() {
+    state.mother -= 10
+    e.show("Sie sieht dich traurig an: „Ich hoffe es, Liebling. Aber ich finde es gut, dass du an dir arbeitest. Viel Glück dabei.”<br/>Dann macht sie sich schnell ein Toastbrot mit Ketchup und setzt sich wieder vor den Fernseher.", 
+    [new Choice("Weiter", "event2_6")])
+}
+
+var event2_5_2 = function() {
+    state.mother -= 10
+    e.show("Sie sieht dich traurig an: „Ich hoffe es, Liebling. Aber ich finde es gut, dass du an dir arbeitest. Viel Glück dabei.”<br/>Dann macht sie sich schnell ein Toastbrot mit Ketchup und setzt sich wieder vor den Fernseher.", 
+    [new Choice("„Dein Leben wäre bestimmt wieder lebenswerter mit einer Aufgabe und einem geregeltem Tagesablauf.”", "event2_5_2_1"),
+    new Choice("„Der Alkohol wird dich noch umbringen!”", "event2_5_2_1"), // no typo, like the first choice
+    new Choice("„Jetzt reiß dich bitte zusammen.”", "event2_5_2_3"),
+    new Choice("„Du könntest. Wenn du nur weniger trinken würdest.”", "event2_5_2_4")])
+}
+
+var event2_5_2_1 = function() {
+    state.mother -= 5
+    e.show("Sie sieht dich traurig an: „Mein Leben ist doch sowieso bald vorbei.” Und dann geht sie zurück in das Wohnzimmer.<br/>Verdammt.", 
+    [new Choice("Weiter", "event2_6")])
+}
+
+var event2_5_2_2 = function() {
+    state.mother -= 10
+    e.show("„Zusammenreißen? Wie kannst du es WAGEN,” keifft sie dich an, „mich nach allem so herablassend zu behandeln? ICH habe dich aufgezogen, ICH lasse dich noch immer bei mir wohnen, obwohl DU längst eine eigene Wohnung haben solltest.”<br/>Wütend stürmt sie in das Wohnzimmer.", 
+    [new Choice("Weiter", "event2_6")])
+}
+
+var event2_5_2_3 = function() {
+    state.mother -= 5
+    e.show("„Ach Kind...”, seufzt sie, leicht genervt, „das ist doch alles Mumpitz was du erzählst.” Und dann geht sie schnurstracks in das Wohnzimmer zurück, wo der Fernseher wie immer läuft.", 
+    [new Choice("Weiter", "event2_6")])
+}
+
+var event2_5_3 = function() {
+    state.mother += 5
+    e.show("„Wie kannst du es WAGEN,” keifft sie dich an, „mich nach allem so herablassend zu behandeln? ICH habe dich aufgezogen, ICH...”<br/>Sie bricht ab. Dann stürmt sie in das Wohnzimmer.", 
+    [new Choice("Weiter", "event2_6")])
+}
+
+var event2_5_4 = function() {
+    state.mother -= 10
+    e.show("„Ausnüchtern? AUSNÜCHTERN? Wie kannst du es WAGEN,” keifft sie dich an, „mich nach allem so herablassend zu behandeln? ICH habe dich aufgezogen, ICH lasse dich noch immer bei mir wohnen, obwohl DU längst eine eigene Wohnung haben solltest.”<br/>Wütend stürmt sie in das Wohnzimmer.", 
+    [new Choice("Weiter", "event2_6")])
+}
+
+var event2_5_5 = function() {
+    state.mother -= 10
+    e.show("Du nimmst dein Essen und lässt sie ohne eine Antwort stehen. Hinter dir hörst du sie toben, aber du bist schnell die Treppe hinauf und in deinem Zimmer, wo dir niemand angetrunkene Vorwürfe machen kann.", 
+    [new Choice("Weiter", "event2_6")])
+}
+
+var event2_6 = function() {
+    e.show("Am nächsten Tag besuchst du Alex. Ähnlich wie du wohnt sie in einem weniger elegantem Teil der Stadt. Als sie die Tür öffnet, fällt dir auf, dass sie ihre schwarzen Haare stark gekürzt hat.<br/>„Ich sehe, dir fällt meine neue Frisur auf”, grinst sie dich an. „Ich dachte mir, es wird für etwas praktischeres. Weniger Zeitaufwand, gleiches stellares Ergebnis. Oder würdest du sagen, die Haar-Brillianz-Relation hat sich verschlechtert? Und bevor du antwortest, denk bitte daran, dass ich in dein Geheimnis eingeweiht bin, und nicht zögern werde, dich bei mangelnder Würdigung auszuliefern.”<br/>Du kannst ein Grinsen nicht ganz unterdrücken, während du ihr versicherst, dass sie ein Musterbeispiel für praktische Eleganz ist.<br/>Als du ihre Wohnung betrittst, bemerkst du, dass diese in gewisser Weise auch die neue Frisur widerspiegelt: simpel und funktional gehalten, aber zugleich auch so elegant, wie man es ohne größere Ausgaben gestalten kann. Allerdings nimmst du dir vor, sie nicht direkt darauf anzusprechen, da dir heute nicht nach einer langen Diskussion über Konsumterror und Kommerzwahnsinn ist.<br/><br/>„Hast du Hunger? Ich habe noch Chili sin Carne über.” Du lehnst dankend ab, und fragst sie stattdessen, ob sie etwas gefunden hat, dass dir mit dem Kristall weiterhelfen kann. Sie wirft dir über den Rand ihrer Brille einen seltsamen Blick zu: „Nun… ja. Schon. Es gibt ein Buch über Kristalle, aber der Verkäufer will den Kauf nur persönlich abschließen. Und er hat mehrfach betont, dass der Preis nur eine Verhandlungsbasis ist. Möglicherweise möchte er uns ein anderes Geschäft vorschlagen, wenn wir unter vier Augen sind? Ich weiss es nicht, aber mir gefällt das nicht. Gib mehr etwas mehr Zeit, und ich finde bestimmt etwas besseres, okay?”", 
+    [new Choice("Weiter", "event2_6_1")])
+}
+
+var event2_6_1 = function() {
+    let text = "Als du ihr von der drohenden magischen Überladung erzählst, verzieht sie das Gesicht: „Nun, ich schätze dann hat sich die Diskussion von selbst erledigt. Wir werden uns also wohl oder übel persönlich mit dem Käufer treffen müssen. Und ja, ich meine dich und mich”, ergänzt sie, als sie deinen überraschten Blick sieht. „Wenn du das nächste Mal losziehst, will ich nicht erst wieder alles im Nachhinein hören müssen. Ich meine, kannst du dir vorstellen, wie sich das anfühlt? Ich sitze morgens vor dem Fernseher, mampfe mein Müsli, und überlege mir, ob es nicht eine gleichwertige Sorte mit weniger Rosinen gibt, und du rufst mich an und erzählst mir, dass du den Kampf mit dem System aufgenommen hast!”"
+    if (state.gender === 1) {
+        text += "Du versuchst sie zu beschwichtigen und klarzustellen, dass du kein magischer Che Guevara bist, aber sie hat sich bereits in Rage geredet: „Und ich habe gedacht 'Hey, ich helfe meinem Freund dabei, sein magisches Talent zu entdecken, und verfasse Posts gegen die Dummheit der Mehrheit und die Unterdrückung durch die Minderheit, ich bin sowas von Teil der Gegenbewegung' – und dann kommst du, mit deinem Testosteronwert von über 9000, und zeigst mir, dass ich mich zu sehr auf meinen Leistungen ausgeruht habe.”"
+    } else {
+        text += "Du versuchst sie zu beschwichtigen und klarzustellen, dass du keine magische Che Guevara bist, aber sie hat sich bereits in Rage geredet: „Und ich habe gedacht 'Hey, ich helfe meiner Freundin dabei, ihr magisches Talent zu entdecken, und verfasse Posts gegen die Dummheit der Mehrheit und die Unterdrückung durch die Minderheit, ich bin sowas von Teil der Gegenbewegung' – und dann kommst du, vollführst eine meisterhafte Demonstration weiblicher Überlegenheit, und zeigst mir, dass ich mich zu sehr auf meinen Leistungen ausgeruht habe.”"
+    }
+    text += "<br/>Sie atmet kurz durch und beruhigt sich wieder. „Ich komme also mit. Aber das erinnert mich daran, dass ich dich noch etwas anderes fragen wollte.”"
+    e.show(text, 
+    [new Choice("Weiter", "event2_6_2")])
+}
+
+var event2_6_2 = function() {
+    e.show("„Die Regierung unterdrückt magisches Wissen, weil die Bevölkerung zu verängstigt ist. Aber die Geschichte hat gezeigt, dass Zensur und die Unterdrückung von Wissen immer in einer Katastrophe enden. Also habe ich mir gedacht, wir können unsere Unterlagen digitalisieren, und ebenfalls im Darknet vertreiben. Alles anonymisert und verschlüsselt, versteht sich. Kein Risiko – naja praktisch kein Risiko. Jedes Mal, wenn du über die Straße gehst, könntest du überfahren werden, verstehst du? Aber eben schon sehr sehr sicher. Und nicht nur das, wir könnten sogar etwas Geld dabei verdienen. Ich vermute, dass wir besonders viel mit dem fortgeschritteneren Material absahnen können.", 
+    [new Choice("„Ich halte das für keine gute Idee. Lass uns lieber so unauffällig wie möglich bleiben.”", "event2_6_2_1"),
+    new Choice("„Wir sollten das Wissen verbreiten, aber ich möchte kein Geld dafür haben.”", "event2_6_2_2"),
+    new Choice("„Klingt vernünftig. Aber lass uns nur die Grundlagen verkaufen.”", "event2_6_2_3"),
+    new Choice("„Gute Idee. Wir brauchen das Geld.”", "event2_6_2_4")])
+}
+
+var event2_6_2_1 = function() {
+    e.show("Alex sieht einen Moment lang enttäuscht aus, zuckt dann aber mit den Schultern: „Ich dachte, du wärest dafür. Aber du hast wohl Recht damit, dass Tarnung im Moment unsere stärkste Waffe ist.”<br/><br/>Ihr verbringt noch einen angenehmen Nachmittag, und Alex verspricht, sich zu melden, sobald sie Neuigkeiten zu dem Treffen mit dem ominösen Verkäufer hat.", 
+    [new Choice("Weiter", "event2_7")])
+}
+
+var event2_6_2_2 = function() {
+    state.alex += 10
+    state.profile2 += 10
+    e.show("Alex sieht dich mit großen Augen an: „Ich hätte dich nicht für einen Idealisten gehalten. Wow. Okay. So machen wir es.”<br/><br/>Ihr verbringt noch einen angenehmen Nachmittag, und Alex verspricht, sich zu melden, sobald sie Neuigkeiten zu dem Treffen mit dem ominösen Verkäufer hat.", 
+    [new Choice("Weiter", "event2_7")])
+}
+
+var event2_6_2_3 = function() {
+    state.profile2 += 10
+    state.money += 400
+    e.show("Alex reibt sich die Hände: „Gut. Großartig. Es wird auch Zeit, dass wir zurückschlagen.”<br/><br/>Ihr verbringt noch einen angenehmen Nachmittag, und Alex verspricht, sich zu melden, sobald sie Neuigkeiten zu dem Treffen mit dem ominösen Verkäufer hat.", 
+    [new Choice("Weiter", "event2_7")])
+}
+
+var event2_6_2_4 = function() {
+    state.profile2 += 25
+    state.money += 1000
+    e.show("Alex reibt sich die Hände: „Gut. Großartig. Es wird auch Zeit, dass wir zurückschlagen. Und das Geld schadet auch nicht.”<br/><br/>Ihr verbringt noch einen angenehmen Nachmittag, und Alex verspricht, sich zu melden, sobald sie Neuigkeiten zu dem Treffen mit dem ominösen Verkäufer hat.", 
+    [new Choice("Weiter", "event2_7")])
+}
+
+var event2_7 = function() {
+    e.show("Wie sich herausstellt, dauert dies allerdings nicht lange. Schon am nächsten Abend starrst du auf die Uhr, darauf wartend, dass du dich auf den Weg machen kannst. Ihr habt beschlossen, euch in der Nähe des vereinbarten Ortes zu treffen, und da es die schlechteste Gegend der Stadt ist, möchtest du ungern zu früh dort sein. Allerdings möchtest du Alex auch nicht alleine dort stehen lassen; Überfälle sind dort keine Seltenheit, und du möchtest dir nicht ausmalen, was einer Frau alleine dort passieren könnte. Aus diesem Grund hast du dich rechtzeitig vorbereitet und wartest nun schon seit zehn Minuten darauf, endlich losgehen zu können.<br/><br/>Deine Mutter sitzt wie immer vor der Mattscheibe und sieht eine neue „Doku”. Irgendwas mit Familien ohne Schulabschluss. Entgegen deiner Gewohnheiten (und weil du noch ein paar Minuten totschlagen musst) wirfst du einen gelangweilten Blick Richtung Fernseher, in dem jemand gerade durch seinen Garten streift. Obwohl es überaus einschläfernd wirkt, fährt sich deine Mutter mit der Hand über die Augen. Überrascht wirfst du einen genaueren Blick auf sie und erkennst gerötete Augen.<br/>Sie wirft dir einen schüchternen, fast verschämten Blick zu: „Kommst du kurz mit? Ich würde gern in den Gartenmarkt gehen, ein bisschen Erde kaufen, und vielleicht ein paar Tomatenpflanzen.”<br/><br/>Wie vom Donner gerührt stehst du da. Tomaten? Seit dein Vater gestorben ist, hat sie nichts mehr im Garten gemacht. Ist dies ihr altes Ich, dass da zum Vorschein kommt? Hektisch denkst du nach, während du Alex anrufst. Der Gartenmarkt ist in der Nähe, aber trotzdem würdest du dich ziemlich verspäten. Und so launisch, wie deine Mutter zur Zeit ist, bezweifelst du, dass sie morgen noch zum Gartenmarkt geht. Aber wenn die Tomaten bereits im Garten ständen, wenn sie wieder Freude an ihren alten Gewohnheiten entwickeln könnte…<br/><br/>Alex scheint keinen Empfang zu haben. Du müsstest gleich los. Und deine Mutter hat gerade bemerkt, dass sie noch gar nichts getrunken hat.", 
+    [new Choice("Ich mache mich auf den Weg zu Alex.", "event2_7_1"),
+    new Choice("Ich bleibe noch hier.", "event2_7_2")])
+}
+
+var event2_7_1 = function() {
+    e.show("The End", undefined, false)
+}
+
+var event2_7_2 = function() {
+    e.show("The End", undefined, false)
 }
 
 var eventEnd = function() {
