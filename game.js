@@ -902,6 +902,8 @@ var event2_7_1 = function() {
 }
 
 var event2_7_2 = function() {
+    state.alex -= 10
+    state.mother += 10
     e.show("Zum ersten Mal seit einer gefühlten Ewigkeit erkennst du eine Spur ihres alten Selbst wieder. Deine Antwort ist klar: „Natürlich. Lass uns gleich los.”<br/>Deine Mutter sieht dich etwas überrascht an, aber es dauert nicht lange, und ihr seid auf dem Weg. Unterwegs versuchst du noch einmal, Alex telefonisch zu erreichen, und du hast das Glück sie zu erreichen. Alex klingt jedoch alles andere als glücklich: „Was soll das heißen? Ist dir eigentlich klar, was das hier für eine Gegend ist? …Beeil dich, ja?”<br/><br/>Eine halbe Stunde später als verabredet steigst du aus dem Bus. Du erwartest halb, dass Alex an der Haltestelle auf dich wartet, aber sie ist nicht hier. Der Geruch von abgestandenem Urin sticht dir in die Nase, und du beschließt, ebenfalls nicht hier zu verweilen. Stattdessen siehst du dich in der hereinbrechenden Dunkelheit um, und kannst Alex vor einem geschlossenen Imbiß ausfindig machen. Als du auf sie zukommst, sieht sie dich mit einer Mischung aus Erleichterung und Wut an an: „Gott sei Dank, ich dachte schon, ich müsste noch länger auf dich warten. Lass uns gehen, ich will nicht noch einmal gefragt werden, was ich verkaufe.”<br/>Sie zerrt dich mit sich und sieht sich noch einmal misstrauisch um.", 
     [new Choice("Weiter", "event2_8")])
 }
