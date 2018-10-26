@@ -91,7 +91,7 @@ var event0_3_2 = function() {
 }
 
 var event0_3_3 = function() {
-    e.show("Allerdings verbrachtest du auch viel Zeit bei deiner besten Freundin Alex. Neben unzähligen Filmen habt ihr euch vor allem viele Videos im Internet angesehen. Eines Tages grinste sie dich an, während sie zwei bedruckte Seiten Papier vor deine Nase hielt: „Hier, das hab ich aus 'nem Forum. Der Initiationsritus. „Der was?“, hattest du sie verwirrt gefragt, nicht ganz sicher, welcher Film das sein sollte.<br/>„Initiationsritus. Das machen angeblich alle, die Magie erlernen wollen. Damit findet man heraus, ob man magisch begabt ist.“<br/>Zwanzig Minuten später saßest du ihr gegenüber im Schneidersitz, in der Hand eine brennende Kerze, der Geruch von Weihrauch in der Luft und lächelteste sie spöttisch an: „Und, ist die Macht schon mit dir?“<br/><br/>Alex streckte dir die Zunge raus: „Magie ist total selten. Dass heißt nicht, dass mein Ritual…“ Alex streckte dir die Zunge raus: „Magie ist total selten. Dass heißt nicht, dass mein Ritual...“ Sie stockte und starrte auf deine Hände, die noch immer die Kerze hielten. Die Flamme erstrahlte in einem kristallklarem Blau. Aber noch interessanter war die Tatsache, dass der Wachs nicht schmolz, als würde die Flamme von etwas Anderem genährt.<br/>Damals hieltest du zum ersten Mal Magie in der Hand.<br/>Diese Erkenntnis...<br/><br/>Diese Erkenntnis gab dir neuen Schwung und veränderte dein Leben. Alex sammelte alles, was sie im Internet fand und half dir, dein Talent zu entwickeln. Eine Sache war dir dabei besonders wichtig:",
+    e.show("Allerdings verbrachtest du auch viel Zeit bei deiner besten Freundin Alex. Neben unzähligen Filmen habt ihr euch vor allem viele Videos im Internet angesehen. Eines Tages grinste sie dich an, während sie zwei bedruckte Seiten Papier vor deine Nase hielt: „Hier, das hab ich aus ’nem Forum. Der Initiationsritus. „Der was?“, hattest du sie verwirrt gefragt, nicht ganz sicher, welcher Film das sein sollte.<br/>„Initiationsritus. Das machen angeblich alle, die Magie erlernen wollen. Damit findet man heraus, ob man magisch begabt ist.“<br/>Zwanzig Minuten später saßest du ihr gegenüber im Schneidersitz, in der Hand eine brennende Kerze, der Geruch von Weihrauch in der Luft und lächelteste sie spöttisch an: „Und, ist die Macht schon mit dir?“<br/><br/>Alex streckte dir die Zunge raus: „Magie ist total selten. Dass heißt nicht, dass mein Ritual…“ Alex streckte dir die Zunge raus: „Magie ist total selten. Dass heißt nicht, dass mein Ritual…“ Sie stockte und starrte auf deine Hände, die noch immer die Kerze hielten. Die Flamme erstrahlte in einem kristallklarem Blau. Aber noch interessanter war die Tatsache, dass der Wachs nicht schmolz, als würde die Flamme von etwas Anderem genährt.<br/>Damals hieltest du zum ersten Mal Magie in der Hand.<br/>Diese Erkenntnis…<br/><br/>Diese Erkenntnis gab dir neuen Schwung und veränderte dein Leben. Alex sammelte alles, was sie im Internet fand und half dir, dein Talent zu entwickeln. Eine Sache war dir dabei besonders wichtig:",
     [
         new Choice("Ich widmete meine gesamte Kraft dem Bündeln magischer Energien, um möglichst mächtige Zauber zu formen.", "event0_4_1"),
         new Choice("Ich verschlang jedes Buch und jeden Hinweis voller Wissensdurst. Ich wollte jeden Zauber kennen und jedes Geheimnis ergründen.", "event0_4_2"),
@@ -267,7 +267,7 @@ var event1_1_1_2_2 = function() {
 
 var event1_1_1_3 = function() {
     state.delay += 5
-    e.show("Die beiden sehen dich überrascht an... misstrauisch. Ängstlich? Sie mustern dich, offensichtlich nicht überzeugt.",
+    e.show("Die beiden sehen dich überrascht an… misstrauisch. Ängstlich? Sie mustern dich, offensichtlich nicht überzeugt.",
     [new Choice("„Schon gut, ich habe mir lediglich einen Scherz erlaubt.“", "event1_1_1_3_1"),
 	new Choice("Ich demonstriere ihnen einen einfachen Zauber, um sie zu überrumpeln.", "event1_1_1_3_2")])
 }
@@ -285,7 +285,7 @@ var event1_1_1_3_2 = function() {
 }
 
 var event1_1_2 = function() {
-    let text = "Du stellst dich zu den Schaulustigen und hörst dich um. Ein Herr in mittleren Jahren und Jogginghose erzählt dir nur zu gerne jedes Detail: „Ich kam gerade zurück vom Kiosk, als mir einfiel, dass ich ja gar nicht bezahlt hatte… aber das willste gar nicht so genau wissen, hm? Naja, da waren jedenfalls die Bullen hier und dann war da diese gewaltige Explosion… guck nicht so, nur 'n Scherz. Wir sind hier ja nicht bei Columbo, wobei, so viel explodiert da ja auch nich...“ Genervt brichst du das Gespräch ab und versuchst dich an den anderen Passanten. Die sind zwar etwas konkreter, aber sinnvolle Informationen kannst du auch ihnen nicht entnehmen."
+    let text = "Du stellst dich zu den Schaulustigen und hörst dich um. Ein Herr in mittleren Jahren und Jogginghose erzählt dir nur zu gerne jedes Detail: „Ich kam gerade zurück vom Kiosk, als mir einfiel, dass ich ja gar nicht bezahlt hatte… aber das willste gar nicht so genau wissen, hm? Naja, da waren jedenfalls die Bullen hier und dann war da diese gewaltige Explosion… guck nicht so, nur ’n Scherz. Wir sind hier ja nicht bei Columbo, wobei, so viel explodiert da ja auch nich…“ Genervt brichst du das Gespräch ab und versuchst dich an den anderen Passanten. Die sind zwar etwas konkreter, aber sinnvolle Informationen kannst du auch ihnen nicht entnehmen."
     if(state.awareness.value >= 30)
         text = "Du stellst dich zu den Schaulustigen und hörst dich um. Ein Mann in Jogginghose erzählt eifrig den Umstehenden, was er gesehen hat, aber seine Alkoholfahne lässt ihn nicht besonders verlässlich erscheinen. Eine ältere Dame mit selbstgehäkeltem Schal informiert dich, dass die Polizei noch immer auf den magischen Spezialisten wartet: „Die sitzen immer noch im zweiten Stock in der Praxis. Ich hoffe da tut sich bald etwas neues. Die Herbstluft kriecht mir langsam in die Knochen. Und es ist ja nicht so, als gäbe es jetzt hier noch einen Arzt, der mir im Zweifelsfall helfen könnte.“ Du willst ihr gerade danken, als dir die Sehnsucht in ihrer Stimme auffällt und plötzlich geht dir ein Licht auf: „Gute Frau, Sie wissen schon, dass die Polizei sie nicht einfach von ihrer Wohnung fernhalten kann? Sie haben doch bestimmt einen Ausweis? Kommen Sie, ich geleite Sie bis zu Ihrer Wohnung.“ Die Dame sieht etwas peinlich berührt aus, doch sie widerspricht dir nicht. Du bietest ihr deinen Arm an und gemeinsam führst du sie zu den Beamten am Eingang, welche euch passieren lassen. Ihre Wohnung ist nicht weit vom Haupteingang entfernt und als ihr vor der Wohnungstür steht, bedankt sie sich vielmals bei dir. Du lächelst höflich und verabschiedest dich."
     else if (state.awareness >= 20)
@@ -349,7 +349,7 @@ var event1_1_4 = function() {
 }
 
 var event1_2 = function() {
-    let text = 'Das Treppenhaus ist gut beleuchtet und mit einem Fahrstuhl ausgestattet. Den Hinweisschildern, die an der pastellblauen Wand befestigt sind, kannst du entnehmen, dass es einschließlich des Stockwerks vier Etagen gibt. Unglücklicherweise gibt es keine weiteren Hinweise. Einige dunklere Stellen an der Wand lassen darauf schließen, dass die entsprechenden Schilder abgenommen wurden. Zwar kannst du die Etage schnell wechseln, aber da das Gebäude ziemlich lang ist, wird es wohl länger dauern, das jeweilige Stockwerk zu durchsuchen.<br/><div class="pic"><div class="pic-stairs"></div></div><br/>Wo möchtest du anfangen?'
+    let text = "Das Treppenhaus ist gut beleuchtet und mit einem Fahrstuhl ausgestattet. Den Hinweisschildern, die an der pastellblauen Wand befestigt sind, kannst du entnehmen, dass es einschließlich des Stockwerks vier Etagen gibt. Unglücklicherweise gibt es keine weiteren Hinweise. Einige dunklere Stellen an der Wand lassen darauf schließen, dass die entsprechenden Schilder abgenommen wurden. Zwar kannst du die Etage schnell wechseln, aber da das Gebäude ziemlich lang ist, wird es wohl länger dauern, das jeweilige Stockwerk zu durchsuchen.<br/><div class=\"pic\"><div class=\"pic-stairs\"></div></div><br/>Wo möchtest du anfangen?"
     if (state.event1_2_read)
         text = "Zurück im Treppenhaus stehst du erneut vor der Wahl eines Stockwerkes. Wo möchtest du suchen?"
     state.event1_2_read = 1
@@ -592,7 +592,7 @@ var event1_7_1_1 = function() {
 }
 
 var event1_7_1_1a = function(successValue) {
-    let text = ''
+    let text = ""
     if ((e.getRnd(0, 59) + state.mundane.value) >= successValue) {
         text += "Du scheinst die magischen Worte gefunden zu haben. Wenige Sekunden später sitzt du auf dem Beifahrersitz und hast dich noch nicht einmal angeschnallt, als der Wagen schon davonschießt. Mit Erleichterung beobachtest du, wie der Ort des Geschehens im Rückspiegel verschwindet, und atmest entspannt aus."
     } else {
@@ -619,7 +619,7 @@ var event1_7_1_3 = function() {
 }
 
 var event1_7_2 = function() {
-    let text = ''
+    let text = ""
     let difficulty = 30
     if(state.delay >= 80) {
         difficulty = 55
@@ -655,7 +655,7 @@ var event1_7_3 = function() {
 }
 
 var event1_8 = function() {
-    let text = ''
+    let text = ""
     if(state.damage >= 1) {
         text += "Kurz vor der Haustür drohen dich die Schmerzen zu überwältigen. Du bist dir nicht sicher, woher du die Willenskraft nimmst, aber du quälst dich an deiner noch immer schlafenden Mutter und ihren Whiskeyflaschen vorbei auf dein Zimmer, ohne laut aufzuschreien. Noch bevor du dich auf das Bett fallen lässt, beginnst du mit dem Heilzauber. Glücklicherweise ist Heilung eine der ursprünglichsten und damit simpelsten Formen der Magie. Nach einigen Minuten nehmen die Schmerzen ab, doch du  benötigst noch zwei weitere Stunden, bevor du dich wieder schmerzfrei bewegen kannst. Erst dann bist du bereit, deine Beute näher zu betrachten."
     } else {
@@ -675,7 +675,7 @@ var event1_8_1 = function() {
 }
 
 var event1_8_2 = function() {
-    let text = ''
+    let text = ""
     if(state.stash >= 1) {
         text += "Dann fällt dir ein, dass du noch das Buch mitgenommen hast. Nun, da du genügend Zeit hast, wirfst du einen genaueren Blick darauf. Im magischen Spektrum erkennst du ein unnatürliches Muster im Kräfteverlauf. Du zögerst kurz, aber letzten Endes ist es unwahrscheinlich, dass sich hier etwas gefährliches verbirgt, und so passt du das Muster wieder an. Plötzlich lösen sich einige Buchseiten und nehmen eine grüne Farbe an. Geld! Anscheinend hat der gute Doktor hier seinen Notgroschen verschanzt. Eigentlich solltest du enttäuscht sein, keine magischen Geheimnisse entdeckt zu haben, aber du musst zugeben, dass du das Geld gut gebrauchen kannst.<br/><br/>"
     }
@@ -776,9 +776,9 @@ var event2_4_3 = function() {
 var event2_5 = function() {
     let text = "Plötzlich betritt deine Mutter die Küche, schaut auf dein Essen, und sieht dich missmutig an: „Gibt es keinen Job für dich? Kellnern, Müll sortieren, irgendwas?“<br/>Natürlich hast du ihr nicht erzählt, dass du deine gesamte Zeit darauf verwendet hast, heimlich Magie zu erlernen. Einmal abgesehen davon, dass sie es nicht unterstützt hätte, sind Alkoholiker nicht gerade bekannt dafür, etwas für sich behalten zu können.<br/>"
     if (state.gender === 1) {
-        text += "Sie fährt fort: „Ich hatte so große Hoffnungen in meinen Jungen. Ich weiß noch, wie wir die blauen Tapeten ausgesucht und einen Fußball für dich gekauft haben. Dein Vater hat so oft mit dir gespielt... was er wohl heute denken würde, wenn er dich so sähe?“"
+        text += "Sie fährt fort: „Ich hatte so große Hoffnungen in meinen Jungen. Ich weiß noch, wie wir die blauen Tapeten ausgesucht und einen Fußball für dich gekauft haben. Dein Vater hat so oft mit dir gespielt… was er wohl heute denken würde, wenn er dich so sähe?“"
     } else {
-        text += "Sie fährt fort: „Ich hatte so große Hoffnungen in mein Mädchen. Ich weiß noch, wie wir die rosa Tapeten ausgesucht und eine Puppe für dich gekauft haben. Wie oft hast du deinen Vater genötigt, mit ihm zu spielen... was er wohl heute denken würde, wenn er dich so sähe?“"
+        text += "Sie fährt fort: „Ich hatte so große Hoffnungen in mein Mädchen. Ich weiß noch, wie wir die rosa Tapeten ausgesucht und eine Puppe für dich gekauft haben. Wie oft hast du deinen Vater genötigt, mit ihm zu spielen… was er wohl heute denken würde, wenn er dich so sähe?“"
     }
     e.show(text, 
     [new Choice("„Es tut mir Leid. Ich werde mich bemühen.“", "event2_5_1"),
@@ -817,13 +817,13 @@ var event2_5_2_2 = function() {
 
 var event2_5_2_3 = function() {
     state.mother -= 5
-    e.show("„Ach Kind...“, seufzt sie, leicht genervt, „das ist doch alles Mumpitz was du erzählst.“ Und dann geht sie schnurstracks in das Wohnzimmer zurück, wo der Fernseher wie immer läuft.", 
+    e.show("„Ach Kind…“, seufzt sie, leicht genervt, „das ist doch alles Mumpitz was du erzählst.“ Und dann geht sie schnurstracks in das Wohnzimmer zurück, wo der Fernseher wie immer läuft.", 
     [new Choice("Weiter", "event2_6")])
 }
 
 var event2_5_3 = function() {
     state.mother += 5
-    e.show("„Wie kannst du es WAGEN,“ keifft sie dich an, „mich nach allem so herablassend zu behandeln? ICH habe dich aufgezogen, ICH...“<br/>Sie bricht ab. Dann stürmt sie in das Wohnzimmer.", 
+    e.show("„Wie kannst du es WAGEN,“ keifft sie dich an, „mich nach allem so herablassend zu behandeln? ICH habe dich aufgezogen, ICH…“<br/>Sie bricht ab. Dann stürmt sie in das Wohnzimmer.", 
     [new Choice("Weiter", "event2_6")])
 }
 
@@ -847,9 +847,9 @@ var event2_6 = function() {
 var event2_6_1 = function() {
     let text = "Als du ihr von der drohenden magischen Überladung erzählst, verzieht sie das Gesicht: „Nun, ich schätze dann hat sich die Diskussion von selbst erledigt. Wir werden uns also wohl oder übel persönlich mit dem Käufer treffen müssen. Und ja, ich meine dich und mich“, ergänzt sie, als sie deinen überraschten Blick sieht. „Wenn du das nächste Mal losziehst, will ich nicht erst wieder alles im Nachhinein hören müssen. Ich meine, kannst du dir vorstellen, wie sich das anfühlt? Ich sitze morgens vor dem Fernseher, mampfe mein Müsli, und überlege mir, ob es nicht eine gleichwertige Sorte mit weniger Rosinen gibt, und du rufst mich an und erzählst mir, dass du den Kampf mit dem System aufgenommen hast!“"
     if (state.gender === 1) {
-        text += "Du versuchst sie zu beschwichtigen und klarzustellen, dass du kein magischer Che Guevara bist, aber sie hat sich bereits in Rage geredet: „Und ich habe gedacht 'Hey, ich helfe meinem Freund dabei, sein magisches Talent zu entdecken, und verfasse Posts gegen die Dummheit der Mehrheit und die Unterdrückung durch die Minderheit, ich bin sowas von Teil der Gegenbewegung' – und dann kommst du, mit deinem Testosteronwert von über 9000, und zeigst mir, dass ich mich zu sehr auf meinen Leistungen ausgeruht habe.“"
+        text += "Du versuchst sie zu beschwichtigen und klarzustellen, dass du kein magischer Che Guevara bist, aber sie hat sich bereits in Rage geredet: „Und ich habe gedacht ‚Hey, ich helfe meinem Freund dabei, sein magisches Talent zu entdecken, und verfasse Posts gegen die Dummheit der Mehrheit und die Unterdrückung durch die Minderheit, ich bin sowas von Teil der Gegenbewegung‘ – und dann kommst du, mit deinem Testosteronwert von über 9000, und zeigst mir, dass ich mich zu sehr auf meinen Leistungen ausgeruht habe.“"
     } else {
-        text += "Du versuchst sie zu beschwichtigen und klarzustellen, dass du keine magische Che Guevara bist, aber sie hat sich bereits in Rage geredet: „Und ich habe gedacht 'Hey, ich helfe meiner Freundin dabei, ihr magisches Talent zu entdecken, und verfasse Posts gegen die Dummheit der Mehrheit und die Unterdrückung durch die Minderheit, ich bin sowas von Teil der Gegenbewegung' – und dann kommst du, vollführst eine meisterhafte Demonstration weiblicher Überlegenheit, und zeigst mir, dass ich mich zu sehr auf meinen Leistungen ausgeruht habe.“"
+        text += "Du versuchst sie zu beschwichtigen und klarzustellen, dass du keine magische Che Guevara bist, aber sie hat sich bereits in Rage geredet: „Und ich habe gedacht ‚Hey, ich helfe meiner Freundin dabei, ihr magisches Talent zu entdecken, und verfasse Posts gegen die Dummheit der Mehrheit und die Unterdrückung durch die Minderheit, ich bin sowas von Teil der Gegenbewegung‘ – und dann kommst du, vollführst eine meisterhafte Demonstration weiblicher Überlegenheit, und zeigst mir, dass ich mich zu sehr auf meinen Leistungen ausgeruht habe.“"
     }
     text += "<br/>Sie atmet kurz durch und beruhigt sich wieder. „Ich komme also mit. Aber das erinnert mich daran, dass ich dich noch etwas anderes fragen wollte.“"
     e.show(text, 
@@ -961,7 +961,7 @@ var event2_8_1_1_3 = function() {
 
 var event2_8_1_1_4 = function() {
     state.money -= 400
-    e.show("Kein Geld der Welt ist es wert, dafür sein Leben zu riskieren. Widerwillig gibst du ihnen dein Portemonnaie.<br/>„Wahnsinn, da haben wir ja ein kleines Sparschweinchen erwischt. Bist 'n guter Mensch“, grinst dich der Anführer an, während er die Scheine einsteckt. Dann lässt er deine Geldbörse zu Boden fallen und schaut Alex auffordernd an, die deinem Beispiel folgt. Wenigstens scheint sie kaum Geld dabei zu haben.<br/>Johlend ziehen die drei weiter und lassen dich mit Alex allein.<br/><br/>Sie sieht dich etwas ratlos an: „Nun… es hätte schlimmer kommen können. Bist du noch bereit, weiter zu machen?“<br/>Du nickst.<br/><br/>Nach einem kurzem Umweg zum nächsten Geldautomaten kommt ihr kurz darauf beim Treffpunkt an.", 
+    e.show("Kein Geld der Welt ist es wert, dafür sein Leben zu riskieren. Widerwillig gibst du ihnen dein Portemonnaie.<br/>„Wahnsinn, da haben wir ja ein kleines Sparschweinchen erwischt. Bist ’n guter Mensch“, grinst dich der Anführer an, während er die Scheine einsteckt. Dann lässt er deine Geldbörse zu Boden fallen und schaut Alex auffordernd an, die deinem Beispiel folgt. Wenigstens scheint sie kaum Geld dabei zu haben.<br/>Johlend ziehen die drei weiter und lassen dich mit Alex allein.<br/><br/>Sie sieht dich etwas ratlos an: „Nun… es hätte schlimmer kommen können. Bist du noch bereit, weiter zu machen?“<br/>Du nickst.<br/><br/>Nach einem kurzem Umweg zum nächsten Geldautomaten kommt ihr kurz darauf beim Treffpunkt an.", 
     [new Choice("Weiter", "event2_9")])
 }
 
@@ -991,7 +991,7 @@ var event2_8_3_1 = function() {
 
 var event2_8_3_2 = function() {
     if ((e.getRnd(0, 59) + state.mundane.value) >= 40) {
-        e.show("Mit weit ausholenden Schritten eilst du ihr hinterher. Du ignorierst das Brennen in deinen Beinen so gut es geht, und nach rund dreißig Metern hast du sie fast eingeholt. Als sie sieht, dass du zu ihr aufschließt, wirft sie dir einen erschrockenen Blick zu – du bist dir nicht einmal sicher, ob sie schon volljährig ist – und greift mit der Hand in ihre Jackentasche. Du stockst kurz, als sie ihre Hand wieder herauszieht, hält sie keine Waffe, sondern lediglich Alex' Handy. Während du dich noch fragst, was sie vorhat, lässt sie das Handy auf einen Stapel Altpapier fallen und hastet weiter. Du überlegst kurz, ob du sie verfolgen solltest, beschließt dann aber, dass damit nicht viel zu gewinnen ist.<br/>Kurz darauf kehrst du zu Alex zurück. Sie hat sich bei dem Sturz anscheinend leicht verletzt und war deshalb nicht in der Lage, mit euch beiden mitzuhalten. Als du ihr das Handy reichst, lächelt sie dich dankbar an: „Hat ja lange genug gedAU…“, stöhnt sie, als sie ihren Fuß überlastet.<br/><br/>Ihr beschließt, noch ein paar Minuten zu warten, und nach kurzer Zeit hat sich Alex soweit erholt, dass ihr weitergehen könnt.<br/><br/>",
+        e.show("Mit weit ausholenden Schritten eilst du ihr hinterher. Du ignorierst das Brennen in deinen Beinen so gut es geht, und nach rund dreißig Metern hast du sie fast eingeholt. Als sie sieht, dass du zu ihr aufschließt, wirft sie dir einen erschrockenen Blick zu – du bist dir nicht einmal sicher, ob sie schon volljährig ist – und greift mit der Hand in ihre Jackentasche. Du stockst kurz, als sie ihre Hand wieder herauszieht, hält sie keine Waffe, sondern lediglich Alex’ Handy. Während du dich noch fragst, was sie vorhat, lässt sie das Handy auf einen Stapel Altpapier fallen und hastet weiter. Du überlegst kurz, ob du sie verfolgen solltest, beschließt dann aber, dass damit nicht viel zu gewinnen ist.<br/>Kurz darauf kehrst du zu Alex zurück. Sie hat sich bei dem Sturz anscheinend leicht verletzt und war deshalb nicht in der Lage, mit euch beiden mitzuhalten. Als du ihr das Handy reichst, lächelt sie dich dankbar an: „Hat ja lange genug gedAU…“, stöhnt sie, als sie ihren Fuß überlastet.<br/><br/>Ihr beschließt, noch ein paar Minuten zu warten, und nach kurzer Zeit hat sich Alex soweit erholt, dass ihr weitergehen könnt.<br/><br/>",
         [new Choice("Weiter", "event2_9")])
     } else {
         state.alex -= 5
@@ -1002,7 +1002,7 @@ var event2_8_3_2 = function() {
 
 var event2_8_3_3 = function() {
     state.profile2 += 10
-    e.show("Während du ihr hinterher läufst, formst du deinen Daumen, Zeige- und Mittelfinger zu Klauen und keuchst die Formel. Als du die letzte Silbe aussprichst, stolpert die Diebin und schlägt auf dem Asphalt auf. Leicht besorgt näherst du dich ihr und untersuchst sie, so gut du es eben kannst, aber sie scheint sich, von einigen Schürfwunden abgesehen, nicht weiter verletzt zu haben. Dann fällt dir auf, dass sie noch jünger als du zu sein scheint. Vielleicht sechzehn?<br/>Du schüttelst kurz mit dem Kopf, durchsuchst die Taschen nach Alex' Handy, und drückst es seiner Besitzerin wieder in die Hand.<br/>„Huh“, meint Alex, „ich frage mich ja schon, wie ihr Leben so aussieht. Aber ich fürchte, dafür haben wir jetzt keine Zeit. Lass uns weiter, bevor jemand dies sieht und die Polizei ruft. Falls das jemand hier tut.“", 
+    e.show("Während du ihr hinterher läufst, formst du deinen Daumen, Zeige- und Mittelfinger zu Klauen und keuchst die Formel. Als du die letzte Silbe aussprichst, stolpert die Diebin und schlägt auf dem Asphalt auf. Leicht besorgt näherst du dich ihr und untersuchst sie, so gut du es eben kannst, aber sie scheint sich, von einigen Schürfwunden abgesehen, nicht weiter verletzt zu haben. Dann fällt dir auf, dass sie noch jünger als du zu sein scheint. Vielleicht sechzehn?<br/>Du schüttelst kurz mit dem Kopf, durchsuchst die Taschen nach Alex’ Handy, und drückst es seiner Besitzerin wieder in die Hand.<br/>„Huh“, meint Alex, „ich frage mich ja schon, wie ihr Leben so aussieht. Aber ich fürchte, dafür haben wir jetzt keine Zeit. Lass uns weiter, bevor jemand dies sieht und die Polizei ruft. Falls das jemand hier tut.“", 
     [new Choice("Weiter", "event2_9")])
 }
 
