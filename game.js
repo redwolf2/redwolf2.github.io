@@ -1007,31 +1007,54 @@ var event2_8_3_3 = function() {
 }
 
 var event2_9 = function() {
-    e.show("TODO: Kein Text", 
-    [new Choice("TODO: 2_9_1", "event2_9_1"),
-    new Choice("TODO: 2_9_2", "event2_9_2"),
-    new Choice("TODO: 2_9_3", "event2_9_3"),
-    new Choice("TODO: 2_9_4", "event2_9_4")])
+    e.show("Als ihr endlich die Adresse gefunden habt, seid ihr fast froh, von der Straße runter zu kommen. Fast, denn natürlich wisst ihr nicht genau, was euch im Inneren erwartet. Von Außen wirkt das Grundstück recht unauffällig: Mehrere Parkplätze und ein einzelnes einstöckiges Gebäude, auf dessen Schild das Wort "Maria's" sowie eine Pizza abgebildet ist. Die Schalosien sind geschlossen, so dass nicht erkennbar ist, ob sich im Inneren jemand befindet. Obwohl das Schild noch recht neu aussieht, verkündet ein handgeschriebener Zettel, dass das Geschäft vor einigen Wochen geschlossen wurde.<br/>„Scheint sich nicht lange gehalten zu haben. Bei der Gegend kein Wunder”, murmelt Alex dir zu, „aber was machen wir jetzt? Klingeln?”<br/>Als hätte sie jemand gehört, öffnet sich die Eingangstür, und ein Mann mittleren Alters mit kurzen schwarzen Haaren und hellbrauner Haut schaut heraus. Er zögert kurz und winkt euch dann herein. Auch ihr zögert kurz, tretet dann aber ein.<br/><br/>Bis auf einige Tische nahe der Theke ist der Raum nicht beleuchtet. Dort sitzt ein Mann mit rotem Hemd und Krawatte, vor ihm ein altertümlich wirkendes Buch. Er mustert Alex und dich kurz, und du bemerkst, dass seine dunklen Haare einen blonden Ansatz haben.<br/>„Guten Abend. Ihr seid diejenigen, die etwas erwerben möchten?” Er klingt etwas ungläubig. Oder enttäuscht?<br/>Alex nickt: „Aber bevor wir das Geld auf den Tisch legen, möchten wir natürlich einen Blick auf das Buch werfen.”<br/>Euer Gegenüber schiebt euch das Buch zu, und Alex blättert es langsam durch. Obwohl du ebenfalls neugierig bist, wirfst du nur einen kurzen Blick darauf, denn du hast das Gefühl, dass es sicherer ist, die beiden Fremden nicht aus den Augen zu verlieren.<br/>Der Mann mit der Krawatte scheint dich ebenfalls zu mustern, während er mit seinem Handy rumspielt: „Nicht neugierig? Ich schätze mal die Kleine ist die Magierin?”", 
+    [new Choice("„Magierin? Ich habe keine Ahnung wovon Sie reden.”", "event2_9_1"),
+    new Choice("„Ich wüsste nicht, inwiefern das relevant ist.”", "event2_9_2"),
+    new Choice("„Ist sie.”", "event2_9_3"),
+    new Choice("„Ich bin es. Aber sie kennt sich auch gut mit der Theorie aus.”", "event2_9_4")])
 }
 
 var event2_9_1 = function() {
     e.show("Er grinst dich humorlos an: „Natürlich nicht.“", 
-    [new Choice("Weiter", "event2_10")], false) // TODO: remove false
+    [new Choice("Weiter", "event2_10")])
 }
 
 var event2_9_2 = function() {
     e.show("Er starrt dich kurz an: „Ist es nicht. Ich betreibe nur Konversation.“", 
-    [new Choice("Weiter", "event2_10")], false) // TODO: remove false
+    [new Choice("Weiter", "event2_10")])
 }
 
 var event2_9_3 = function() {
     e.show("Er mustert euch weiter: „Das erklärt natürlich, warum sie das Buch liest.“", 
-    [new Choice("Weiter", "event2_10")], false) // TODO: remove false
+    [new Choice("Weiter", "event2_10")])
 }
 
 var event2_9_4 = function() {
     e.show("Er mustert dich genauer: „Muss interessant sein.“", 
-    [new Choice("Weiter", "event2_10")], false) // TODO: remove false
+    [new Choice("Weiter", "event2_10")])
+}
+
+var event2_10 = function() {
+    e.show("„Wie wäre es mit einem Glas Cola?”, fragt er lächelnd.<br/>Du kannst nicht sagen, dass dir seine seltsame Art sympathisch ist.", 
+    [new Choice("„Nein danke.”", "event2_10_1"),
+    new Choice("„Nein, danke. Was ist mit dir, Alex?”", "event2_10_2")])
+}
+
+var event2_10_1 = function() {
+    e.show("Er zuckt mit den Schultern. „Wie ihr wollt.”", 
+    [new Choice("Weiter", "event2_11")], false) // TODO: remove false
+}
+
+var event2_10_2 = function() {
+    state.profile2 += 10
+    state.alex -= 5
+    e.show("Alex blickt kurz auf, und wirft dir einen mürrischen Blick zu. Der Mann legt den Kopf schief: „Alex, hm? Ein hübscher Name.”", 
+    [new Choice("Weiter", "event2_11")], false) // TODO: remove false
+}
+
+var event2_11 = function() {
+    e.show("TODO", 
+    [new Choice("Weiter", "eventEnd")], false) // TODO: remove false
 }
 
 var eventEnd = function() {
