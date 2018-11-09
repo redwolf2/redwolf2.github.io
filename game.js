@@ -22,6 +22,7 @@ function State() {
     this.stash = 0
     this.takedown = 0
     this.wantedlevel = 0
+    this.collateral = 0
 }
 
 var eventStart = function() {
@@ -39,7 +40,7 @@ var eventStart = function() {
         state.delay= 20
         state.takedown = 1
         e.setBackground(null, null)
-        e.show(text, [new Choice("Debug Spiel", "event1_8_1")], false)
+        e.show(text, [new Choice("Debug Spiel", "event2_0")], false)
     } else if(GameState.hasSave()) {
         e.show(text, [new Choice("Neues Spiel", "eventNew"),
         new Choice("Weitermachen", "eventContinue")], false)
@@ -1007,7 +1008,7 @@ var event2_8_3_3 = function() {
 }
 
 var event2_9 = function() {
-    e.show("Als ihr endlich die Adresse gefunden habt, seid ihr fast froh, von der Straße runter zu kommen. Fast, denn natürlich wisst ihr nicht genau, was euch im Inneren erwartet. Von Außen wirkt das Grundstück recht unauffällig: Mehrere Parkplätze und ein einzelnes einstöckiges Gebäude, auf dessen Schild das Wort "Maria's" sowie eine Pizza abgebildet ist. Die Schalosien sind geschlossen, so dass nicht erkennbar ist, ob sich im Inneren jemand befindet. Obwohl das Schild noch recht neu aussieht, verkündet ein handgeschriebener Zettel, dass das Geschäft vor einigen Wochen geschlossen wurde.<br/>„Scheint sich nicht lange gehalten zu haben. Bei der Gegend kein Wunder”, murmelt Alex dir zu, „aber was machen wir jetzt? Klingeln?”<br/>Als hätte sie jemand gehört, öffnet sich die Eingangstür, und ein Mann mittleren Alters mit kurzen schwarzen Haaren und hellbrauner Haut schaut heraus. Er zögert kurz und winkt euch dann herein. Auch ihr zögert kurz, tretet dann aber ein.<br/><br/>Bis auf einige Tische nahe der Theke ist der Raum nicht beleuchtet. Dort sitzt ein Mann mit rotem Hemd und Krawatte, vor ihm ein altertümlich wirkendes Buch. Er mustert Alex und dich kurz, und du bemerkst, dass seine dunklen Haare einen blonden Ansatz haben.<br/>„Guten Abend. Ihr seid diejenigen, die etwas erwerben möchten?” Er klingt etwas ungläubig. Oder enttäuscht?<br/>Alex nickt: „Aber bevor wir das Geld auf den Tisch legen, möchten wir natürlich einen Blick auf das Buch werfen.”<br/>Euer Gegenüber schiebt euch das Buch zu, und Alex blättert es langsam durch. Obwohl du ebenfalls neugierig bist, wirfst du nur einen kurzen Blick darauf, denn du hast das Gefühl, dass es sicherer ist, die beiden Fremden nicht aus den Augen zu verlieren.<br/>Der Mann mit der Krawatte scheint dich ebenfalls zu mustern, während er mit seinem Handy rumspielt: „Nicht neugierig? Ich schätze mal die Kleine ist die Magierin?”", 
+    e.show("Als ihr endlich die Adresse gefunden habt, seid ihr fast froh, von der Straße runter zu kommen. Fast, denn natürlich wisst ihr nicht genau, was euch im Inneren erwartet. Von Außen wirkt das Grundstück recht unauffällig: Mehrere Parkplätze und ein einzelnes einstöckiges Gebäude, auf dessen Schild das Wort \"Maria's\" sowie eine Pizza abgebildet ist. Die Schalosien sind geschlossen, so dass nicht erkennbar ist, ob sich im Inneren jemand befindet. Obwohl das Schild noch recht neu aussieht, verkündet ein handgeschriebener Zettel, dass das Geschäft vor einigen Wochen geschlossen wurde.<br/>„Scheint sich nicht lange gehalten zu haben. Bei der Gegend kein Wunder”, murmelt Alex dir zu, „aber was machen wir jetzt? Klingeln?”<br/>Als hätte sie jemand gehört, öffnet sich die Eingangstür, und ein Mann mittleren Alters mit kurzen schwarzen Haaren und hellbrauner Haut schaut heraus. Er zögert kurz und winkt euch dann herein. Auch ihr zögert kurz, tretet dann aber ein.<br/><br/>Bis auf einige Tische nahe der Theke ist der Raum nicht beleuchtet. Dort sitzt ein Mann mit rotem Hemd und Krawatte, vor ihm ein altertümlich wirkendes Buch. Er mustert Alex und dich kurz, und du bemerkst, dass seine dunklen Haare einen blonden Ansatz haben.<br/>„Guten Abend. Ihr seid diejenigen, die etwas erwerben möchten?” Er klingt etwas ungläubig. Oder enttäuscht?<br/>Alex nickt: „Aber bevor wir das Geld auf den Tisch legen, möchten wir natürlich einen Blick auf das Buch werfen.”<br/>Euer Gegenüber schiebt euch das Buch zu, und Alex blättert es langsam durch. Obwohl du ebenfalls neugierig bist, wirfst du nur einen kurzen Blick darauf, denn du hast das Gefühl, dass es sicherer ist, die beiden Fremden nicht aus den Augen zu verlieren.<br/>Der Mann mit der Krawatte scheint dich ebenfalls zu mustern, während er mit seinem Handy rumspielt: „Nicht neugierig? Ich schätze mal die Kleine ist die Magierin?”", 
     [new Choice("„Magierin? Ich habe keine Ahnung wovon Sie reden.”", "event2_9_1"),
     new Choice("„Ich wüsste nicht, inwiefern das relevant ist.”", "event2_9_2"),
     new Choice("„Ist sie.”", "event2_9_3"),
@@ -1042,19 +1043,60 @@ var event2_10 = function() {
 
 var event2_10_1 = function() {
     e.show("Er zuckt mit den Schultern. „Wie ihr wollt.”", 
-    [new Choice("Weiter", "event2_11")], false) // TODO: remove false
+    [new Choice("Weiter", "event2_11")])
 }
 
 var event2_10_2 = function() {
     state.profile2 += 10
     state.alex -= 5
     e.show("Alex blickt kurz auf, und wirft dir einen mürrischen Blick zu. Der Mann legt den Kopf schief: „Alex, hm? Ein hübscher Name.”", 
-    [new Choice("Weiter", "event2_11")], false) // TODO: remove false
+    [new Choice("Weiter", "event2_11")])
 }
 
 var event2_11 = function() {
     e.show("TODO", 
-    [new Choice("Weiter", "eventEnd")], false) // TODO: remove false
+    [new Choice("Weiter", "event2_12")])
+}
+
+var event2_12 = function() {
+    e.show("Eine Nebentür springt auf, und zwei weitere Männer und eine Frau kommen herausgestürmt, Pistolen im Anschlag. Noch während du dich fragst, was zur Hölle hier eigentlich los ist, sucht ihr hinter der Theke Deckung. Die donnernden Schüsse der Pistolen hallen im Raum wieder, während die Kugeln in die Wand oberhalb der Theke einschlagen und Putz auf euch hernieder prasselt. Du bist halb betäubt vor Schock: Noch nie hat jemand auf dich geschossen. Geschossen! Auf dich!<br/><br/>Als du in Alex' weit aufgerissen Augen starrst, fallen dir zwei Dinge auf. Erstens, dass sie genauso panisch aussieht, wie du es vermutlich gerade tust. Und dass du diesen Blick schon in Filmen gesehen hast – üblicherweise kurz bevor die Schauspieler erschossen wurden.<br/><br/>Du reißt dich zusammen. Dir bleiben nur Sekunden.", 
+    [new Choice("Dreifacher Schockzauber. Schwierig, aber theoretisch schaffbar.", "event2_12_1"),
+    new Choice("Zweifacher Tarnzauber. Könnte klappen.", "event2_12_2"),
+    new Choice("Flammendes Inferno. Zuverlässig, aber tödlich für die anderen.", "event2_12_3")])
+}
+
+var event2_12_1 = function() {
+    let text = "Du konzentrierst dich auf den schwierigen Zauber und wartest auf den finalen Augenblick, dann spähst du hinter der Theke hervor und lässt den Zauber los."
+    if ((e.getRnd(0, 59) + state.magic.value) >= 65) {
+        text += "<br/>Der unsichtbare Zauber rast direkt auf deine Angreifer zu. Gleichzeitig erspäht dich die Frau und schießt, doch die Kugel schlägt nur neben dir ein. Während du noch steif vor Schreck auf das neue Loch im Boden starrst, fallen deine Gegner zu Boden.<br/><br/>In der plötzlichen Ruhe scheint die Welt einen Augenblick still zu stehen."
+    } else {
+        state.damage += 1
+        text += "<br/>Der unsichtbare Zauber rast direkt auf deine Angreifer zu. Gleichzeitig erspäht dich die Frau und schießt, doch die Kugel schlägt nur neben dir ein. Während du noch steif vor Schreck auf das neue Loch im Boden starrst, fallen deine Gegner zu Boden.<br/><br/>In der plötzlichen Ruhe scheint die Welt einen Augenblick still zu stehen."
+    }
+    e.show(text, 
+    [new Choice("Weiter", "event2_12_1_1")])
+}
+
+var event2_12_1_1 = function() {
+    e.show("Du atmest tief durch und stehst auf. Deine Angreifer liegen im Raum verteilt auf dem Boden. Ansonsten ist jedoch niemand zu sehen. Auch das Buch ist verschwunden. Anscheinend ist der Mann im roten Hemd während des Kampfes geflohen und hat das Buch mit genommen. Oder lauert er euch möglicherweise auf? Oder hat er noch mehr Verstärkung gerufen? Möglicherweise ist auch die Polizei durch die Schüsse alarmiert wurden. Es kommt dir zwar unwahrscheinlich vor, aber bislang weißt du auch nicht, warum ihr überhaupt angegriffen wurdet.<br/><br/>In Anbetracht der Tatsache, dass ihr keine Ahnung habt, was vor sich geht, scheint es eine gute Idee zu sein, an einem anderen Ort darüber nachzudenken. Ihr verlasst das Gebäude so schnell ihr könnt.", 
+    [new Choice("Weiter", "event2_13", false)]) // TODO: Remove false
+}
+
+var event2_12_2 = function() {
+    let text = "Du konzentrierst dich auf den Tarnzauber, und nach wenigen Sekunden seid ihr unsichtbar. Du tastest nach Alex' Hand und ziehst sie mit dir. Als der Kugelhagel einen Augenblick aussetzt, schleicht ihr hinter der Theke hervor. Die drei Schützen wirken angespannt, hasserfüllt, und zugleich… ängstlich?<br/>Da du dir nicht sicher bist, wie lange du euch beide tarnen kannst, beschließt du, dich aus dem Staub zu machen. Du bemerkst, dass die Eingangstür offen ist, und zerrst Alex' möglichst leise mit dir. Doch als du gerade über die Schwelle schreitest, verlierst du plötzlich die Kontrolle über die Kraftmatrix."
+    if ((e.getRnd(0, 59) + state.magic.value) >= 40) {
+        text += "<br/>Schnell verdoppelst du deine Kräfte und hältst den Zauber aufrecht. Dann geht ihr langsam weiter. Erst als ihr draußen und in einiger Entfernung zum Gebäude steht, lässt du den Tarnzauber fallen."
+    } else {
+        state.damage += 1
+        text += "<br/>Schnell verdoppelst du deine Kräfte, doch dabei entgleitet dir die Kontrolle. Der Schleier erlischt, und mit einem Flackern werdet ihr plötzlich wieder sichtbar. Die Frau schreit auf, wirbelt herum, und schießt dir direkt in die Schulter. Schmerz explodiert in deiner Schulter, doch gleichzeitig gibt dir das Adrenalin mehr als genug Kraft, um den Zauber zu erneuen. Du beißt die Zähne zusammen und zerrst Alex mit dir. Hinter euch hört ihr wütende Rufe, aber du bist dir sicher, dass sie euch nicht sehen können.<br/>Erst als ihr in einiger Entfernung zum Gebäude steht, lässt du den Tarnzauber fallen.<br/>Dann nimmst du dir einen Augenblick, um deine Wunden mittels Magie zu heilen."
+    }
+    e.show(text, 
+    [new Choice("Weiter", "event2_13", false)]) // TODO: Remove false
+}
+
+var event2_12_3 = function() {
+    e.show("Grundlegende Energien zu beschwören ist die einfachste Art der Magie. Einen Schlüssel schweben zu lassen ist genauso einfach, wie eine Kerze zu entzünden. Aus diesem Grund gelingt es dir binnen weniger Sekunden, eine glühend weiße Kugel zwischen deinen Händen entstehen zu lassen, heiß genug, um Metall zu schmelzen, ohne dass die Hitze deine Haut versengt.<br/><br/>Und dann lenkst du die Hitze in einem glühenden Strahl um die Theke.<br/><br/>Du hörst die Frau noch einen Warnschrei ausrufen, doch was auch immer sie zu sagen hatte, wird von dem tobenden Prasseln des Feuersturms hinfortgerissen. Alex und du müsst beide Husten, als ein Großteil des Sauerstoffs im Raum schlagartig von den Flammen aufgebraucht wird, die den dunklen Raum in taghelles Licht tauchen.<br/><br/>Schwindel ergreift dich, und dir wird klar, dass ihr schnellstmöglichst das Gebäude verlassen müsst, wenn ihr nicht einer Rauchvergiftung zum Opfer fallen wollt. Als ihr aufspringt, schlägt euch die lodernde Hitze des Infernos entgegen, die euch zusammen mit dem beißenden Rauch die Tränen in die Augen treibt. Hustend hastet ihr durch die bizarre Landschaft aus dunklen Rauchschwaden und hellen Feuersäulen, dir vor Sekunden noch ein Restaurant waren, vorbei an den brennenden Überresten, die einmal Möbel und Menschen waren.<br/><br/>Als ihr durch die Tür stürmt, atmet ihr erleichtert aus, als ihr endlich wieder klar atmen könnt, doch Alex zieht dich mit sich die Straße herunter, weit weg von dem brennenden Haus.", 
+    [new Choice("Weiter", "event2_13", false)]) // TODO: Remove false
 }
 
 var eventEnd = function() {
