@@ -1054,7 +1054,46 @@ var event2_10_2 = function() {
 }
 
 var event2_11 = function() {
-    e.show("TODO", 
+    e.show("Schließlich klappt Alex das Buch zu. „Wir nehmen es, falls… HEY!”<br/>Ruckartig schnappt Alex nach dem Handy, mit dem der Mann rumgespielt hat, und wirft einen Blick darauf. „Videoaufnahme? Was soll das??”, ruft sie wütend, mit mehr als nur einer Spur Sorge. Vom Eingang her stürmt der Dunkelhäutige heran und geht mit einem Messer in der Hand auf Alex los, die panisch zurück weicht. Dein Gegenüber lächelt euch fast mitleidig zu.", 
+    [new Choice("Ich bleibe ruhig sitzen und überrede ihn, seinen Mann zurückzupfeifen, damit wir unser Geschäft abschließen können. Schließlich sind wir Profis.", "event2_11_1"),
+    new Choice("Ich versuche ihn einzuschüchtern.", "event2_11_2"),
+    new Choice("Es bleibt keine Zeit zum Reden. Ich falle dem Angreifer in den Rücken.", "event2_11_3"),
+    new Choice("Ein Schockzauber sollte den Angreifer zu Fall bringen.", "event2_11_4")])
+}
+
+var event2_11_1 = function() {
+    state.alex -= 20
+    e.show("Du bemühst dich, deine Stimme möglichst unbeeindruckt klingen zu lassen: „Dieses Chaos hilft doch keinem von uns weiter. Rufen Sie ihren Gorilla zurück, und wir können das Geschäft noch immer abschließen.“<br/>Der Mann im roten Hemd zieht verwundert eine Augenbraue hoch – anscheinend ist er beeindruckt von deiner Kaltschnäuzigkeit. Leider scheint Alex das anders zu sehen.<br/>„Spinnst du? Fuck it!“, faucht sie. Als du dich zu ihr umdrehst, siehst du, dass sie einen kleinen schwarzen Zylinder aus ihrer Jacke gefummelt hat, den sie auf ihren Angreifer richtet. Ein Strahl dunkler Flüssigkeit zischt auf ihn zu, doch scheinbar hat sie in der Hektik nicht richtig gezielt, und der Angreifer kann dem Pfefferspray ausweichen. „Fuck!“<br/><br/>Der Mann im Hemd hebt beschwichtigend die Hände„Genug, genug. So kommen wir nicht weiter.“<br/>Mit langsamen, ruhigen Bewegungen steht er auf, und geht auf seinen Handlanger zu.<br/><br/>Alex, die ihr Spray so fest umklammert hat, dass du ihre weißen Fingerknöchel sehen kannst, tritt zu dir. „Danke für gar nichts!“, zischt sie dir zu.<br/><br/>Inzwischen ist der Mann bei seinem Untergebenem angekommen: „Ich weiß du hast es gut gemeint. Aber ganz offensichtlich sind die beiden zu unberechenbar. JUNGS, WIR BRAUCHEN HILFE!.“", 
+    [new Choice("Weiter", "event2_12")])
+}
+
+var event2_11_2 = function() {
+    let text = "„Keinen Schritt weiter, oder ihr brennt!“, rufst du, und hebst bedrohlich die Hände."
+    if ((e.getRnd(0, 59) + state.mundane.value) >= 40) {
+        text += "<br/>Die beiden erstarren. Furcht blitzt in ihren Gesichern auf. Der Angreifer weicht ein paar Schritte zurück, und du stehst auf und trittst langsam zu Alex, ohne die beiden anderen aus den Augen zu lassen.<br/><br/>„Hör mal, wir können das alles friedlich klären, wenn du mir nur kurz Gelegenheit dazu gibst“, versucht der Mann im Hemd dich zu beschwichtigen. „Schau doch mal“, sagt er, und schlägt eine Seite im Buch auf. Finster starrst du erst ihn an, und wirfst dann einen Blick auf das Buch.<br/><br/>„Pass auf!“, kreischt Alex."
+    } else {
+        state.alex -= 5
+        text += "Keiner von beiden scheint beeindruckt zu sein.<br/><br/>„Fuck it!“, faucht Alex plötzlich. Als du dich zu ihr umdrehst, siehst du, dass sie einen kleinen schwarzen Zylinder aus ihrer Jacke gefummelt hat, den sie auf ihren Angreifer richtet. Ein Strahl dunkler Flüssigkeit zischt auf ihn zu, doch scheinbar hat sie in der Hektik nicht richtig gezielt, und der Angreifer kann dem Pfefferspray ausweichen. „Fuck!“<br/><br/>Der Mann im Hemd hebt beschwichtigend die Hände„Genug, genug. So kommen wir nicht weiter.“<br/>Mit langsamen, ruhigen Bewegungen steht er auf, und geht auf seinen Handlanger zu.<br/><br/>Alex, die ihr Spray so fest umklammert hat, dass du ihre weißen Fingerknöchel sehen kannst, tritt zu dir.<br/><br/>Inzwischen ist der Mann bei seinem Untergebenem angekommen: „Ich weiß du hast es gut gemeint. Aber ganz offensichtlich sind die beiden zu unberechenbar. JUNGS, WIR BRAUCHEN HILFE!."
+    }
+    e.show(text,
+    [new Choice("Weiter", "event2_12")])
+}
+
+var event2_11_3 = function() {
+    let text = "Du springst auf und hetzt auf Alex' Angreifer zu, der einen Schritt zurückweicht, als er sich plötzlich zwei Gegnern ausgesetzt sieht. Dann verengt er plötzlich die Augen, macht einen schnellen Schritt, und sein Messer nähert sich rasant deinem Brustkorb."
+    if ((e.getRnd(0, 59) + state.mundane.value) >= 50) {
+        text += "<br/>Panisch versuchst du, gleichzeitig zur Seite zu springen und deine Arme schützend zwischen dich und deine Organe zu halten, und du hast Glück. Du hörst ein leichtes Ratschen, als das Messer deinen Ärmel streift, aber du bist unverletzt.<br/><br/>„Fuck it!“, faucht Alex plötzlich. Als du dich zu ihr umdrehst, siehst du, dass sie einen kleinen schwarzen Zylinder aus ihrer Jacke gefummelt hat, den sie auf ihren Angreifer richtet. Ein Strahl dunkler Flüssigkeit zischt auf ihn zu, doch scheinbar hat sie in der Hektik nicht richtig gezielt, und der Angreifer kann dem Pfefferspray ausweichen. „Fuck!“<br/><br/>Der Mann im Hemd hebt beschwichtigend die Hände„Genug, genug. So kommen wir nicht weiter.“<br/>Mit langsamen, ruhigen Bewegungen steht er auf, und geht auf seinen Handlanger zu.<br/><br/>Alex, die ihr Spray so fest umklammert hat, dass du ihre weißen Fingerknöchel sehen kannst, tritt zu dir.<br/><br/>Inzwischen ist der Mann bei seinem Untergebenem angekommen: „Ich weiß du hast es gut gemeint. Aber ganz offensichtlich sind die beiden zu unberechenbar. JUNGS, WIR BRAUCHEN HILFE!“"
+    } else {
+        state.damage += 1
+        text += "Panisch versuchst du, gleichzeitig zur Seite zu springen und deine Arme schützend zwischen dich und deine Organe zu halten, aber du bist nicht schnell genug. Ein stechender Schmerz dringt tief in deine Seite, und als deine Atmung stockt, hast du einen Augenblick lang die schreckliche Ahnung, dass deine Lunge durchbohrt wurde, doch dann lässt dich der Schmerz aufstöhnen, und du hast zumindest die Gewissheit, nicht sofort sterben zu müssen.<br/><br/>„Fuck it!“, faucht Alex plötzlich. Als du dich zu ihr umdrehst, siehst du, dass sie einen kleinen schwarzen Zylinder aus ihrer Jacke gefummelt hat, den sie auf ihren Angreifer richtet. Ein Strahl dunkler Flüssigkeit zischt auf ihn zu, doch scheinbar hat sie in der Hektik nicht richtig gezielt, und der Angreifer kann dem Pfefferspray ausweichen. „Fuck!“<br/><br/>Der Mann im Hemd hebt beschwichtigend die Hände„Genug, genug. So kommen wir nicht weiter.“<br/>Mit langsamen, ruhigen Bewegungen steht er auf, und geht auf seinen Handlanger zu.<br/><br/>Alex, die ihr Spray so fest umklammert hat, dass du ihre weißen Fingerknöchel sehen kannst, tritt zu dir, hilft dir auf, und zerrt dich unsanft ein paar Meter weiter.<br/><br/>Inzwischen ist der Mann bei seinem Untergebenem angekommen: „Ich weiß du hast es gut gemeint. Aber ganz offensichtlich sind die beiden zu unberechenbar. JUNGS, WIR BRAUCHEN HILFE!“"
+    }
+    e.show(text,
+    [new Choice("Weiter", "event2_12")])
+}
+
+var event2_11_4 = function() {
+    state.profile2 += 10
+    e.show("Du springst auf und rufst die Formel, die den Kreislauf des Angreifers überlasten soll. Obwohl nur einige Sekunden vergehen, scheint dir die Zeit quälend langsam vorzukommen. Endlich vollendest du den Zauber, und du atmest erleichtert aus, als Alex' Angreifer zu Boden sinkt.<br/><br/>Der Mann im Hemd wirkt plötzlich etwas bleich und hebt beschwichtigend die Hände „Genug, genug. So kommen wir nicht weiter. Geht es… geht es ihm gut? Kann ich nach ihm sehen?“<br/>Du nickst kurz, und der Mann steht auf. Doch statt zu seinem Kameraden zu gehen, springt er hinter einen Tisch in Deckung.<br/>„JUNGS, WIR BRAUCHEN HILFE!“", 
     [new Choice("Weiter", "event2_12")])
 }
 
