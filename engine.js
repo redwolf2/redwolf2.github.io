@@ -300,15 +300,15 @@ function Engine(customState)
     }
 }
 
-function GameState() {
-    this.event = new GameEvent("")
-}
-
 function PlayerAttribute(name, value, visible = true) {
     this.type = "PlayerAttribute"
     this.name = name
     this.value = value
     this.visible = visible
+}
+
+function GameState() {
+    this.event = new GameEvent("")
 }
 
 GameState.hasSave = function() {
