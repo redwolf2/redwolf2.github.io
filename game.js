@@ -28,7 +28,7 @@ function State() {
 }
 
 var eventStart = function () {
-    debug = true
+    debug = false
     state = new State()
     e = new Engine(state)
     //e.setBackground("linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2))", "res/imgs/main.jpg")
