@@ -1,0 +1,19 @@
+{
+  "name": "redwolf2.github.io",
+  "version": "0.1.0",
+  "description": "Choice game engine",
+  "main": "engine.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redwolf2/redwolf2.github.io.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/redwolf2/redwolf2.github.io/issues"
+  },
+  "homepage": "https://github.com/redwolf2/redwolf2.github.io#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}
