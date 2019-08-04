@@ -8,30 +8,26 @@ var put = function(name, value) {
         localStorage.setItem(name, valueS)
         console.log("setting var named " + name + " to " + valueS)
     } else {
-        throw "Sorry, your browser does not support Web Storage..."
+        throw new Error("Sorry, your browser does not support Web Storage...")
     }
-}
-
-var get = function(name) {
-    return getVar(name, undefined)
 }
 
 var get = function(name, defaultValue) {
     let value = JSON.parse(localStorage.getItem(name))
+
     return value === undefined ? defaultValue : value
 }
 
 function Gui() {
-
+    // empty object initializer
 }
 
 Gui.createButton = function(id, text, onclick, clazz = "btn", append = true, iconClazz = null) {
     let elementIcon = document.createElement("svg")
     elementIcon.className = "btnicon"
-    if(iconClazz !== null)
-        elementIcon.className = "btnicon " + iconClazz
-    else
-        elementIcon.className = "btnicon"
+    if(iconClazz === null) {
+        elementIcon.className = elementIcon.className + " " + iconClazz
+    }
 
     let elementBreapCrump = document.createElement("span")
     elementBreapCrump.className = "btnbreadcrump"
