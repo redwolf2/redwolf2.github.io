@@ -14,6 +14,6 @@
   },
   "homepage": "https://github.com/redwolf2/redwolf2.github.io#readme",
   "devDependencies": {
-    "eslint": "^6.1.0"
+    "eslint": "^6.3.0"
   }
 }
